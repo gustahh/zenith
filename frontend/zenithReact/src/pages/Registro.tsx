@@ -1,9 +1,9 @@
-import React from 'react'
+import FormRegistro from '../components/FormRegistro'
 
-function Registro() {
+function Registrar() {
   return (
-    <div>Registro</div>
+    <FormRegistro />
   )
 }
 
-export default Registro
+export default Registrar
