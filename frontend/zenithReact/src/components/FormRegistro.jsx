@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import Validacao from '../pages/LoginValidacao';
+import { Link, useNavigate } from "react-router-dom";
+import Validacao from '../pages/RegistroValidacao';
 import { useState } from 'react';
 import axios from 'axios';
 
@@ -10,6 +10,7 @@ function FormRegistro() {
         senha: '',
         dataNasc: ''
       })
+      const navigate = useNavigate();
       const [errors, setErrors] = useState({})
       const handleInput = (event) => {
         setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
@@ -18,8 +19,12 @@ function FormRegistro() {
       const handleSubmit = (event) => {
         event.preventDefault();
         setErrors(Validacao(values));
-        if (errors.nome === "" && errors.email === "" && errors.senha === "") {
-
+        if (errors.nome === "" && errors.email === "" && errors.senha === "" && errors.dataNasc === '') {
+            axios.post('http://localhost:8080/registrar', values)
+            .then(res => {
+                navigate('/login')
+            })
+            .catch(err => console.log(err));
         }
       }
   return (

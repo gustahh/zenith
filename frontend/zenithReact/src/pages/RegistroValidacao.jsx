@@ -10,16 +10,12 @@ function Validacao(values) {
 
     if (values.email === "") {
         error.email = "O campo e-mail não pode ficar em branco"
-    } else if (!email_pattern.test(values.email)) { 
-        error.email = "Email não encontrado"
     } else {
         error.email = ""
     }
 
     if (values.senha === "") {
         error.senha = "O campo senha não pode ficar em branco"
-    } else if (!senha_pattern.test(values.password)) {
-        error.senha = "Senha não encontrada"
     } else {
         error.senha = ""
     }
