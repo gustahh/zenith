@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Validacao from '../pages/LoginValidacao';
 import { useState } from 'react';
+import axios from 'axios';
 
 function FormRegistro() {
     const [values, setValues] = useState({
@@ -17,6 +18,9 @@ function FormRegistro() {
       const handleSubmit = (event) => {
         event.preventDefault();
         setErrors(Validacao(values));
+        if (errors.nome === "" && errors.email === "" && errors.senha === "") {
+
+        }
       }
   return (
     <>

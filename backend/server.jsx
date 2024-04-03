@@ -13,13 +13,13 @@ const db = mysql.createConnection({
 })
 
 app.post('/registrar', (req, res) => {
-    const query = 'INSERT INTO usuarios VALUES (?)';
+    const query = 'INSERT INTO usuarios (`nome`, `email`, `dataNasc`, `genero`, `senha`) VALUES (?)';
     const values = [
         req.body.nome,
         req.body.email,
-        req.body.senha,
         req.body.dataNasc,
-        req.body.genero
+        req.body.genero,
+        req.body.senha
     ] 
     db.query(sql, [values], (err, data) => {
         if (err) {
