@@ -2,7 +2,9 @@ import FormLogin from "../components/FormLogin"
 
 function Login() {
   return (
-    <FormLogin />
+    <div className="w-full h-screen bg-sky-500">
+      <FormLogin />
+    </div>
   )
 }
 
