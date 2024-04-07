@@ -2,6 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import Validacao from '../pages/RegistroValidacao';
 import { useState } from 'react';
 import axios from 'axios';
+import Input from './Input';
+import Button from './Button';
+import Label from './Label';
+import Select from "./Select";
 
 function FormRegistro() {
     const [values, setValues] = useState({
@@ -30,41 +34,24 @@ function FormRegistro() {
   return (
     <>
         <form action="" onSubmit={handleSubmit}>
-            <label> 
-                Nome
-                <input type="text" name="nome" onChange={handleInput}/>
-                {errors.nome && <span>{errors.nome}</span>}
-            </label>
+            <Label nome="Nome"/>
+            <Input type="text" name="nome"/>
+            {errors.nome && <span>{errors.nome}</span>}
             <br/>
-            <label> 
-                Email
-                <input type="text" name="email" onChange={handleInput}/>
-                {errors.email && <span>{errors.email}</span>}
-            </label>
+            <Label nome="Email"/>
+            <Input type="email" name="email"/>
             <br/>
-            <label> 
-            Senha
-                <input type="password" name="senha" onChange={handleInput}/>
-                {errors.senha && <span>{errors.senha}</span>}
-            </label>
+            <Label nome="Senha"/>
+            <Input type="password" name="senha"/> 
             <br/>
-            <label> 
-            Data de nascimento
-                <input type="date" name="dataNasc" onChange={handleInput}/>
-                {errors.dataNasc && <span>{errors.dataNasc}</span>}
-            </label>
+            <Label nome="Data de nascimento"/>
+            <Input type="date" name="dataNasc"/>
             <br/>
-            <label> 
-                Genero
-                <select name="genero">
-                    <option value="M">masculino</option>
-                    <option value="F">feminino</option>
-                    <option value="O">outro</option>
-                </select>
-            </label>
+            <Label nome="Gênero" />
+            <Select />
             <br/>
-            <button type="submit">Registrar</button>
-            <p>Já tem uma conta? <Link to="/login">Entrar</Link></p>
+            <Button type="submit" text="Registrar"></Button>
+            <p className='text-cinzaTexto'>Já tem uma conta? <Link to="/login" className='text-verde hover:underline'>Entrar</Link></p>
         </form>
     </>
   )
