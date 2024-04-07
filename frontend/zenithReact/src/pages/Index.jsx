@@ -12,9 +12,11 @@ function Index() {
           <div>
             <h3>Registre seus momentos...</h3>
 
+          </div>
           <div>
             <img src=""></img>
-          </div>
+            </div>
+          <div class="relative float right">
           <h2>"Anote seus pensamentos"</h2>
           </div>
         </section>
@@ -40,7 +42,7 @@ function Index() {
         </section>
 
         <footer>
-          Footer
+          <p>Footer</p>
         </footer>
     </>
   )
