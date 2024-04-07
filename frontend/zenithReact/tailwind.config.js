@@ -9,7 +9,9 @@ export default {
         'verdeLimao' : '#D8E9A8',
         'verde': '#4E9F3D',
         'verdeEscuro': '#1E5128',
-        'preto': '#191A19' 
+        'cinzaEscuro': '#191A19',
+        'cinzaTexto': '#999999',
+        'preto': '#000000' 
       }
     },
   },
