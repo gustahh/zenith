@@ -4,9 +4,39 @@ function Index() {
   return (
     <>
         <Header />
+
+        <header>
+          <div>
+            <div>
+              <img src="" alt="" />
+            </div>
+
+            <div className=''>
+            <nav>
+              <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">Anotações</a></li>
+                <li><a href="">Relatório</a></li>
+                <li><a href="">Home</a></li>
+
+              </ul>
+            </nav>
+            </div>
+          </div>
+
+          <nav>
+            <ul>
+              <li><a href="">Entrar</a></li>
+              <li><a href="">Comece a usar gratuitamente</a></li>  
+            </ul>
+          </nav>
+        </header>
         <div>
-            <h1>Index</h1>
+            <h1>Organize a sua vida.</h1>
+            <h3>Organize seus pensamentos, sentimentos, rotina e estipule suas metas</h3>
         </div>
+
+        <button><a href="">Comece a usar gratuitamente</a></button> <button><a href="">Já tenho uma conta</a></button>
 
         <section>
           <div>
@@ -16,7 +46,7 @@ function Index() {
           <div>
             <img src=""></img>
             </div>
-          <div class="relative float right">
+          <div>
           <h2>"Anote seus pensamentos"</h2>
           </div>
         </section>
