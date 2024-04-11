@@ -2,7 +2,7 @@ import React from 'react'
 
 function Anotacoes() {
   return (
-    <div className='w-screen h-full bg-red-500 dark:bg-cinzaEscuro'>
+    <div className='w-full h-screen bg-white dark:bg-cinzaEscuro'>
       
     </div>
   )
