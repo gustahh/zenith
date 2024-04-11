@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 import Validacao from '../pages/LoginValidacao';
 import { useState } from 'react';
+import Input from './Input';
+import Button from './Button';
+import Label from './Label';
+
 function FormLogin() {
   const [values, setValues] = useState({
     email: '',
@@ -17,21 +21,18 @@ function FormLogin() {
   }
   return (
     <>
-        <form action="" onSubmit={handleSubmit}>
-            <label> 
-                email
-                <input type="text" name="email" onChange={handleInput}/>
-                {errors.email && <span>{errors.email}</span>}
-            </label>
+        <form action="">
+            <Label nome="E-mail" />
             <br/>
-            <label> 
-                Senha
-                <input type="password" name="senha" onChange={handleInput}/>
+            <Input type="email" name="email"></Input>
+            {errors.email && <span>{errors.email}</span>}
+            <br/>
+            <Label nome="Senha" />
+                <Input type="password" name="senha"></Input>
                 {errors.senha && <span>{errors.senha}</span>}
-            </label>
             <br/>
-            <button type="submit">Login</button>
-            <p>Ainda não tem uma conta?<Link to="/registrar">Criar conta</Link></p>
+            <Button type="submit" text="Login"/>
+            <p className='text-cinzaTexto'>Ainda não tem uma conta? <Link to="/registrar" className='text-verde hover:underline'>Criar conta</Link></p>
         </form>
     </>
   )
