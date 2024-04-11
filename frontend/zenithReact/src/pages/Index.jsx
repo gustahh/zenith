@@ -11,7 +11,7 @@ function Index() {
               <img src="" alt="" />
             </div>
 
-            <div className='w-25'>
+            <div className='flex'>
             <nav>
               <ul>
                 <li><a href="">Home</a></li>
