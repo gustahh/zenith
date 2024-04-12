@@ -12,7 +12,9 @@ export default {
         'cinzaEscuro': '#191A19',
         'cinza': '#191919',
         'cinzaTexto': '#999999',
-        'preto': '#000000' 
+        'preto': '#000000',
+        'ice': 'FEFBF6',
+        'branco': 'FEFBF6' 
       }
     },
   },
