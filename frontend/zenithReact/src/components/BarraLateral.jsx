@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 
 function BarraLateral() {
   return (
-    <div className='w-96 h-screen bg-ice dark:bg-cinza shadow-lg'>
+    <div className='w-1/4 h-screen bg-ice dark:bg-cinza shadow-lg float-left'>
         <ul>
-            
-            <li>Notas</li> 
+            <Link to="/Home" ><li>Página Inicial</li></Link>
+            <Link to="/anotacoes" ><li>Notas</li></Link>
             <Link to="/relatorio" ><li>Relatório</li></Link>
             <Link to="/metas" ><li>Metas</li></Link>
         </ul>
