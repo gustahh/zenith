@@ -13,8 +13,8 @@ export default {
         'cinza': '#191919',
         'cinzaTexto': '#999999',
         'preto': '#000000',
-        'ice': 'FEFBF6',
-        'branco': 'FEFBF6' 
+        'ice': '#FEFBF6',
+        'branco': '#FEFBF6' 
       }
     },
   },
