@@ -8,7 +8,7 @@ function BarraLateral() {
             
             <li>Notas</li> 
             <Link to="/relatorio" ><li>Relatório</li></Link>
-            <li>Metas</li>
+            <Link to="/metas" ><li>Metas</li></Link>
         </ul>
     </div>
   )
