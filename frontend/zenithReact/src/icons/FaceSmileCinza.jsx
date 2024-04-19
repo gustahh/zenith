@@ -4,7 +4,7 @@ function FaceSmileCinza(props) {
 	const title = props.title || "face smile 2";
 
 	return (
-		<svg height="18" width="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+		<svg height="24" width="24" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
 	<title>{title}</title>
 	<g fill="#999999" stroke="#999999">
 		<circle cx="9" cy="9" fill="none" r="7.25" stroke="#999999" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"/>

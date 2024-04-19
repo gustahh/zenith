@@ -4,7 +4,7 @@ function TargetCinza(props) {
 	const title = props.title || "target";
 
 	return (
-		<svg height="18" width="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+		<svg height="24" width="24" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
 	<title>{title}</title>
 	<g fill="#999999" stroke="#999999">
 		<line fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" x1="9" x2="12.25" y1="9" y2="5.75"/>

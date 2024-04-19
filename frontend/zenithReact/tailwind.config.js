@@ -13,9 +13,13 @@ export default {
         'cinza': '#191919',
         'cinzaTexto': '#999999',
         'preto': '#000000',
+        'chumbo': '#2E302E',
         'ice': '#FEFBF6',
         'branco': '#FEFBF6' 
-      }
+      },
+      fontFamily: {
+        'sans': ['Inter', 'sans-serif'],
+      },
     },
   },
   plugins: [],
