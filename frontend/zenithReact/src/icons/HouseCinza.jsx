@@ -6,9 +6,11 @@ function HouseCinza(props) {
 	return (
 		<svg height="24" width="24" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
 	<title>{title}</title>
-	<g fill="#999999">
-		<path d="M13.75,6.019c-.414,0-.75-.336-.75-.75V2.75c0-.414,.336-.75,.75-.75s.75,.336,.75,.75v2.519c0,.414-.336,.75-.75,.75Z"/>
-		<path d="M15.792,5.848L9.446,1.147c-.265-.196-.628-.196-.893,0L2.208,5.848c-.444,.329-.708,.854-.708,1.406v6.496c0,1.517,1.233,2.75,2.75,2.75h.75v-5c0-.828,.672-1.5,1.5-1.5s1.5,.672,1.5,1.5v5h5.75c1.517,0,2.75-1.233,2.75-2.75V7.254c0-.552-.265-1.078-.708-1.406Zm-3.542,4.652h-1.5c-.414,0-.75-.336-.75-.75s.336-.75,.75-.75h1.5c.414,0,.75,.336,.75,.75s-.336,.75-.75,.75Z" fill="#999999"/>
+	<g fill="#999999" stroke="#999999">
+		<path d="M5.75,15.75v-4.75c0-.69,.56-1.25,1.25-1.25h0c.69,0,1.25,.56,1.25,1.25v4.75" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"/>
+		<path d="M2.655,6.45L9,1.75l6.345,4.7c.255,.189,.405,.487,.405,.804v6.496c0,1.105-.895,2-2,2H4.25c-1.105,0-2-.895-2-2V7.254c0-.317,.15-.615,.405-.804Z" fill="none" stroke="#999999" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"/>
+		<line fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" x1="10.75" x2="12.25" y1="9.75" y2="9.75"/>
+		<line fill="none" stroke="#999999" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" x1="13.75" x2="13.75" y1="2.75" y2="5.269"/>
 	</g>
 </svg>
 	);

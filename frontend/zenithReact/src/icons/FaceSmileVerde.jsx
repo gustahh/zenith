@@ -6,11 +6,8 @@ function FaceSmileVerde(props) {
 	return (
 		<svg height="24" width="24" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
 	<title>{title}</title>
-	<g fill="#4e9f3d" stroke="#4e9f3d">
-		<circle cx="9" cy="9" fill="none" r="7.25" stroke="#4e9f3d" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"/>
-		<circle cx="6" cy="9" r="1" stroke="none"/>
-		<circle cx="12" cy="9" r="1" stroke="none"/>
-		<path d="M11.25,11.758c-.472,.746-1.304,1.242-2.25,1.242s-1.778-.496-2.25-1.242" fill="none" stroke="inherit" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"/>
+	<g fill="#4e9f3d">
+		<path d="M9,1C4.589,1,1,4.589,1,9s3.589,8,8,8,8-3.589,8-8S13.411,1,9,1ZM5,9c0-.552,.448-1,1-1s1,.448,1,1-.448,1-1,1-1-.448-1-1Zm6.884,3.16c-.631,.996-1.709,1.59-2.884,1.59s-2.253-.595-2.884-1.59c-.222-.35-.117-.813,.232-1.035,.349-.221,.813-.118,1.035,.232,.354,.559,.958,.893,1.616,.893s1.262-.334,1.616-.893c.222-.35,.684-.454,1.035-.232,.35,.222,.454,.685,.232,1.035Zm.116-2.16c-.552,0-1-.448-1-1s.448-1,1-1,1,.448,1,1-.448,1-1,1Z" fill="#4e9f3d"/>
 	</g>
 </svg>
 	);
