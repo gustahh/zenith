@@ -13,6 +13,7 @@ function FormRegistro() {
         email: '',
         senha: '',
         dataNasc: ''
+        genero: '',
       })
       const navigate = useNavigate();
       const [errors, setErrors] = useState({})
@@ -24,7 +25,7 @@ function FormRegistro() {
         event.preventDefault();
         setErrors(Validacao(values));
         if (errors.nome === "" && errors.email === "" && errors.senha === "" && errors.dataNasc === '') {
-            axios.post('http://localhost:8080/registrar', values)
+            axios.post('http://localhost:3000/registrar', values)
             .then(res => {
                 navigate('/login')
             })
