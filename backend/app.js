@@ -1,8 +1,10 @@
-require('dotenv').config()
-const express = require('express')
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
 const recuperarFraseDoDia = require('./modules/fraseDoDia');
 
-const app = express()
+const app = express();
+app.use(cors());
 
 //JSON
 app.use(express.json())
