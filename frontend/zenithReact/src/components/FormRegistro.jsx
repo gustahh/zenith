@@ -29,38 +29,51 @@ function FormRegistro() {
     const validationErrors = Validacao(values);
     setErrors(validationErrors);
 
-    // Verifica se há erros de validação
-    if (Object.keys(validationErrors).length === 0) {
-      // Não há erros, enviar solicitação POST
-      axios.post('http://localhost:3000/auth/registrar', values)
-        .then(res => {
-          navigate('/login')
-        })
-        .catch(err => console.log(err));
-    }
+    axios.post('http://localhost:3000/auth/registrar', values)
+      .then(res => {
+        navigate('/login')
+      })
+      .catch(err => {
+        if (err.response) {
+          // Se houver uma resposta do servidor, exiba a mensagem de erro
+          console.log('Erro:', err.response.data.msg);
+        } else if (err.request) {
+          // Se a requisição foi feita, mas não houve resposta do servidor
+          console.log('Erro: Sem resposta do servidor');
+        } else {
+          // Se ocorreu um erro antes da requisição ser feita
+          console.log('Erro:', err.message);
+        }
+      });
   }
 
   return (
     <>
       <form onSubmit={handleSubmit}>
         <Label nome="Nome" />
-        <Input type="text" name="nome" onChange={handleInput} />
+        <Input type="text" name="nome" handle={handleInput} />
         {errors.nome && <span>{errors.nome}</span>}
         <br />
         <Label nome="Email" />
-        <Input type="email" name="email" onChange={handleInput} />
+        <Input type="email" name="email" handle={handleInput} />
         {errors.email && <span>{errors.email}</span>}
         <br />
         <Label nome="Senha" />
-        <Input type="password" name="senha" onChange={handleInput} />
+        <Input type="password" name="senha" handle={handleInput} />
         {errors.senha && <span>{errors.senha}</span>}
         <br />
         <Label nome="Data de nascimento" />
-        <Input type="date" name="dataNasc" onChange={handleInput} />
+        <Input type="date" name="dataNasc" handle={handleInput} />
         {errors.dataNasc && <span>{errors.dataNasc}</span>}
         <br />
         <Label nome="Gênero" />
-        <Select name="genero" onChange={handleInput} />
+        <select name="genero" className='w-full h-8 bg-preto rounded mb-3 placeholder:text-cinzaTexto text-cinzaTexto' onChange={handleInput}>
+          <option value="">Selecione uma opção</option>
+          <option value="M">masculino</option>
+          <option value="F">feminino</option>
+          <option value="O">outro</option>
+        </select>
+        {errors.genero && <span>{errors.genero}</span>}
         <br />
         <Button type="submit" text="Registrar" />
         <p className='text-cinzaTexto'>Já tem uma conta? <Link to="/login" className='text-verde hover:underline'>Entrar</Link></p>

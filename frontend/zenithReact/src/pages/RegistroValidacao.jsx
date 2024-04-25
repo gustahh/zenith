@@ -25,6 +25,12 @@ function Validacao(values) {
     } else {
         error.dataNasc = ""
     }
+
+    if (values.genero === "") {
+        error.genero = "Você deve selecionar uma opção"
+    } else {
+        error.genero = ""
+    }
     return error;
 }
 

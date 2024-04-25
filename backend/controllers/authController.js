@@ -39,6 +39,8 @@ exports.registrarUsuario = async (req, res) => {
                 if (results.length > 0) {
                     // Se a consulta retornou resultados
                     return res.status(422).json({ msg: 'Por favor, utilize outro email' })
+                } else {
+                    return res.status(200).json({ msg: 'Usuário cadastrado com sucesso' })
                 }
             }
         }
