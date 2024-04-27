@@ -27,41 +27,53 @@ exports.registrarUsuario = async (req, res) => {
         return res.status(422).json({ msg: 'O senha é obrigatório!' })
     }
 
-    //verifica se usuário existe
-    connection.execute(
-        'SELECT email FROM usuarios WHERE email = ?',
-        [email],
-        function (err, results) {
-            if (err) {
-                // Se ocorrer um erro durante a execução da consulta
-                console.error('Erro ao executar a consulta:', err);
-            } else {
-                if (results.length > 0) {
-                    // Se a consulta retornou resultados
-                    return res.status(422).json({ msg: 'Por favor, utilize outro email' })
+    try {
+        //verifica se usuário existe
+        connection.execute(
+            'SELECT email FROM usuarios WHERE email = ?',
+            [email],
+            function (err, results) {
+                if (err) {
+                    return res.status(500).json({ msg: 'Erro interno do servidor' });
                 } else {
-                    return res.status(200).json({ msg: 'Usuário cadastrado com sucesso' })
+                    if (results.length > 0) {
+                        // Se a consulta retornou resultados
+                        return res.status(422).json({ msg: 'Por favor, utilize outro email' })
+                    } else {
+                        criarUsuario();
+                    }
                 }
             }
-        }
-    );
-    //criar senha
-    const salt = await bcrypt.genSalt(12)
-    const senhaHash = await bcrypt.hash(senha, salt)
+        );
+    } catch {
+        console.error('Erro:', err);
+        return res.status(500).json({ msg: 'Erro interno do servidor' });
+    }
 
-    //cria usuario
-    connection.execute(
-        'INSERT INTO usuarios (nome, email, data_nasc, genero, senha) VALUES (?, ?, ?, ?, ?)',
-        [nome, email, dataNasc, genero, senhaHash],
-        function (err, results) {
-            if (err) {
-                // Se ocorrer um erro durante a execução da consulta
-                console.error('Erro ao executar a consulta:', err);
-            } else {
-                return res.status(202).json({ msg: 'Usuário cadastrado' })
-            }
+    async function criarUsuario() {
+        try {
+            //criar senha
+            const salt = await bcrypt.genSalt(12)
+            const senhaHash = await bcrypt.hash(senha, salt)
+    
+            //cria usuario
+            connection.execute(
+                'INSERT INTO usuarios (nome, email, data_nasc, genero, senha) VALUES (?, ?, ?, ?, ?)',
+                [nome, email, dataNasc, genero, senhaHash],
+                function (err, results) {
+                    if (err) {
+                        // Se ocorrer um erro durante a execução da consulta
+                        console.error('Erro ao executar a consulta:', err);
+                    } else {
+                        return res.status(202).json({ msg: 'Usuário cadastrado' })
+                    }
+                }
+            );
+        } catch {
+            console.error('Erro:', err);
+            return res.status(500).json({ msg: 'Erro interno do servidor' });
         }
-    );
+    }
 };
 
 exports.loginUsuario = async (req, res) => {

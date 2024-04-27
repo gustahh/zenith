@@ -6,6 +6,8 @@ import Input from './Input';
 import Button from './Button';
 import Label from './Label';
 import Select from "./Select";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function FormRegistro() {
   const [values, setValues] = useState({
@@ -31,18 +33,20 @@ function FormRegistro() {
 
     axios.post('http://localhost:3000/auth/registrar', values)
       .then(res => {
-        navigate('/login')
+        navigate('/login');
+        toast.success("Você criou uma conta!");
       })
       .catch(err => {
         if (err.response) {
           // Se houver uma resposta do servidor, exiba a mensagem de erro
-          console.log('Erro:', err.response.data.msg);
+          toast.error(err.response.data.msg);
         } else if (err.request) {
           // Se a requisição foi feita, mas não houve resposta do servidor
           console.log('Erro: Sem resposta do servidor');
+          toast.error('Sem resposta do servidor');
         } else {
           // Se ocorreu um erro antes da requisição ser feita
-          console.log('Erro:', err.message);
+          toast.error(err.message);
         }
       });
   }
@@ -50,21 +54,37 @@ function FormRegistro() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <Label nome="Nome" />
+        <Label nome="Nome" id="nome" />
         <Input type="text" name="nome" handle={handleInput} />
-        {errors.nome && <span>{errors.nome}</span>}
+        {
+        errors.nome && 
+        <span className="text-red-500 float-left text-sm">{errors.nome}</span> && 
+        document.querySelector('[name="nome"]').classList.add('border-2', 'border-solid', 'border-red-500')
+        }
         <br />
-        <Label nome="Email" />
+        <Label nome="Email" id="email"/>
         <Input type="email" name="email" handle={handleInput} />
-        {errors.email && <span>{errors.email}</span>}
+        {
+        errors.email && 
+        <span className="text-red-500 float-left text-sm">{errors.email}</span> && 
+        document.querySelector('[name="email"]').classList.add('border-2', 'border-solid', 'border-red-500')
+        }
         <br />
-        <Label nome="Senha" />
+        <Label nome="Senha" id="senha" />
         <Input type="password" name="senha" handle={handleInput} />
-        {errors.senha && <span>{errors.senha}</span>}
+        {
+        errors.senha && 
+        <span className="text-red-500 float-left text-sm">{errors.senha}</span> && 
+        document.querySelector('[name="senha"]').classList.add('border-2', 'border-solid', 'border-red-500')
+        }
         <br />
-        <Label nome="Data de nascimento" />
+        <Label nome="Data de nascimento" id="dataNasc" />
         <Input type="date" name="dataNasc" handle={handleInput} />
-        {errors.dataNasc && <span>{errors.dataNasc}</span>}
+        {
+        errors.dataNasc && 
+        <span className="text-red-500 float-left text-sm">{errors.dataNasc}</span> && 
+        document.querySelector('[name="dataNasc"]').classList.add('border-2', 'border-solid', 'border-red-500')
+        }
         <br />
         <Label nome="Gênero" />
         <select name="genero" className='w-full h-8 bg-preto rounded mb-3 placeholder:text-cinzaTexto text-cinzaTexto' onChange={handleInput}>
@@ -73,7 +93,11 @@ function FormRegistro() {
           <option value="F">feminino</option>
           <option value="O">outro</option>
         </select>
-        {errors.genero && <span>{errors.genero}</span>}
+        {
+        errors.genero && 
+        <span className="text-red-500 float-left text-sm">{errors.genero}</span> && 
+        document.querySelector('[name="genero"]').classList.add('border-2', 'border-solid', 'border-red-500')
+        }
         <br />
         <Button type="submit" text="Registrar" />
         <p className='text-cinzaTexto'>Já tem uma conta? <Link to="/login" className='text-verde hover:underline'>Entrar</Link></p>
