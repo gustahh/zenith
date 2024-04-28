@@ -21,16 +21,13 @@ function FormLogin() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setErrors(Validacao(values));
-    console.log(values);
     axios.post('http://localhost:3000/auth/login', values)
       .then(res => {
         // Extrai o token JWT da resposta
         const token = res.data.token;
-
         // Armazena o token no localStorage
         localStorage.setItem('token', token);
-        navigate('/home');
-        toast.success(response.data.msg);
+        window.location.reload();
       })
       .catch(err => {
         if (err.response) {

@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Index from '../pages/Index';
 import Login from '../pages/Login';
 import Registrar from '../pages/Registro';
@@ -8,20 +8,29 @@ import SeusRelatorios from '../pages/SeusRelatorios';
 import Metas from '../pages/Metas';
 import NovaAnotacao from '../pages/NovaAnotacao';
 import NovaMeta from '../pages/NovaMeta';
+import PaginaNaoEncontrada from '../pages/PaginaNaoEncontrada';
 import View from '../components/View';
+import RotaProtegida from './RotaProtegida';
+
 
 function AppRoutes() {
+  const token = localStorage.getItem('token');
+
   return (
     <Routes>
-        <Route path='/' element={<Index />}></Route>
-        <Route path='/login' element={<Login />}></Route>
-        <Route path='/registrar' element={<Registrar />}></Route>
-        <Route path='/home' element={<Home />}></Route>
-        <Route path='/anotacoes' element={<View><Anotacoes /></View>}></Route>
-        <Route path='/anotacoes/criar' element={<NovaAnotacao />}></Route>
-        <Route path='/relatorio' element={<View><SeusRelatorios /></View>}></Route>
-        <Route path='/metas' element={<View><Metas /></View>} ></Route>
-        <Route path='/metas/criar' element={<NovaMeta />}></Route>
+      // Caso exista o token, redireciona para home, caso não mantém na pagina
+      <Route path='/' element={ token ? <Navigate to="/home" /> : <Index />} />
+      <Route path='/login' element={ token ? <Navigate to="/home" /> : <Login />} />
+      <Route path='/registrar' element={ token ? <Navigate to="/home" /> : <Registrar />} />
+      
+      // Caso exista o token, mantém na página, caso contrário redireciona para login
+      <Route path='/home' element={ token ? <Home /> : <Navigate to="/login" />} />
+      <Route path='/anotacoes' element={ token ? <View><Anotacoes /></View> : <Navigate to="/login" />} />
+      <Route path='/anotacoes/criar' element={ token ? <NovaAnotacao /> : <Navigate to="/login" />} />
+      <Route path='/relatorio' element={ token ? <View><SeusRelatorios /></View> : <Navigate to="/login" />} />
+      <Route path='/metas' element={ token ? <View><Metas /></View> : <Navigate to="/login" />} />
+      <Route path='/metas/criar' element={ token ? <NovaMeta /> : <Navigate to="/login" />} />
+      <Route path='*' element={<PaginaNaoEncontrada />} />
     </Routes>
   )
 }
