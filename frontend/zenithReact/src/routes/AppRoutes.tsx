@@ -10,8 +10,6 @@ import NovaAnotacao from '../pages/NovaAnotacao';
 import NovaMeta from '../pages/NovaMeta';
 import PaginaNaoEncontrada from '../pages/PaginaNaoEncontrada';
 import View from '../components/View';
-import RotaProtegida from './RotaProtegida';
-
 
 function AppRoutes() {
   const token = localStorage.getItem('token');
