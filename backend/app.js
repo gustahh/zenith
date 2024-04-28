@@ -1,10 +1,12 @@
 require('dotenv').config();
+const cookieParser = require('cookie-parser');
 const express = require('express');
 const cors = require('cors');
 const recuperarFraseDoDia = require('./modules/fraseDoDia');
 
 const app = express();
 app.use(cors());
+app.use(cookieParser());
 
 //JSON
 app.use(express.json())

@@ -26,7 +26,6 @@ function FormRegistro() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(values);
     // Valida os campos
     const validationErrors = Validacao(values);
     setErrors(validationErrors);
@@ -59,7 +58,7 @@ function FormRegistro() {
         {
         errors.nome && 
         <span className="text-red-500 float-left text-sm">{errors.nome}</span> && 
-        document.querySelector('[name="nome"]').classList.add('border-2', 'border-solid', 'border-red-500')
+        document.querySelector('[name="nome"]').classList.add('border-2', 'border-solid', '!border-red-500')
         }
         <br />
         <Label nome="Email" id="email"/>
@@ -67,7 +66,7 @@ function FormRegistro() {
         {
         errors.email && 
         <span className="text-red-500 float-left text-sm">{errors.email}</span> && 
-        document.querySelector('[name="email"]').classList.add('border-2', 'border-solid', 'border-red-500')
+        document.querySelector('[name="email"]').classList.add('border-2', 'border-solid', '!border-red-500')
         }
         <br />
         <Label nome="Senha" id="senha" />
@@ -75,7 +74,7 @@ function FormRegistro() {
         {
         errors.senha && 
         <span className="text-red-500 float-left text-sm">{errors.senha}</span> && 
-        document.querySelector('[name="senha"]').classList.add('border-2', 'border-solid', 'border-red-500')
+        document.querySelector('[name="senha"]').classList.add('border-2', 'border-solid', '!border-red-500')
         }
         <br />
         <Label nome="Data de nascimento" id="dataNasc" />
@@ -83,7 +82,7 @@ function FormRegistro() {
         {
         errors.dataNasc && 
         <span className="text-red-500 float-left text-sm">{errors.dataNasc}</span> && 
-        document.querySelector('[name="dataNasc"]').classList.add('border-2', 'border-solid', 'border-red-500')
+        document.querySelector('[name="dataNasc"]').classList.add('border-2', 'border-solid', '!border-red-500')
         }
         <br />
         <Label nome="Gênero" />
