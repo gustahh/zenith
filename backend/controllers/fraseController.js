@@ -29,7 +29,7 @@ exports.criarFrase = (req, res) => {
 
 exports.fraseDia = (req, res) => {
     connection.execute(
-        'select texto, autor from frase_do_dia ORDER BY id DESC LIMIT 1',
+        'select texto, autor, cor from frase_do_dia ORDER BY id DESC LIMIT 1',
         function (err, results) {
             if (err) {
                 // Se ocorrer um erro durante a execução da consulta
@@ -38,10 +38,12 @@ exports.fraseDia = (req, res) => {
                 results.forEach(result => {
                     const frase = result.texto
                     const autor = result.autor
+                    const cor = result.cor
 
                     return res.status(202).json({
                         frase_do_dia: frase,
-                        autor: autor
+                        autor: autor,
+                        cor: cor
                     })
                 });
             }

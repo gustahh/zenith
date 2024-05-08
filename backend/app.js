@@ -12,8 +12,9 @@ app.use(cookieParser());
 app.use(express.json())
 
 //arquivo com rotas
-const publicaRouter = require('./rotas/publica')
-const fraseRouter = require('./rotas/frase')
+const publicaRouter = require('./rotas/publica');
+const fraseRouter = require('./rotas/frase');
+const corRouter = require('./rotas/cor');
 const profileRouter = require('./rotas/perfil');
 const authRouter = require('./rotas/auth');
 const notasRouter = require('./rotas/notas');
@@ -22,6 +23,7 @@ const metasRouter = require('./rotas/metas');
 //acessa as rotas
 app.use('/', publicaRouter);
 app.use('/frase', fraseRouter);
+app.use('/cores', corRouter);
 app.use('/perfil', profileRouter);
 app.use('/auth', authRouter);
 app.use('/notas', notasRouter);

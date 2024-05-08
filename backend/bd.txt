@@ -86,6 +86,7 @@ CREATE TABLE frase_do_dia (
 	id int PRIMARY KEY AUTO_INCREMENT,
     texto varchar(255),
     autor varchar(255),
+    cor varchar(255),
     data TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 
