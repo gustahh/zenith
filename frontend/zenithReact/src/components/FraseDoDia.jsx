@@ -15,8 +15,8 @@ function FraseDoDia() {
             });
     }, []);
     return (
-        <div className={`w-full h-36 bg-${cor} rounded-md p-5 flex flex-wrap`}>
-            <span className='font-bold text-3xl opacity-70'>
+        <div className={`w-full h-auto bg-${cor} rounded-md p-5 flex flex-wrap`}>
+            <span className='font-bold text-2xl opacity-70'>
                 "{frase}"
             </span>
             <br />
