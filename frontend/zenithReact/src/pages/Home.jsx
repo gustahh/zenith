@@ -3,11 +3,15 @@ import BarraLateral from '../components/BarraLateral'
 import View from '../components/View'
 import BookCinza from '../icons/BookCinza'
 import BookVerde from '../icons/BookVerde'
+import FraseDoDia from '../components/FraseDoDia'
 
 function Home() {
     return (
         <>
-            <View>Página Inicial</View>
+            <View>
+                <FraseDoDia />
+            </View>
+
         </>
 
     )
