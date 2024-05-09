@@ -26,3 +26,18 @@ exports.criarCor = (req, res) => {
         }
     );
 };
+
+exports.retornaCores = (req, res) => {
+    //adiciona frase
+    connection.execute(
+        'SELECT nome FROM cores',
+        function (err, results) {
+            if (err) {
+                // Se ocorrer um erro durante a execução da consulta
+                console.error('Erro ao executar a consulta:', err);
+            } else {
+                return res.status(202).json({ msg: results })
+            }
+        }
+    );
+}
