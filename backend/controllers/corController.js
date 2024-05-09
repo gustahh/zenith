@@ -36,7 +36,7 @@ exports.retornaCores = (req, res) => {
                 // Se ocorrer um erro durante a execução da consulta
                 console.error('Erro ao executar a consulta:', err);
             } else {
-                return res.status(202).json({ msg: results })
+                return res.status(202).json({ results })
             }
         }
     );
