@@ -24,7 +24,7 @@ function AppRoutes() {
       // Caso exista o token, mantém na página, caso contrário redireciona para login
       <Route path='/home' element={ token ? <Home /> : <Navigate to="/login" />} />
       <Route path='/anotacoes' element={ token ? <View><Anotacoes /></View> : <Navigate to="/login" />} />
-      <Route path='/anotacoes/criar' element={ token ? <NovaAnotacao /> : <Navigate to="/login" />} />
+      <Route path='/anotacoes/:id' element={ token ? <NovaAnotacao /> : <Navigate to="/login" />} />
       <Route path='/relatorio' element={ token ? <View><SeusRelatorios /></View> : <Navigate to="/login" />} />
       <Route path='/metas' element={ token ? <View><Metas /></View> : <Navigate to="/login" />} />
       <Route path='/metas/criar' element={ token ? <NovaMeta /> : <Navigate to="/login" />} />

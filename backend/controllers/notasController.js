@@ -47,27 +47,77 @@ exports.criarNota = async (req, res) => {
     })
 };
 
+//obtem notas de usuario logado
 exports.obterNotas = async (req, res) => {
-    const id = req.params.id
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(" ")[1]
+    const secret = process.env.SECRET
+    // Decodificando o token
+    jwt.verify(token, secret, (err, decoded) => {
+        if (err) {
+            // Ocorreu um erro ao decodificar o token
+            console.error('Erro ao decodificar o token:', err);
+        } else {
+            // Token decodificado com sucesso
+            const idLogado = decoded.id;
 
-    // verificar se usuario existe
-    connection.execute(
-        'SELECT id, titulo, texto, emocao, data_criacao FROM anotacoes WHERE id_usuario = ?',
-        [id],
-        function (err, results) {
-            if (err) {
-                // Se ocorrer um erro durante a execução da consulta
-                console.error('Erro ao executar a consulta:', err);
-            } else {
-                if (results.length < 1) {
-                    // Se a consulta retornou resultados
-                    return res.status(404).json({ msg: 'Este usuário ainda não possui notas' })
-                } else {
-                    return res.status(202).json({ results })
+            // verificar se usuario existe
+            connection.execute(
+                'SELECT id, titulo, texto, emocao, data_criacao FROM anotacoes WHERE id_usuario = ?',
+                [idLogado],
+                function (err, results) {
+                    if (err) {
+                        // Se ocorrer um erro durante a execução da consulta
+                        console.error('Erro ao executar a consulta:', err);
+                    } else {
+                        if (results.length < 1) {
+                            // Se a consulta retornou resultados
+                            return res.status(404).json({ msg: 'Este usuário ainda não possui notas' })
+                        } else {
+                            return res.status(202).json({ results })
+                        }
+                    }
                 }
-            }
+            );
         }
-    );
+    });
+};
+
+//obtem nota especifica
+exports.nota = async (req, res) => {
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(" ")[1]
+    const secret = process.env.SECRET
+    // Decodificando o token
+    jwt.verify(token, secret, (err, decoded) => {
+        if (err) {
+            // Ocorreu um erro ao decodificar o token
+            console.error('Erro ao decodificar o token:', err);
+        } else {
+            // Token decodificado com sucesso
+            const idLogado = decoded.id;
+            const id = req.params.id;
+
+            // verificar se usuario existe
+            connection.execute(
+                'SELECT id, titulo, texto, emocao, data_edicao FROM anotacoes WHERE id_usuario = ? AND id = ?',
+                [idLogado, id],
+                function (err, results) {
+                    if (err) {
+                        // Se ocorrer um erro durante a execução da consulta
+                        console.error('Erro ao executar a consulta:', err);
+                    } else {
+                        if (results.length < 1) {
+                            // Se a consulta retornou resultados
+                            return res.status(404).json({ msg: 'Esta nota não existe ou pertence a outro usuário' })
+                        } else {
+                            return res.status(202).json({ results })
+                        }
+                    }
+                }
+            );
+        }
+    });
 };
 
 exports.deletarNota = async (req, res) => {
