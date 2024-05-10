@@ -35,6 +35,12 @@ function BarraLateral() {
           children={location.pathname === "/metas" ? <TargetVerde /> : <TargetCinza />}/>
         </Link>
       </ul>
+      <div className='w-full h-16 bg-red-500 p-3 flex items-center '> 
+    
+       <div className='w-12 h-12 bg-black rounded-full float-left'> </div>
+       <span className='text-2xl font-bold text-cinzaTexto pl-3'>user</span>
+
+      </div>
     </div>
   )
 }
