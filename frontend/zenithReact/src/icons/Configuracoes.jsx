@@ -4,7 +4,7 @@ function Configuracoes(props) {
 	const title = props.title || "sliders";
 
 	return (
-		<svg height="18" width="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+		<svg height="18" width="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" className={`${props.className}`}>
 	<title>{title}</title>
 	<g fill="#999999" stroke="#999999">
 		<line fill="none" stroke="#999999" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" x1="13.25" x2="16.25" y1="5.25" y2="5.25"/>

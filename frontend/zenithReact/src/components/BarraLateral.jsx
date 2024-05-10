@@ -9,6 +9,8 @@ import HouseCinza from '../icons/HouseCinza'
 import FaceSmileCinza from '../icons/FaceSmileCinza'
 import TargetCinza from '../icons/TargetCinza'
 import Li from './Li'
+import Configuracoes from '../icons/Configuracoes';
+import Logout from '../icons/Logout';
 
 function BarraLateral() {
   const location = useLocation();
@@ -35,10 +37,16 @@ function BarraLateral() {
           children={location.pathname === "/metas" ? <TargetVerde /> : <TargetCinza />}/>
         </Link>
       </ul>
-      <div className='w-full h-16 bg-red-500 p-3 flex items-center '> 
-    
-       <div className='w-12 h-12 bg-black rounded-full float-left'> </div>
-       <span className='text-2xl font-bold text-cinzaTexto pl-3'>user</span>
+      <div className='w-full h-16 bg-red-500 flex items-center justify-stretch '> 
+    <div className='w-full h-full'>
+    <div className='w-12 h-12 bg-black rounded-full float-left'> </div>
+       <span className='text-2xl font-bold text-cinzaTexto pl-3'>User</span>
+       <Configuracoes className=""/>
+       <Logout className="justify-self-end grow"/>
+
+    </div>
+       
+
 
       </div>
     </div>
