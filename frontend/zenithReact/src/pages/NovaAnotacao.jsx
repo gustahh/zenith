@@ -12,14 +12,22 @@ function NovaAnotacao() {
   const [texto, setTexto] = useState('');
   const [emocao, setEmocao] = useState('');
   const [data, setData] = useState('');
+  const [i, setI] = useState(0);
 
   const { id } = useParams();
 
+
+  const handleClickPincel = () => {
+    setI(prevI => prevI + 1); 
+    console.log(i);
+  };
   useEffect(() => {
     axios.get('http://localhost:3000/cores/')
       .then((res) => {
         setCores(res.data.results);
-        setPrimeiraCor(res.data.results[0].nome)
+        if (i >= 0 && i < res.data.results.length) {
+          setPrimeiraCor(res.data.results[i].nome);
+        } 
       })
       .catch((error) => {
         console.error('Erro ao buscar cores:', error);
@@ -40,11 +48,12 @@ function NovaAnotacao() {
         console.error('Erro', error);
         navigate('/home');
       });
-  }, [id]);
+  }, [i]);
+
   return (
     <>
       <div className={`w-full h-dvh bg-${primeiraCor} flex flex-col`}>
-        <HeaderNovaAnotacao />
+        <HeaderNovaAnotacao onClickPincel={handleClickPincel} />
 
         <div className="flex-1">
           <h1 className='text-4xl font-bold pl-4 pt-4 opacity-70'>{titulo}</h1>
