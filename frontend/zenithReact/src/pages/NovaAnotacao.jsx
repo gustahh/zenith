@@ -27,7 +27,9 @@ function NovaAnotacao() {
         setCores(res.data.results);
         if (i >= 0 && i < res.data.results.length) {
           setPrimeiraCor(res.data.results[i].nome);
-        } 
+        } else if (i >= res.data.results.length) {
+          setI(prevI => 0);
+        }
       })
       .catch((error) => {
         console.error('Erro ao buscar cores:', error);
