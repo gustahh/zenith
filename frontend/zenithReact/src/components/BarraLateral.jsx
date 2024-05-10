@@ -42,16 +42,18 @@ function BarraLateral() {
 
       <div className='w-full h-16 p-3 flex items-center justify-center 
           font-bold container mx-auto'>
-        <div className='w-full h-full flex items-center justify-between'>
+        <div className='w-full h-full flex items-center justify-stretch'>
           <div>
             <div className='w-12 h-12 bg-black rounded-full float-left'></div>
           </div>
 
           <div>
-            <span className='text-xl font-bold text-cinzaTexto pl-1 float-left'>User</span>
+            <span className='text-xl font-bold text-cinzaTexto pl-3 float-left'>
+              User
+            </span>
           </div>
 
-          <button className='ml-3  float-right'>
+          <button className='ml-20 float-right'>
             <Configuracoes className="" />
           </button>
 
