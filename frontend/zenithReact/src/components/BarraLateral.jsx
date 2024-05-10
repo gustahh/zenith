@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { Link, useLocation } from 'react-router-dom'
 import HouseVerde from "../icons/HouseVerde"
 import BookVerde from '../icons/BookVerde'
@@ -14,6 +15,16 @@ import Logout from '../icons/Logout';
 
 function BarraLateral() {
   const location = useLocation();
+  const [nome, setNome] = useState('');
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      axios.get('http://localhost:3000/perfil')
+          .then((res) => {
+              setNome(res.data.results[0].nome);
+          });
+  }, []);
   return (
     <div className='w-1/4 h-screen bg-ice dark:bg-cinza shadow-lg float-left flex flex-col'>
       <div className='flex-1'>
@@ -49,7 +60,7 @@ function BarraLateral() {
 
           <div>
             <span className='text-xl font-bold text-cinzaTexto pl-3 float-left'>
-              User
+              {nome}
             </span>
           </div>
 
