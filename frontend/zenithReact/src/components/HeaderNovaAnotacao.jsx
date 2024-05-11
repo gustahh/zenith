@@ -39,12 +39,18 @@ function HeaderNovaAnotacao(props) {
                         <Descer className='opacity-70 float-left' stroke='#000000'/>
                         
                     </div>
-                    <div className='w-32 h-auto mt-40 p-1 -translate-x-10 absolute isolate aspect-video rounded-md bg-white/20 ring-1 ring-black/5'>
-                            <div className='font-bold opacity-70'>Muito feliz</div>
-                            <div className='font-bold opacity-70'>Feliz</div>
-                            <div className='font-bold opacity-70'>Neutro</div>
-                            <div className='font-bold opacity-70'>Triste</div>
-                            <div className='font-bold opacity-70'>Muito triste</div>
+                    <div className='w-32 h-auto mt-40 -translate-x-12 absolute isolate aspect-video rounded-md 
+                    bg-white/10 ring-1 ring-black/5 z-10 cursor-pointer'>
+                            <div className='w-full font-bold opacity-70 rounded-t-md hover:bg-white/20'
+                            tabIndex={'Muito feliz'}>Muito feliz</div>
+                            <div className='w-full font-bold opacity-70 hover:bg-blue-500 
+                            hover:bg-white/20' tabIndex={'Feliz'}>Feliz</div>
+                            <div className='w-full font-bold opacity-70 hover:bg-blue-500 
+                            hover:bg-white/20' tabIndex={'Neutro'}>Neutro</div>
+                            <div className='w-full font-bold opacity-70 hover:bg-blue-500 
+                            hover:bg-white/20' tabIndex={'Triste'}>Triste</div>
+                            <div className='w-full font-bold opacity-70 rounded-b-md hover:bg-blue-500 
+                            hover:bg-white/20' tabIndex={'Muito triste'}>Muito triste</div>
                         </div>
                 </button>
                 
