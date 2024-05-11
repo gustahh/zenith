@@ -16,7 +16,7 @@ exports.retornaBlocos = (req, res) => {
             // Token decodificado com sucesso
             const idLogado = decoded.id;
             'SELECT id_anotacao, tamanho, id_cor FROM bloco_anotacao WHERE id_usuario = ',
-            [idLogado],
+                [idLogado],
                 function (err, results) {
                     if (err) {
                         // Se ocorrer um erro durante a execução da consulta
@@ -44,6 +44,44 @@ exports.retornaBloco = (req, res) => {
                 console.error('Erro ao executar a consulta:', err);
             } else {
                 return res.status(202).json({ results })
+            }
+        }
+    );
+}
+
+exports.mudarCor = (req, res) => {
+    const { id_cor } = req.body;
+    const { id_anotacao } = req.params;
+
+    //adiciona frase
+    connection.execute(
+        'UPDATE bloco_anotacao SET id_cor = ? WHERE id_anotacao = ?',
+        [id_cor, id_anotacao],
+        function (err, results) {
+            if (err) {
+                // Se ocorrer um erro durante a execução da consulta
+                console.error('Erro ao executar a consulta:', err);
+            } else {
+                return res.status(202).json({ msg: 'Cor alterada' })
+            }
+        }
+    );
+}
+
+exports.mudarTamanho = (req, res) => {
+    const { tamanho } = req.body;
+    const { id_anotacao } = req.params;
+
+    //adiciona frase
+    connection.execute(
+        'UPDATE bloco_anotacao SET id_cor = ? WHERE id_anotacao = ?',
+        [tamanho, id_anotacao],
+        function (err, results) {
+            if (err) {
+                // Se ocorrer um erro durante a execução da consulta
+                console.error('Erro ao executar a consulta:', err);
+            } else {
+                return res.status(202).json({ msg: 'Cor alterada' })
             }
         }
     );

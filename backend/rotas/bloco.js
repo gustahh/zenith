@@ -5,7 +5,8 @@ const checkToken = require('../middleware/checkToken')
 
 
 router.get('/', checkToken, blocoController.retornaBlocos);
-router.get('/:id', blocoController.retornaBloco);
-
+router.get('/:id', checkToken, blocoController.retornaBloco);
+router.put('/editar/cor/:id_anotacao', checkToken, blocoController.mudarCor);
+router.put('/editar/tamanho/:id_anotacao', checkToken, blocoController.mudarTamanho);
 
 module.exports = router;

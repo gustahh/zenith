@@ -18,6 +18,8 @@ export default {
     'bg-bege',
     'bg-turquesa',
     'bg-azulGelo', 
+    'hidden',
+    'block',
   ],
   theme: {
     extend: {

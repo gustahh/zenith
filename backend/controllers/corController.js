@@ -30,7 +30,7 @@ exports.criarCor = (req, res) => {
 exports.retornaCores = (req, res) => {
     //adiciona frase
     connection.execute(
-        'SELECT nome FROM cores',
+        'SELECT id, nome FROM cores',
         function (err, results) {
             if (err) {
                 // Se ocorrer um erro durante a execução da consulta
@@ -48,7 +48,7 @@ exports.retornaCor = (req, res) => {
 
     //adiciona frase
     connection.execute(
-        'SELECT nome FROM cores WHERE id = ?',
+        'SELECT id, nome FROM cores WHERE id = ?',
         [id],
         function (err, results) {
             if (err) {
