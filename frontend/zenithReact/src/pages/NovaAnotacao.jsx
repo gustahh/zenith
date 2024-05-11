@@ -96,7 +96,9 @@ function NovaAnotacao() {
   return (
     <>
       <div className={`w-full h-dvh bg-${corDePagina} flex flex-col`}>
-        <HeaderNovaAnotacao salvando={`${salvando}`} onClickPincel={handleClickPincel} />
+        <HeaderNovaAnotacao salvando={`${salvando}`} 
+        onClickPincel={handleClickPincel} color={`bg-${corDePagina}`}
+        emocao={`${emocao}`}/>
 
         <div className="flex-1">
           <h1 className='text-4xl font-bold pl-4 pt-4 opacity-70'>{titulo}</h1>
