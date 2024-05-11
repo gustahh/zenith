@@ -41,3 +41,22 @@ exports.retornaCores = (req, res) => {
         }
     );
 }
+
+exports.retornaCor = (req, res) => {
+
+    id = req.params.id;
+
+    //adiciona frase
+    connection.execute(
+        'SELECT nome FROM cores WHERE id = ?',
+        [id],
+        function (err, results) {
+            if (err) {
+                // Se ocorrer um erro durante a execução da consulta
+                console.error('Erro ao executar a consulta:', err);
+            } else {
+                return res.status(202).json({ results })
+            }
+        }
+    );
+}

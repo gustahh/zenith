@@ -32,14 +32,39 @@ exports.criarNota = async (req, res) => {
 
             //cria anotação
             connection.execute(
-                'INSERT INTO anotacoes (titulo, texto, emocao, id_usuario) VALUES (?, ?, ?, ?)',
+                'INSERT INTO anotacoes (titulo, texto, emocao, id_usuario) VALUES (?, ?, ?, ?);',
                 [titulo, texto, emocao, idLogado],
                 function (err, results) {
                     if (err) {
                         // Se ocorrer um erro durante a execução da consulta
                         console.error('Erro ao executar a consulta:', err);
                     } else {
-                        return res.status(202).json({ msg: 'Anotação criada com sucesso!' })
+                        //Seleciona o ID da última anotacao criada pelo usuario
+                        connection.execute(
+                            'SELECT max(id) AS ultimaAnotacao FROM anotacoes WHERE id_usuario = ?',
+                            [idLogado],
+                            function (err, results) {
+                                if (err) {
+                                    // Se ocorrer um erro durante a execução da consulta
+                                    console.error('Erro ao executar a consulta:', err);
+                                } else {
+                                    const idAnotacao = results[0].ultimaAnotacao;
+                                    //Insere o bloco referente a anotacao criada na tabela de bloco
+                                    connection.execute(
+                                        'INSERT INTO bloco_anotacao (id_anotacao) VALUES (?)',
+                                        [idAnotacao],
+                                        function (err, results) {
+                                            if (err) {
+                                                // Se ocorrer um erro durante a execução da consulta
+                                                console.error('Erro ao executar a consulta:', err);
+                                            } else {
+                                                return res.status(202).json({ msg: 'Anotação criada com sucesso!' });
+                                            }
+                                        }
+                                    );
+                                }
+                            }
+                        );
                     }
                 }
             );
