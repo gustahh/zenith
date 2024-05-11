@@ -3,9 +3,19 @@ import Button from '../components/Button';
 
 function Header() {
   return (
-    <header className='w-full h-16 bg-red-500 p-5 flex items-center justify-stretch'>
-      <h1 className='text-verde text-4xl font-bold'>Zenith</h1>
-      <Button float='float-right' width='auto' height='auto' text='Comece a usar gratuitamente' cor='bg-verde'/>
+    <header className='w-full h-auto flex'>
+      <div className='w-full h-full p-2 pt-3 flex items-center justify-between'>
+        <h1 className='text-verde text-4xl font-bold ml-3'>Zenith</h1>
+
+        <div className={`flex items-center ml-auto`}>
+          <Button className='w-auto h-auto p-2 bg-verde rounded-md mr-2 text-white 
+      font-bold text-sm' text='Comece a usar gratuitamente' />
+          <Button className='w-auto h-auto p-2 bg-verde rounded-md mr-2 text-white 
+      font-bold text-sm' text='Comece a usar gratuitamente' />
+        </div>
+      </div>
+
+
     </header>
   )
 }
