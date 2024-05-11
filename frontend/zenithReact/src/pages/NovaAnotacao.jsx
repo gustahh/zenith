@@ -22,6 +22,8 @@ function NovaAnotacao() {
     console.log(i);
   };
   useEffect(() => {
+
+    
     axios.get('http://localhost:3000/cores/')
       .then((res) => {
         setCores(res.data.results);
