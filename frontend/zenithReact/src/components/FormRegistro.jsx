@@ -98,7 +98,7 @@ function FormRegistro() {
         document.querySelector('[name="genero"]').classList.add('border-2', 'border-solid', 'border-red-500')
         }
         <br />
-        <Button type="submit" text="Registrar" />
+        <Button className='w-80 h-12 bg-verde text-white font-bold rounded-md' type="submit" text="Registrar" />
         <p className='text-cinzaTexto'>Já tem uma conta? <Link to="/login" className='text-verde hover:underline'>Entrar</Link></p>
       </form>
     </>

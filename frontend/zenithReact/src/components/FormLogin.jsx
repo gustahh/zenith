@@ -63,7 +63,7 @@ function FormLogin() {
           document.querySelector('[name="senha"]').classList.add('border-2', 'border-solid', '!border-red-500')
         }
         <br />
-        <Button type="submit" text="Login" />
+        <Button className='w-72 h-12 bg-verde text-white font-bold rounded-md' type="submit" text="Login" />
         <p className='text-cinzaTexto'>Ainda não tem uma conta? <Link to="/registrar" className='text-verde hover:underline'>Criar conta</Link></p>
       </form>
     </>
