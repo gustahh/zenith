@@ -12,53 +12,68 @@ exports.criarNota = async (req, res) => {
         if (err) {
             // Ocorreu um erro ao decodificar o token
             console.error('Erro ao decodificar o token:', err);
+            return res.status(500).json({ error: 'Erro ao decodificar o token' });
         } else {
             // Token decodificado com sucesso
             const idLogado = decoded.id;
 
-            const { titulo, texto, emocao } = req.body
+            let { titulo, texto, emocao } = req.body
 
-            // validação
-
-            if (!titulo) {
-                return res.status(422).json({ msg: 'Título não pode ficar em branco!' })
-            }
-            if (!texto) {
-                return res.status(422).json({ msg: 'Insira um texto!' })
-            }
-            if (!emocao) {
-                return res.status(422).json({ msg: 'Adicione seu humor!' })
-            }
-
-            //cria anotação
+            //Retorna quantas anotações o usuário tem
             connection.execute(
-                'INSERT INTO anotacoes (titulo, texto, emocao, id_usuario) VALUES (?, ?, ?, ?);',
-                [titulo, texto, emocao, idLogado],
+                'SELECT COUNT(id) AS numAnotacoes FROM anotacoes WHERE id_usuario = ?',
+                [idLogado],
                 function (err, results) {
                     if (err) {
                         // Se ocorrer um erro durante a execução da consulta
                         console.error('Erro ao executar a consulta:', err);
+                        return res.status(500).json({ error: 'Erro ao contar anotações' });
                     } else {
-                        //Seleciona o ID da última anotacao criada pelo usuario
+                        const count = results[0].numAnotacoes;
+
+                        if (count > 1) {
+                            titulo = `Minha anotação #${count + 1}`;
+                        } else {
+                            titulo = `Minha primeira anotação`;
+                        }
+
+                        texto = 'Seu texto vem aqui!';
+                        emocao = 'Feliz';
+
+                        //cria anotação
                         connection.execute(
-                            'SELECT max(id) AS ultimaAnotacao FROM anotacoes WHERE id_usuario = ?',
-                            [idLogado],
+                            'INSERT INTO anotacoes (titulo, texto, emocao, id_usuario) VALUES (?, ?, ?, ?);',
+                            [titulo, texto, emocao, idLogado],
                             function (err, results) {
                                 if (err) {
                                     // Se ocorrer um erro durante a execução da consulta
                                     console.error('Erro ao executar a consulta:', err);
+                                    return res.status(500).json({ error: 'Erro ao criar anotação' });
                                 } else {
-                                    const idAnotacao = results[0].ultimaAnotacao;
-                                    //Insere o bloco referente a anotacao criada na tabela de bloco
+                                    //Seleciona o ID da última anotação criada pelo usuario
                                     connection.execute(
-                                        'INSERT INTO bloco_anotacao (id_anotacao) VALUES (?)',
-                                        [idAnotacao],
+                                        'SELECT max(id) AS ultimaAnotacao FROM anotacoes WHERE id_usuario = ?',
+                                        [idLogado],
                                         function (err, results) {
                                             if (err) {
                                                 // Se ocorrer um erro durante a execução da consulta
                                                 console.error('Erro ao executar a consulta:', err);
+                                                return res.status(500).json({ error: 'Erro ao selecionar última anotação' });
                                             } else {
-                                                return res.status(202).json({ msg: 'Anotação criada com sucesso!' });
+                                                const idAnotacao = results[0].ultimaAnotacao;
+                                                //Insere o bloco referente a anotação criada na tabela de bloco
+                                                connection.execute(
+                                                    'INSERT INTO bloco_anotacao (id_anotacao) VALUES (?)',
+                                                    [idAnotacao],
+                                                    function (err, results) {
+                                                        if (err) {
+                                                            console.error('Erro ao executar a consulta:', err);
+                                                            return res.status(500).json({ error: 'Erro ao inserir bloco de anotação' });
+                                                        } else {
+                                                            return res.status(202).json({ msg: 'Anotação criada com sucesso!' });
+                                                        }
+                                                    }
+                                                );
                                             }
                                         }
                                     );
