@@ -24,7 +24,7 @@ function IndexTela1() {
                     
                 </div>
                 <div className='flex justify-center'>
-                    <img src={Imagem1} alt="" />
+                    <img className=''src={Imagem1} alt="" title='designed by Freepik' />
                 </div>
             </div>
         </div>
