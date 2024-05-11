@@ -63,8 +63,8 @@ exports.criarNota = async (req, res) => {
                                                 const idAnotacao = results[0].ultimaAnotacao;
                                                 //Insere o bloco referente a anotação criada na tabela de bloco
                                                 connection.execute(
-                                                    'INSERT INTO bloco_anotacao (id_anotacao) VALUES (?)',
-                                                    [idAnotacao],
+                                                    'INSERT INTO bloco_anotacao (id_anotacao, id_usuario) VALUES (?, ?)',
+                                                    [idAnotacao, idLogado],
                                                     function (err, results) {
                                                         if (err) {
                                                             console.error('Erro ao executar a consulta:', err);
