@@ -8,8 +8,8 @@ function Header() {
         <h1 className='text-verde text-4xl font-bold ml-3'>Zenith</h1>
 
         <div className={`flex items-center ml-auto`}>
-          <Button className='w-auto h-auto p-2 bg-verde rounded-md mr-2 text-white 
-      font-bold text-sm' text='Comece a usar gratuitamente' />
+          <Button className='w-auto h-auto p-2 bg-transparent rounded-md mr-2 text-verde 
+      font-bold text-sm' text='Entrar' />
           <Button className='w-auto h-auto p-2 bg-verde rounded-md mr-2 text-white 
       font-bold text-sm' text='Comece a usar gratuitamente' />
         </div>
