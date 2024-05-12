@@ -5,9 +5,9 @@ import Logo from "../img/zenith-logo.png"
 
 function Header() {
   return (
-    <header className='w-full h-auto flex bg-[#F6F4EB] fixed'>
+    <header className='w-full h-auto flex bg-[#F6F4EB]'>
       <div className='w-full h-full p-2 pt-3 flex items-center justify-between'>
-      <div className='w-12 h-12 ml-3'><img src={Logo} alt="" /></div>
+      <div className='w-16 h-16 ml-3'><img src={Logo} alt="" /></div>
         <h1 className='text-verde text-4xl font-bold ml-3'>Zenith</h1>
 
         <div className={`flex items-center ml-auto`}>
