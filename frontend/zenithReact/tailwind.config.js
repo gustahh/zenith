@@ -20,6 +20,8 @@ export default {
     'bg-azulGelo', 
     'hidden',
     'block',
+    'scale-0',
+    'scale-1',
   ],
   theme: {
     extend: {
