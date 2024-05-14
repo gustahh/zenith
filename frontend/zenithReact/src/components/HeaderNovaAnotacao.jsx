@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Voltar from '../icons/Voltar';
 import Pincel from '../icons/Pincel';
 import Nuvem from '../icons/Nuvem';
@@ -27,9 +28,12 @@ function HeaderNovaAnotacao(props) {
             setValorScale(1);
         }
     }
+    
+    const { id } = useParams();
     let emocao = props.emocao;
     const [tabIndexClicado, setTabIndexClicado] = useState(emocao);
     const [n, setN] = useState(0);
+    const [salvando, setSalvando] = useState('opacity-0');
 
     useEffect(() => {
         // Atualiza o estado tabIndexClicado sempre que props.emocao mudar
@@ -61,6 +65,19 @@ function HeaderNovaAnotacao(props) {
         } else if (tabIndex === 'Muito triste') {
             setN(5);
         }
+
+        axios.put(`http://localhost:3000/notas/edit/humor/${id}`, {
+            emocao: tabIndex
+          })
+            .then((res) => {
+              setSalvando(prevSalvando => 'opacity-100');
+              setTimeout(() => {
+                setSalvando(prevSalvando => 'opacity-0');
+              }, 1000) //3 segundos
+            })
+            .catch((error) => {
+              console.error('Erro ao buscar cores:', error);
+            });
     };
 
 
@@ -74,7 +91,7 @@ function HeaderNovaAnotacao(props) {
                 <div>
                     <span className='pl-3 opacity-70 font-bold justify-self-start'>Anotação</span>
                 </div>
-                <div className={`flex items-center ml-auto ${props.salvando}`}>
+                <div className={`flex items-center ml-auto ${props.salvando} ${salvando}`}>
                     <Nuvem className={`mr-1 opacity-70`} stroke='#000000' />
                     <span className='font-bold text-sm opacity-70'>Salvando...</span>
                 </div>

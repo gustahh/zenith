@@ -89,9 +89,8 @@ function NovaAnotacao() {
       .catch((error) => {
         console.error('Erro ao buscar cores:', error);
       });
-
-
   };
+  
 
   return (
     <>
