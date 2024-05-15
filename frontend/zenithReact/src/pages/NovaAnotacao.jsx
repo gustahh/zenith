@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import HeaderNovaAnotacao from '../components/HeaderNovaAnotacao';
+import Tiptap from '../components/Tiptap';
 
 function NovaAnotacao() {
   const navigate = useNavigate();
@@ -90,18 +91,42 @@ function NovaAnotacao() {
         console.error('Erro ao buscar cores:', error);
       });
   };
-  
+
+  const handleTituloChange = (event) => {
+    const novoTitulo = event.target.value;
+    setTitulo(novoTitulo);
+    setTimeout(() => {
+      axios.put(`http://localhost:3000/notas/edit/titulo/${id}`, {
+        titulo: novoTitulo
+      })
+        .then((res) => {
+          setSalvando(prevSalvando => 'opacity-100');
+          setTimeout(() => {
+            setSalvando(prevSalvando => 'opacity-0');
+          }, 1000) //3 segundos
+        })
+        .catch((error) => {
+          console.error('Erro ao buscar cores:', error);
+        });
+    }, 1000)
+  };
 
   return (
     <>
       <div className={`w-full h-dvh bg-${corDePagina} flex flex-col`}>
-        <HeaderNovaAnotacao salvando={`${salvando}`} 
-        onClickPincel={handleClickPincel} color={`bg-${corDePagina}`}
-        emocao={`${emocao}`}/>
+        <HeaderNovaAnotacao salvando={`${salvando}`}
+          onClickPincel={handleClickPincel} color={`bg-${corDePagina}`}
+          emocao={`${emocao}`} />
 
-        <div className="flex-1">
-          <h1 className='text-4xl font-bold pl-4 pt-4 opacity-70'>{titulo}</h1>
-          <h1 className='pl-5 pt-5'>{texto}</h1>
+        <div className="flex-1 prose">
+          <input className='w-auto h-auto text-4xl font-bold pl-4 pt-4 opacity-70 
+          bg-transparent border-none focus:outline-none'
+            value={titulo}
+            onChange={handleTituloChange}></input>
+          <div className='pl-5 pt-5'>
+            <Tiptap />
+          </div>
+
         </div>
 
         <footer className='w-full h-10 flex'>
