@@ -50,6 +50,7 @@ function Tiptap() {
                     if (localStorage.getItem('content')) {
                         // Se o item já existe, substitui o valor
                         localStorage.setItem('content', novoTexto);
+                        
                     } 
                 })
                 .catch((error) => {

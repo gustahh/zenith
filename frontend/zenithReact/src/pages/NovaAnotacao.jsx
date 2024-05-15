@@ -111,6 +111,24 @@ function NovaAnotacao() {
     }, 1000)
   };
 
+
+  // Converter para objeto Date
+  var dataObjeto = new Date(data);
+
+  // Extrair informações de data e hora
+  var dia = dataObjeto.getDate();
+  var mes = dataObjeto.getMonth() + 1; // Mês começa do zero
+  var ano = dataObjeto.getFullYear();
+  var hora = dataObjeto.getHours();
+  var minutos = dataObjeto.getMinutes();
+
+  if (mes < 10) {
+    mes = '0' + mes;
+  }
+
+  // Formatar a data no formato desejado
+  var dataFormatada = dia + "/" + mes + "/" + ano + " às " + hora + ":" + (minutos < 10 ? '0' : '') + minutos;
+
   return (
     <>
       <div className={`w-full h-dvh bg-${corDePagina} flex flex-col`}>
@@ -132,7 +150,7 @@ function NovaAnotacao() {
         <footer className='w-full h-10 flex'>
           <div className='w-full h-full p-3 flex items-center justify-center 
           font-bold opacity-70 container mx-auto'>
-            Alterado em: {data}
+            Alterado em: {dataFormatada}
           </div>
 
         </footer>
