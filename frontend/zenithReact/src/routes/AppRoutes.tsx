@@ -17,7 +17,7 @@ function AppRoutes() {
   return (
     <Routes>
       // Caso exista o token, redireciona para home, caso não mantém na pagina
-      <Route path='/' element={ token ? <Navigate to="/home" /> : <Index />} />
+      <Route path='/' element={ <Index />} />
       <Route path='/login' element={ token ? <Navigate to="/home" /> : <Login />} />
       <Route path='/registrar' element={ token ? <Navigate to="/home" /> : <Registrar />} />
       

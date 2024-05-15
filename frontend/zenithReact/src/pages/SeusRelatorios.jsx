@@ -2,7 +2,7 @@ import React from 'react'
 
 function SeusRelatorios() {
   return (
-    <div>Relatorio</div>
+    <div className='text-xl font-bold text-cinzaTexto'>Seus relatórios</div>
   )
 }
 

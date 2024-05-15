@@ -8,7 +8,7 @@ import BookVerde from '../icons/BookVerde'
 function Anotacoes() {
   return (
     <>
-      <div>Anotacoes</div>
+      <div className='text-xl font-bold text-cinzaTexto'>Anotações</div>
     </>
   )
 }

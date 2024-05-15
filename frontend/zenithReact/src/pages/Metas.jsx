@@ -2,7 +2,7 @@ import React from 'react'
 
 function Metas() {
   return (
-    <div>Metas</div>
+    <div className='text-xl font-bold text-cinzaTexto'>Metas</div>
   )
 }
 
