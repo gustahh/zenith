@@ -1,5 +1,5 @@
 const connection = require('../database/db');
-
+const jwt = require('jsonwebtoken');
 
 exports.retornaBlocos = (req, res) => {
     //adiciona frase
@@ -22,7 +22,7 @@ exports.retornaBlocos = (req, res) => {
                         // Se ocorrer um erro durante a execução da consulta
                         console.error('Erro ao executar a consulta:', err);
                     } else {
-                        return res.status(202).json({ results })
+                        return res.status(200).json({ results })
                     }
                 }
         }

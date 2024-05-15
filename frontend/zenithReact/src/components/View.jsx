@@ -5,7 +5,7 @@ function View(props) {
     return (
         <>
             <BarraLateral />
-            <div className='w-[75%] h-screen bg-ice dark:bg-cinzaEscuro p-5 float-left'>
+            <div className='w-[75%] h-screen bg-ice dark:bg-cinzaEscuro p-5 float-left overflow-hidden'>
                 {props.children}
             </div>
             
