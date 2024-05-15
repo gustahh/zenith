@@ -22,7 +22,7 @@ const metasRouter = require('./rotas/metas');
 const blocoRouter = require('./rotas/bloco');
 
 //acessa as rotas
-app.use('/', publicaRouter);
+app.use('/ver', publicaRouter);
 app.use('/frase', fraseRouter);
 app.use('/cores', corRouter);
 app.use('/perfil', profileRouter);

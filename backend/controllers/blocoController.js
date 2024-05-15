@@ -1,8 +1,7 @@
 const connection = require('../database/db');
 const jwt = require('jsonwebtoken');
 
-exports.retornaBlocos = (req, res) => {
-    //adiciona frase
+exports.retornaBlocoLogado = (req, res) => {
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(" ")[1]
     const secret = process.env.SECRET
@@ -11,23 +10,30 @@ exports.retornaBlocos = (req, res) => {
         if (err) {
             // Ocorreu um erro ao decodificar o token
             console.error('Erro ao decodificar o token:', err);
-            return res.status(500).json({ error: 'Erro ao decodificar o token' });
         } else {
             // Token decodificado com sucesso
             const idLogado = decoded.id;
-            'SELECT id_anotacao, tamanho, id_cor FROM bloco_anotacao WHERE id_usuario = ',
+
+            // verificar se usuario existe
+            connection.execute(
+                'SELECT id_anotacao, tamanho, id_cor FROM bloco_anotacao WHERE id_usuario = ?',
                 [idLogado],
                 function (err, results) {
                     if (err) {
                         // Se ocorrer um erro durante a execução da consulta
                         console.error('Erro ao executar a consulta:', err);
                     } else {
-                        return res.status(200).json({ results })
+                        if (results.length < 1) {
+                            // Se a consulta retornou resultados
+                            return res.status(404).json({ msg: 'Este usuário ainda não possui notas' })
+                        } else {
+                            return res.status(202).json({ results })
+                        }
                     }
                 }
+            );
         }
-    }
-    );
+    });
 }
 
 exports.retornaBloco = (req, res) => {
