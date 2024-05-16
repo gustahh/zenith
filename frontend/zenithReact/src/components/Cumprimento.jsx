@@ -15,7 +15,7 @@ function Cumprimento() {
     }
  }
   return (
-    <div className='text-xl font-bold text-cinzaTexto'>{hora()}</div>
+    <div className='text-xl font-bold text-cinzaTexto pb-2'>{hora()}</div>
   )
 }
 
