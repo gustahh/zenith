@@ -115,14 +115,14 @@ exports.mudarTamanho = (req, res) => {
 
     //adiciona frase
     connection.execute(
-        'UPDATE bloco_anotacao SET id_cor = ? WHERE id_anotacao = ?',
+        'UPDATE bloco_anotacao SET tamanho = ? WHERE id_anotacao = ?',
         [tamanho, id_anotacao],
         function (err, results) {
             if (err) {
                 // Se ocorrer um erro durante a execução da consulta
                 console.error('Erro ao executar a consulta:', err);
             } else {
-                return res.status(202).json({ msg: 'Cor alterada' })
+                return res.status(202).json({ msg: 'Tamanho alterado' })
             }
         }
     );

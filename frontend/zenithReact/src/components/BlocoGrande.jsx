@@ -14,8 +14,8 @@ const Bloco = (props) => {
 
   return (
     <>
-      <div className={`flex-none w-60 h-60 bg-${props.cor} rounded-md 
-          mr-4 mb-4 flex flex-col items-center cursor-pointer overflow-hidden`}
+      <div className={`flex-none w-full h-60 bg-${props.cor} rounded-md 
+          flex flex-col items-center cursor-pointer overflow-hidden`}
         id={props.id} onMouseOver={mouseOverOpcoes} onMouseOut={mouseOutOpcoes}>
 
         <div className={`w-full h-6 self-start ${visao}`}>
