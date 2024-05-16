@@ -180,6 +180,42 @@ exports.nota = async (req, res) => {
     });
 };
 
+//obtem ultima anotacao especifica
+exports.ultimaNota = async (req, res) => {
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(" ")[1]
+    const secret = process.env.SECRET
+    // Decodificando o token
+    jwt.verify(token, secret, (err, decoded) => {
+        if (err) {
+            // Ocorreu um erro ao decodificar o token
+            console.error('Erro ao decodificar o token:', err);
+        } else {
+            // Token decodificado com sucesso
+            const idLogado = decoded.id;
+
+            // verificar se usuario existe
+            connection.execute(
+                'SELECT max(id) AS ultimaAnotacao FROM anotacoes WHERE id_usuario = ?',
+                [idLogado],
+                function (err, results) {
+                    if (err) {
+                        // Se ocorrer um erro durante a execução da consulta
+                        console.error('Erro ao executar a consulta:', err);
+                    } else {
+                        if (results.length < 1) {
+                            // Se a consulta retornou resultados
+                            return res.status(404).json({ msg: 'Esta nota não existe' })
+                        } else {
+                            return res.status(202).json({ results })
+                        }
+                    }
+                }
+            );
+        }
+    });
+};
+
 exports.deletarNota = async (req, res) => {
     const id = req.params.id
     const authHeader = req.headers['authorization']

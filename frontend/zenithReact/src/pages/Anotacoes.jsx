@@ -3,7 +3,7 @@ import axios from 'axios';
 import BlocoGrande from '../components/BlocoGrande';
 import BlocoMedio from '../components/BlocoMedio';
 import { Link, useNavigate } from 'react-router-dom';
-
+import CriarAnotacao from './CriarAnotacao';
 
 function Anotacoes() {
   const token = localStorage.getItem('token');
@@ -22,9 +22,13 @@ function Anotacoes() {
         setBlocos(res.data.results);
       });
   }, []);
+ 
   return (
     <>
-      <div className='text-xl font-bold text-cinzaTexto pb-3'>Anotações</div>
+      <div className='w-full h-auto flex items-center justify-between'>
+        <div className='text-xl font-bold text-cinzaTexto py-2 justify-self-start'>Anotações</div>
+        <CriarAnotacao />
+      </div>
       <div className='w-full h-full flex flex-col flex-wrap 
       content-start'>
         {blocos.map((bloco, index) => (

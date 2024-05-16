@@ -35,7 +35,6 @@ function NovaAnotacao() {
       })
       .catch((error) => {
         console.error('Erro', error);
-        navigate('/home');
       });
 
     // Pega informações do bloco da nota
