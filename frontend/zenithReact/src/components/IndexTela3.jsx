@@ -6,7 +6,7 @@ function IndexTela3() {
     <>
     <div className='w-full h-[90%] flex bg-[#F6F4EB] items-center '>
       <div className='w-full pt-10 flex justify-end items-center p-10'>
-        <span className='float-left p-20 text-6xl font-bold'>Receba diagnósticos mensais, baseados na sua atividade. Veja suas conquistas, identifique pontos de melhoria e obtenha valiosas visões para te orientar em seu desenvolvimento pessoal.</span>
+        <span className='float-left p-20 text-6xl font-bold'>Receba diagnósticos mensais, baseados na sua atividade. Tenha em mente suas conquistas, avanços para te orientar em seu desenvolvimento pessoal.</span>
         <img src={Relatorio} alt="" />
       </div>
     </div>
