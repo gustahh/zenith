@@ -15,7 +15,7 @@ function Anotacoes() {
   const [idAnotacao, setIdAnotacao] = useState('');
   const [tamanho, setTamanho] = useState('');
   const [cor, setCor] = useState('');
-  
+
   useEffect(() => {
     axios.get('http://localhost:3000/blocos/recentes')
       .then((res) => {
@@ -24,13 +24,17 @@ function Anotacoes() {
   }, []);
   return (
     <>
-      <div className='text-xl font-bold text-cinzaTexto py-2'>Últimas anotações</div>
+      <div className='w-full h-auto flex items-center justify-between'>
+        <div className='text-xl font-bold text-cinzaTexto py-2 justify-self-start'>Últimas anotações</div>
+        <Link to={`/anotacoes`} className='font-bold text-cinzaTexto py-2 justify-self-start 
+        hover:text-verde hover:underline'>Ver tudo</Link>
+      </div>
+
       <div className='w-full h-full flex flex-row flex-wrap 
       content-start'>
         {blocos.map((bloco, index) => (
-            <Link to={`/anotacoes/${bloco.id_anotacao}`}>
-              <Bloco key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} />
-            </Link>
+            <Bloco key={index} bloco={bloco} titulo={bloco.titulo} 
+            cor={bloco.cor} id={bloco.id_anotacao}/>
         ))}
       </div >
     </>
