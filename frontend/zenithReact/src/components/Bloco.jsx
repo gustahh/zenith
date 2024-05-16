@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link }  from 'react-router-dom';
 import Lixeira from '../icons/Lixeira';
 
-const BlocoGrande = (props) => {
+const Bloco = (props) => {
   const [visao, setVisao] = useState('hidden');
   const mouseOverOpcoes = () => {
     setVisao('block');
@@ -39,4 +39,4 @@ const BlocoGrande = (props) => {
   );
 };
 
-export default BlocoGrande;
+export default Bloco;
