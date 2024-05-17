@@ -23,7 +23,7 @@ const relatorioRouter = require('./rotas/relatorio');
 const blocoRouter = require('./rotas/bloco');
 
 //acessa as rotas
-app.use('/ver', publicaRouter);
+app.use('/', publicaRouter);
 app.use('/frase', fraseRouter);
 app.use('/cores', corRouter);
 app.use('/perfil', profileRouter);

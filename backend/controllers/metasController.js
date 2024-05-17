@@ -25,17 +25,9 @@ exports.obterMetas = async (req, res) => {
                         // Se ocorrer um erro durante a execução da consulta
                         console.error('Erro ao executar a consulta:', err);
                     } else {
-                        results.forEach(result => {
-                            const meta = result.meta
-                            const data_expec = result.data_expec
-                            const status = result.statusMeta
-
-                            return res.status(202).json({
-                                meta: meta,
-                                data_expec: data_expec,
-                                status: status
-                            })
-                        });
+                        return res.status(202).json({
+                            results
+                        })
                     }
                 }
             );
@@ -175,8 +167,8 @@ exports.editarStatus = async (req, res) => {
 
             //Pega status da meta
             connection.execute(
-                'SELECT statusMeta FROM metas WHERE id = ?',
-                [id],
+                'SELECT statusMeta FROM metas WHERE id = ? AND id_usuario = ?',
+                [id, idLogado],
                 function (err, results) {
                     if (err) {
                         // Se ocorrer um erro durante a execução da consulta
