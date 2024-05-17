@@ -12,7 +12,11 @@ function IndexTela4() {
             <img className="w-30 h-30 pt-10" src={metas} alt="" />
           </div>
           <div className='w-full flex items-center'>
-            <span className='font-bold text-6xl ml-5'>Estipule suas <br /> metas </span>
+            <div className='p-5'>
+              <span className='font-bold text-6xl text-justify'>Estipule suas metas </span>
+              <p className='text-xl'>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            </div>
+
           </div>
         </div>
       </div>
