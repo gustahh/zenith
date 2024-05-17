@@ -6,7 +6,7 @@ function Anotacoes() {
   
   return (
     <>
-      <div className='w-full h-auto flex items-center justify-between'>
+      <div className='w-full h-auto flex items-center justify-between pb-2'>
         <div className='text-xl font-bold text-cinzaTexto py-2 justify-self-start'>Anotações</div>
         <CriarAnotacao />
       </div>

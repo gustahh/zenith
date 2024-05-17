@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
+import Adicionar from '../icons/Adicionar';
 
 const CriarAnotacao = () => {
     const navigate = useNavigate(); // Use o hook dentro do componente funcional
@@ -29,8 +30,8 @@ const CriarAnotacao = () => {
 
     return (
         <div>
-            <Button className='w-auto h-auto p-2 bg-verde rounded-md mr-2 text-white
-      font-bold text-sm' text='Adicionar' click={criarNota} />
+            <Button className='w-auto h-auto p-2 bg-verde rounded-md text-white
+      font-bold text-sm flex items-center justify-content-start' text='Adicionar' child={<Adicionar />} click={criarNota} />
         </div>
     );
 };
