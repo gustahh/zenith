@@ -16,8 +16,10 @@ function UsuarioLogado() {
           });
   }, []);
 
-  function Logout(){
+  function BotaoLogout(){
     localStorage.removeItem('token');
+    location.reload();
+
 
 
   }
@@ -39,7 +41,7 @@ function UsuarioLogado() {
             <Configuracoes className="" />
           </button>
 
-          <button className='ml-3 float-right' onClick={Logout}>
+          <button className='ml-3 float-right' onClick={BotaoLogout}>
             <Logout className="" />
           </button>
         </div>
