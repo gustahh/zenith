@@ -13,10 +13,8 @@ function IndexTela3() {
               <p className='text-xl'>Com o Zenith você pode registrar seus sentimentos diariamente de maneira simples e com a nossa tecnologia será analisada suas anotações e criado gráficos semanais e mensais que fornecerão insights valiosos sobre suas tendências emocionais. Os gráficos te ajudarão a identificar os humores tidos durante esse período, permitindo uma compreensão mais profunda de seu
 bem-estar emocional</p>
             </div>
-
           </div>
-
-          <div className='w-full pt-10 flex items-center'>
+         <div className='w-full pt-10 flex items-center'>
             <img className="w-30 h-30 pt-10" src={Relatorio} alt="" />
           </div>
         </div>
