@@ -6,14 +6,17 @@ import img2 from "../img/img2.png"
 function IndexTela4() {
   return (
     <>
-    <div className='w-full h-[90%] flex pb-10'>
-      <div className='w-full flex flex-col justify-center items-stretch p-10'>
-        <span className='font-bold p-10 text-3xl self-start'>Estipule suas metas </span>
-        <img className="w-5/12 h-5/12 pt-3 self-start" src={metas} alt="" />
-        <span className='float-left p-20 text-3xl font-bold self-end'>Acompanhe seu humor de forma semanal e mensal</span>
+      <div className='w-full h-[90%] flex justify-end items-center'>
+        <div className='w-full flex justify-start pt-8'>
+          <div className='w-full pt-10 flex items-center'>
+            <img className="w-30 h-30 pt-10" src={metas} alt="" />
+          </div>
+          <div className='w-full flex items-center'>
+            <span className='font-bold text-6xl ml-5'>Estipule suas <br /> metas </span>
+          </div>
+        </div>
       </div>
-    </div>
-  </>
+    </>
   )
 }
 

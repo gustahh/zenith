@@ -19,9 +19,6 @@ function UsuarioLogado() {
   function BotaoLogout(){
     localStorage.removeItem('token');
     location.reload();
-
-
-
   }
   return (
         <div className='w-full h-16 p-3 flex items-center justify-center 
