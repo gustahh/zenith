@@ -1,3 +1,4 @@
+const { data } = require('autoprefixer');
 const connection = require('../database/db');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -39,6 +40,7 @@ exports.criarMeta = async (req, res) => {
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(" ")[1]
     const secret = process.env.SECRET
+
     // Decodificando o token
     jwt.verify(token, secret, (err, decoded) => {
         if (err) {
@@ -49,6 +51,9 @@ exports.criarMeta = async (req, res) => {
             const idLogado = decoded.id;
 
             const { meta, dataExpec } = req.body
+            var ano = new Date(dataExpec);
+            let anoAtual = new Date();
+
 
             // validação
 
@@ -57,8 +62,10 @@ exports.criarMeta = async (req, res) => {
             }
             if (!dataExpec) {
                 return res.status(422).json({ msg: 'Insira a data desejada!' })
-            }
-
+            } else if (ano < anoAtual) {
+                return res.status(422).json({ msg: 'Data inválida!' })
+            }            
+            
             //cria anotação
             connection.execute(
                 'INSERT INTO metas (meta, data_expec, id_usuario) VALUES (?, ?, ?)',

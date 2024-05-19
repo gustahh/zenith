@@ -17,17 +17,17 @@ function AppRoutes() {
   return (
     <Routes>
       // Caso exista o token, redireciona para home, caso não mantém na pagina
-      <Route path='/' element={ <Index />} />
-      <Route path='/login' element={ token ? <Navigate to="/home" /> : <Login />} />
-      <Route path='/registrar' element={ token ? <Navigate to="/home" /> : <Registrar />} />
-      
+      <Route path='/' element={<Index />} />
+      <Route path='/login' element={token ? <Navigate to="/home" /> : <Login />} />
+      <Route path='/registrar' element={token ? <Navigate to="/home" /> : <Registrar />} />
+
       // Caso exista o token, mantém na página, caso contrário redireciona para login
-      <Route path='/home' element={ token ? <Home /> : <Navigate to="/login" />} />
-      <Route path='/anotacoes' element={ token ? <View><Anotacoes /></View> : <Navigate to="/login" />} />
-      <Route path='/anotacoes/:id' element={ token ? <NovaAnotacao /> : <Navigate to="/login" />} />
-      <Route path='/relatorio' element={ token ? <View><SeusRelatorios /></View> : <Navigate to="/login" />} />
-      <Route path='/metas' element={ token ? <View><Metas /></View> : <Navigate to="/login" />} />
-      <Route path='/metas/criar' element={ token ? <NovaMeta /> : <Navigate to="/login" />} />
+      <Route path='/home' element={token ? <Home /> : <Navigate to="/login" />} />
+      <Route path='/anotacoes' element={token ? <View><Anotacoes /></View> : <Navigate to="/login" />} />
+      <Route path='/anotacoes/:id' element={token ? <NovaAnotacao /> : <Navigate to="/login" />} />
+      <Route path='/relatorio' element={token ? <View><SeusRelatorios /></View> : <Navigate to="/login" />} />
+      <Route path='/metas' element={token ? <View><Metas /></View> : <Navigate to="/login" />} />
+      <Route path='/metas/criar' element={token ? <><NovaMeta /><View><Metas /></View></> : <Navigate to="/login" />} />
       <Route path='*' element={<PaginaNaoEncontrada />} />
     </Routes>
   )
