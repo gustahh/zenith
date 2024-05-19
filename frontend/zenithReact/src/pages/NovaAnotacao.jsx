@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import HeaderNovaAnotacao from '../components/HeaderNovaAnotacao';
 import Tiptap from '../components/Tiptap';
+import Sobreposicao from '../components/Sobreposicao';
 
 function NovaAnotacao() {
   const navigate = useNavigate();
@@ -130,30 +131,37 @@ function NovaAnotacao() {
 
   return (
     <>
-      <div className={`w-full h-dvh bg-${corDePagina} flex flex-col`}>
-        <HeaderNovaAnotacao salvando={`${salvando}`}
-          onClickPincel={handleClickPincel} color={`bg-${corDePagina}`}
-          emocao={`${emocao}`} />
 
-        <div className="flex-1 prose">
-          <input className='w-auto h-auto text-4xl font-bold pl-4 pt-4 opacity-70 
+      <div className='w-full h-full absolute z-20 overflow-hidden'>
+        <div className='w-full h-full flex flex-col items-center justify-center'>
+          <div className={`w-4/5 h-4/5 bg-${corDePagina} rounded-md flex flex-col`}>
+            <HeaderNovaAnotacao salvando={`${salvando}`}
+              onClickPincel={handleClickPincel} color={`bg-${corDePagina}`}
+              emocao={`${emocao}`} />
+
+            <div className="flex-1 prose">
+              <input className='w-auto h-auto text-4xl font-bold pl-4 pt-4 opacity-70 
           bg-transparent border-none focus:outline-none'
-            value={titulo}
-            onChange={handleTituloChange}></input>
-          <div className='pl-5 pt-5'>
-            <Tiptap />
-          </div>
+                value={titulo}
+                onChange={handleTituloChange}></input>
+              <div className='pl-5 pt-5'>
+                <Tiptap />
+              </div>
 
+            </div>
+
+            <footer className='w-full h-10 flex'>
+              <div className='w-full h-full p-3 flex items-center justify-center 
+          font-bold opacity-70 container mx-auto'>
+                Alterado em: {dataFormatada}
+              </div>
+
+            </footer>
+          </div>
         </div>
 
-        <footer className='w-full h-10 flex'>
-          <div className='w-full h-full p-3 flex items-center justify-center 
-          font-bold opacity-70 container mx-auto'>
-            Alterado em: {dataFormatada}
-          </div>
-
-        </footer>
       </div>
+      <Sobreposicao />  
     </>
   )
 }

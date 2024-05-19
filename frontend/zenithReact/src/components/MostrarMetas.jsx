@@ -55,8 +55,6 @@ function MostrarMetas() {
                                                 <Lixeira className="" stroke="#999999"/>
                                             </button>
                                         </div>
-
-
                                     </div>
                                 ) : (
                                     <div className='flex items-center'>
@@ -65,6 +63,11 @@ function MostrarMetas() {
                                             <span className="text-md ml-2 text-cinzaTexto line-through">{meta.meta}</span>
                                             <span className="text-md ml-2 text-verde pr-3">Meta cumprida</span>
                                         </label>
+                                        <div className='flex items-center'>
+                                            <button className='rounded-sm hover:dark:bg-white/20 hover:bg-black/20 '>
+                                                <Lixeira className="" stroke="#999999"/>
+                                            </button>
+                                        </div>
                                     </div>
                                 )}
                             </div>

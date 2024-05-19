@@ -7,6 +7,7 @@ import Atualizando from '../icons/Atualizando';
 import Face from '../icons/Face';
 import { useParams, useNavigate } from 'react-router-dom';
 import Descer from '../icons/Descer';
+import usePreviousLocation from '../routes/hook';
 
 function HeaderNovaAnotacao(props) {
 
@@ -15,8 +16,15 @@ function HeaderNovaAnotacao(props) {
     };
     const navigate = useNavigate();
 
+    const prevLocation = usePreviousLocation();
+
+
     function voltarPagina() {
-        navigate('/home');
+        if (prevLocation.pathname === "/anotacoes") {
+            navigate('/anotacoes');
+        } else {
+            navigate('/home');
+        }
     }
 
     let [valorScale, setValorScale] = useState(0);
@@ -28,7 +36,7 @@ function HeaderNovaAnotacao(props) {
             setValorScale(1);
         }
     }
-    
+
     const { id } = useParams();
     let emocao = props.emocao;
     const [tabIndexClicado, setTabIndexClicado] = useState(emocao);
@@ -68,15 +76,15 @@ function HeaderNovaAnotacao(props) {
 
         axios.put(`http://localhost:3000/notas/edit/humor/${id}`, {
             emocao: tabIndex
-          })
+        })
             .then((res) => {
-              setSalvando(prevSalvando => 'opacity-100');
-              setTimeout(() => {
-                setSalvando(prevSalvando => 'opacity-0');
-              }, 1000) //3 segundos
+                setSalvando(prevSalvando => 'opacity-100');
+                setTimeout(() => {
+                    setSalvando(prevSalvando => 'opacity-0');
+                }, 1000) //3 segundos
             })
             .catch((error) => {
-              console.error('Erro ao buscar cores:', error);
+                console.error('Erro ao buscar cores:', error);
             });
     };
 

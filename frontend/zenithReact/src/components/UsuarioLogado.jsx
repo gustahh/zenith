@@ -23,7 +23,7 @@ function UsuarioLogado() {
   return (
         <div className='w-full h-16 p-3 flex items-center justify-center 
           font-bold container mx-auto'>
-        <div className='w-full h-full flex items-center justify-stretch'>
+        <div className='w-full h-full flex items-center justify-between'>
           <div>
             <div className='w-12 h-12 bg-black rounded-full float-left'></div>
           </div>

@@ -16,7 +16,7 @@ exports.retornaBlocoLogado = (req, res) => {
 
             // verificar se usuario existe
             connection.execute(
-                'SELECT B.id_anotacao, B.tamanho, B.id_cor, A.titulo, C.nome AS cor FROM bloco_anotacao B INNER JOIN anotacoes A ON B.id_anotacao = A.id INNER JOIN cores C ON B.id_cor = C.id WHERE B.id_usuario = ?',
+                'SELECT B.id_anotacao, B.tamanho, B.id_cor, A.titulo, C.nome AS cor FROM bloco_anotacao B INNER JOIN anotacoes A ON B.id_anotacao = A.id INNER JOIN cores C ON B.id_cor = C.id WHERE B.id_usuario = ? ORDER BY id_anotacao DESC',
                 [idLogado],
                 function (err, results) {
                     if (err) {
@@ -51,7 +51,7 @@ exports.retornaBlocoLogadoRecentes = (req, res) => {
 
             // verificar se usuario existe
             connection.execute(
-                'SELECT B.id_anotacao, B.tamanho, B.id_cor, A.titulo, C.nome AS cor FROM bloco_anotacao B INNER JOIN anotacoes A ON B.id_anotacao = A.id INNER JOIN cores C ON B.id_cor = C.id WHERE B.id_usuario = ? LIMIT 6',
+                'SELECT B.id_anotacao, B.tamanho, B.id_cor, A.titulo, C.nome AS cor FROM bloco_anotacao B INNER JOIN anotacoes A ON B.id_anotacao = A.id INNER JOIN cores C ON B.id_cor = C.id WHERE B.id_usuario = ? ORDER BY id_anotacao DESC LIMIT 6',
                 [idLogado],
                 function (err, results) {
                     if (err) {
