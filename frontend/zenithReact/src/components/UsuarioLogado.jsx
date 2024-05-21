@@ -6,6 +6,7 @@ import axios from 'axios'
 
 function UsuarioLogado() {
   const [nome, setNome] = useState('');
+  const [foto, setFoto] = useState('');
   useEffect(() => {
     const token = localStorage.getItem('token');
 
@@ -13,6 +14,7 @@ function UsuarioLogado() {
     axios.get('http://localhost:3000/perfil')
       .then((res) => {
         setNome(res.data.results[0].nome);
+        setFoto(res.data.results[0].foto_perfil);
       });
   }, []);
 
@@ -26,7 +28,8 @@ function UsuarioLogado() {
       <div className='w-full h-full flex items-center justify-between'>
         <div className='w-full flex items-center justify-start'>
           <div className='w-full h-full flex items-center'>
-            <div className='w-12 h-12 bg-black rounded-full float-left'>
+            <div className='w-12 h-12 rounded-full float-left'>
+              <img className='w-full h-full' src={`../img/${foto}`} alt="" />
               
             </div>
 
