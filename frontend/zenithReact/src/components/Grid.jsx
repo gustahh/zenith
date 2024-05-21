@@ -24,13 +24,13 @@ function Grid() {
             {blocos.map((bloco, index) => (
                 bloco.tamanho === 'grande' ?
                     <Link to={`/anotacoes/${bloco.id_anotacao}`}>
-                        <BlocoGrande key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} />
+                        <BlocoGrande key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} id={bloco.id_anotacao} />
                     </Link> : bloco.tamanho === 'medio' ?
                         <Link to={`/anotacoes/${bloco.id_anotacao}`}>
-                            <BlocoMedio key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} />
+                            <BlocoMedio key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} id={bloco.id_anotacao}/>
                         </Link> :
                         <Link to={`/anotacoes/${bloco.id_anotacao}`}>
-                            <BlocoPequeno key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} />
+                            <BlocoPequeno key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} id={bloco.id_anotacao}/>
                         </Link>
             ))}
         </Masonry>

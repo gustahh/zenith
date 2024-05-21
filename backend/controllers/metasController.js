@@ -36,6 +36,39 @@ exports.obterMetas = async (req, res) => {
     })
 };
 
+exports.obterMetaEspecifica = async (req, res) => {
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(" ")[1]
+    const secret = process.env.SECRET
+    // Decodificando o token
+    jwt.verify(token, secret, (err, decoded) => {
+        if (err) {
+            // Ocorreu um erro ao decodificar o token
+            console.error('Erro ao decodificar o token:', err);
+        } else {
+            // Token decodificado com sucesso
+            const idLogado = decoded.id;
+            const { id } = req.params;
+
+            //cria anotação
+            connection.execute(
+                'SELECT id, meta, data_expec, statusMeta FROM metas WHERE id = ? AND id_usuario = ?',
+                [id, idLogado],
+                function (err, results) {
+                    if (err) {
+                        // Se ocorrer um erro durante a execução da consulta
+                        console.error('Erro ao executar a consulta:', err);
+                    } else {
+                        return res.status(202).json({
+                            results
+                        })
+                    }
+                }
+            );
+        }
+    })
+};
+
 exports.criarMeta = async (req, res) => {
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(" ")[1]

@@ -51,8 +51,9 @@ function UsuarioLogado() {
               <Configuracoes className="" />
             </button>
 
-            <button className='ml-3 float-right' onClick={BotaoLogout}>
-              <Logout className="" />
+            <button className='ml-3 float-right flex items-center' onClick={BotaoLogout}>
+              <Logout className="pr-2" />
+              <span className='text-red-500'>Sair</span>
             </button>
           </div>
 

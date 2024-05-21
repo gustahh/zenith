@@ -11,6 +11,7 @@ const Bloco = (props) => {
     setVisao('hidden');
   }
 
+  const id = props.id;
 
   return (
     <>
@@ -27,7 +28,7 @@ const Bloco = (props) => {
         </div>
 
         <div className='w-full h-full flex items-center pl-3' >
-          <Link to={`/anotacoes/${props.id}`}>
+          <Link to={`/anotacoes/deletar/${id}`}>
             <span className='font-bold opacity-70 text-xl'>
               {props.titulo}
             </span>

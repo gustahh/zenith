@@ -22,6 +22,8 @@ export default {
     'block',
     'scale-0',
     'scale-1',
+    'opacity-100',
+    'opacity-0',
   ],
   theme: {
     extend: {

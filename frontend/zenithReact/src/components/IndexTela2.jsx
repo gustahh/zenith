@@ -14,7 +14,7 @@ function IndexTela2() {
             <div className='p-5'>
               <span className='pb-2 font-bold text-6xl text-justify'>Registre seus momentos</span>
               <div className='w-4/4'>
-                <p className='text-xl'>Crie quantas quiser anotações diariamente. </p>
+                <p className='text-xl'>Crie quantas anotações quiser diariamente. </p>
               </div>
 
             </div>

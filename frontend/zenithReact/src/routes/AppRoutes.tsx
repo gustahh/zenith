@@ -7,7 +7,10 @@ import Anotacoes from '../pages/Anotacoes';
 import SeusRelatorios from '../pages/SeusRelatorios';
 import Metas from '../pages/Metas';
 import NovaAnotacao from '../pages/NovaAnotacao';
+import DeletarAnotacao from '../pages/DeletarAnotacao';
 import NovaMeta from '../pages/NovaMeta';
+import EditarMeta from '../pages/EditarMeta';
+import DeletarMeta from '../pages/DeletarMeta';
 import PaginaNaoEncontrada from '../pages/PaginaNaoEncontrada';
 import View from '../components/View';
 import usePreviousLocation from './hook';
@@ -27,19 +30,13 @@ function AppRoutes() {
       // Caso exista o token, mantém na página, caso contrário redireciona para login
       <Route path='/home' element={token ? <Home /> : <Navigate to="/login" />} />
       <Route path='/anotacoes' element={token ? <View><Anotacoes /></View> : <Navigate to="/login" />} />
-      <Route path='/anotacoes/:id' element={
-        token ?
-          <>
-            <NovaAnotacao />
-            <View>
-              {prevLocation.pathname === "/anotacoes" ? <Anotacoes /> : <Home />}
-              
-            </View>
-          </>
-          : <Navigate to="/login" />} />
+      <Route path='/anotacoes/:id' element={token ? <> <NovaAnotacao /> <View> {prevLocation.pathname === "/anotacoes" ? <Anotacoes /> : <Home />}</View></> : <Navigate to="/login" />} />
+      <Route path='/anotacoes/deletar/:id' element={token ? <> <DeletarAnotacao /> <View> {prevLocation.pathname === "/anotacoes" ? <Anotacoes /> : <Home />}</View></> : <Navigate to="/login" />} />
       <Route path='/relatorio' element={token ? <View><SeusRelatorios /></View> : <Navigate to="/login" />} />
       <Route path='/metas' element={token ? <View><Metas /></View> : <Navigate to="/login" />} />
       <Route path='/metas/criar' element={token ? <><NovaMeta /><View><Metas /></View></> : <Navigate to="/login" />} />
+      <Route path='/metas/editar/:id' element={token ? <><EditarMeta /><View><Metas /></View></> : <Navigate to="/login" />} />
+      <Route path='/metas/deletar/:id' element={token ? <><DeletarMeta /><View><Metas /></View></> : <Navigate to="/login" />} />
       <Route path='*' element={<PaginaNaoEncontrada />} />
     </Routes>
   )

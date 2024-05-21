@@ -232,17 +232,31 @@ exports.deletarNota = async (req, res) => {
 
             //deleta anotação
             connection.execute(
-                'DELETE FROM anotacoes WHERE id = ? AND id_usuario = ?',
+                'DELETE FROM bloco_anotacao WHERE id_anotacao = ? AND id_usuario = ?',
                 [id, idLogado],
                 function (err, results) {
                     if (err) {
                         // Se ocorrer um erro durante a execução da consulta
                         console.error('Erro ao executar a consulta:', err);
                     } else {
-                        return res.status(202).json({ msg: 'Anotação deletada.' })
+                        //deleta anotação
+                        connection.execute(
+                            'DELETE FROM anotacoes WHERE id = ? AND id_usuario = ?',
+                            [id, idLogado],
+                            function (err, results) {
+                                if (err) {
+                                    // Se ocorrer um erro durante a execução da consulta
+                                    console.error('Erro ao executar a consulta:', err);
+                                } else {
+                                    return res.status(202).json({ msg: 'Anotação deletada.' })
+                                }
+                            }
+                        );
                     }
                 }
             );
+
+
         }
     })
 };

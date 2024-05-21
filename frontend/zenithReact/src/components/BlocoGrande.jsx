@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import { Link }  from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Lixeira from '../icons/Lixeira';
 
 const Bloco = (props) => {
-  const [visao, setVisao] = useState('hidden');
+  const [visao, setVisao] = useState('opacity-0');
   const mouseOverOpcoes = () => {
-    setVisao('block');
+    setVisao('opacity-100');
   }
   const mouseOutOpcoes = () => {
-    setVisao('hidden');
+    setVisao('opacity-0');
   }
 
-
+  const id = props.id;
+  
   return (
     <>
       <div className={`flex-none w-full h-60 bg-${props.cor} rounded-md 
@@ -20,16 +21,18 @@ const Bloco = (props) => {
 
         <div className={`w-full h-6 self-start ${visao}`}>
           <div className='flex justify-end pr-2 pt-2'>
-            <button>
-              <Lixeira className='opacity-70 rounded-md hover:bg-white/20' stroke='#000000' />
-            </button>
+            <Link to={`/anotacoes/deletar/${id}`}>
+              <button>
+                <Lixeira className='opacity-70 rounded-md hover:bg-white/20' stroke='#000000' />
+              </button>
+            </Link>
           </div>
         </div>
 
         <div className='w-full h-full flex items-center pl-3' >
-            <span className='font-bold opacity-70 text-xl'>
-              {props.titulo}
-            </span>
+          <span className='font-bold opacity-70 text-xl'>
+            {props.titulo}
+          </span>
         </div>
 
       </div>

@@ -22,7 +22,7 @@ function Grid() {
         <Masonry columnsCount={3} gutter="20px">
             {blocos.map((bloco, index) => (
                     <Link to={`/anotacoes/${bloco.id_anotacao}`}>
-                        <Bloco key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} />
+                        <Bloco key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} id={bloco.id_anotacao}/>
                     </Link>
             ))}
         </Masonry>
