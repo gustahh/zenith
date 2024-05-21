@@ -5,55 +5,51 @@ import axios from 'axios'
 
 
 function UsuarioLogado() {
-    const [nome, setNome] = useState('');
+  const [nome, setNome] = useState('');
   useEffect(() => {
     const token = localStorage.getItem('token');
 
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      axios.get('http://localhost:3000/perfil')
-          .then((res) => {
-              setNome(res.data.results[0].nome);
-          });
+    axios.get('http://localhost:3000/perfil')
+      .then((res) => {
+        setNome(res.data.results[0].nome);
+      });
   }, []);
 
-  function BotaoLogout(){
+  function BotaoLogout() {
     localStorage.removeItem('token');
     location.reload();
   }
   return (
-        <div className='w-full h-16 p-3 flex items-center justify-center 
+    <div className='w-full h-16 p-3 flex items-center justify-center 
           font-bold container mx-auto'>
-        <div className='w-full h-full flex items-center justify-between'>
-        
-           
-        
+      <div className='w-full h-full flex items-center justify-between'>
+        <div className='w-full flex items-center justify-start'>
+          <div className='w-full h-full flex items-center'>
+            <div className='w-12 h-12 bg-black rounded-full float-left'>
+              
+            </div>
 
-          <div className='bg-red-500 flex items-center justify-start'> 
-          <div>
-          <div className='w-12 h-12 bg-black rounded-full float-left'>
-
-          </div>
-          
-            <span  className='text-xl font-bold text-cinzaTexto pl-3 float-left'>
+            <span className='text-xl font-bold text-cinzaTexto pl-3 mr-3 float-left'>
               {nome}
-            </span> 
+            </span>
           </div>
 
-          <div className='bg-red-500 flex items-center justify-start'>
-          <button className='ml-20 float-right'>
-            <Configuracoes className="" />
-          </button>
+          <div className='flex items-center justify-start'>
+            <button className='ml-20 float-right'>
+              <Configuracoes className="" />
+            </button>
 
-          <button className='ml-3 float-right' onClick={BotaoLogout}>
-            <Logout className="" />
-          </button>
+            <button className='ml-3 float-right' onClick={BotaoLogout}>
+              <Logout className="" />
+            </button>
           </div>
 
-         </div>
-
-          
         </div>
+
+
       </div>
+    </div>
   )
 }
 
