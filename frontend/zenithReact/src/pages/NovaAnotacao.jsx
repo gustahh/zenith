@@ -137,7 +137,7 @@ function NovaAnotacao() {
           <div className={`w-4/5 h-4/5 bg-${corDePagina} rounded-md flex flex-col`}>
             <HeaderNovaAnotacao salvando={`${salvando}`}
               onClickPincel={handleClickPincel} color={`bg-${corDePagina}`}
-              emocao={`${emocao}`} />
+              emocao={`${emocao}`} tamanho={`${tamanho}`} />
 
             <div className="flex-1 prose">
               <input className='w-auto h-auto text-4xl font-bold pl-4 pt-4 opacity-70 

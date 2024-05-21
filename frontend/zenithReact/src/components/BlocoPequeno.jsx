@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link }  from 'react-router-dom';
 import Lixeira from '../icons/Lixeira';
 
-const Bloco = (props) => {
+const BlocoPequeno = (props) => {
   const [visao, setVisao] = useState('hidden');
   const mouseOverOpcoes = () => {
     setVisao('block');
@@ -14,7 +14,7 @@ const Bloco = (props) => {
 
   return (
     <>
-      <div className={`flex-none w-full h-60 bg-${props.cor} rounded-md 
+      <div className={`flex-none w-full h-12 bg-${props.cor} rounded-md 
           flex flex-col items-center cursor-pointer overflow-hidden`}
         id={props.id} onMouseOver={mouseOverOpcoes} onMouseOut={mouseOutOpcoes}>
 
@@ -37,4 +37,4 @@ const Bloco = (props) => {
   );
 };
 
-export default Bloco;
+export default BlocoPequeno;

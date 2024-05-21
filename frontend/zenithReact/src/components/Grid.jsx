@@ -1,7 +1,8 @@
 import axios from 'axios';
-import React , { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import BlocoGrande from '../components/BlocoGrande';
 import BlocoMedio from '../components/BlocoMedio';
+import BlocoPequeno from './BlocoPequeno';
 import { Link, useNavigate } from 'react-router-dom';
 import Masonry from "react-responsive-masonry";
 
@@ -24,10 +25,13 @@ function Grid() {
                 bloco.tamanho === 'grande' ?
                     <Link to={`/anotacoes/${bloco.id_anotacao}`}>
                         <BlocoGrande key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} />
-                    </Link> :
-                    <Link to={`/anotacoes/${bloco.id_anotacao}`}>
-                        <BlocoMedio key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} />
-                    </Link>
+                    </Link> : bloco.tamanho === 'medio' ?
+                        <Link to={`/anotacoes/${bloco.id_anotacao}`}>
+                            <BlocoMedio key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} />
+                        </Link> :
+                        <Link to={`/anotacoes/${bloco.id_anotacao}`}>
+                            <BlocoPequeno key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} />
+                        </Link>
             ))}
         </Masonry>
     )
