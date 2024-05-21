@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import Configuracoes from '../icons/Configuracoes';
 import Logout from '../icons/Logout';
-import axios from 'axios'
-
+import axios from 'axios';
+import User from '../img/user.png';
 
 function UsuarioLogado() {
   const [nome, setNome] = useState('');
@@ -22,14 +22,22 @@ function UsuarioLogado() {
     localStorage.removeItem('token');
     location.reload();
   }
+
+  const Imagem = ({ foto }) => {
+    const caminho = `/src/img/${foto}`;
+
+    return (
+      <img src={caminho} alt={foto} />
+    );
+  };
   return (
     <div className='w-full h-16 p-3 flex items-center justify-center 
           font-bold container mx-auto'>
       <div className='w-full h-full flex items-center justify-between'>
         <div className='w-full flex items-center justify-start'>
           <div className='w-full h-full flex items-center'>
-            <div className='w-12 h-12 rounded-full float-left'>
-              <img className='w-full h-full' src={`../img/${foto}`} alt="" />
+            <div className='w-12 h-12 rounded-full float-left overflow-hidden'>
+              <Imagem foto={foto}/>
               
             </div>
 
