@@ -24,16 +24,22 @@ function UsuarioLogado() {
         <div className='w-full h-16 p-3 flex items-center justify-center 
           font-bold container mx-auto'>
         <div className='w-full h-full flex items-center justify-between'>
-          <div>
-            <div className='w-12 h-12 bg-black rounded-full float-left'></div>
-          </div>
+        
+           
+        
 
+          <div className='bg-red-500 flex items-center justify-start'> 
           <div>
-            <span className='text-xl font-bold text-cinzaTexto pl-3 float-left'>
+          <div className='w-12 h-12 bg-black rounded-full float-left'>
+
+          </div>
+          
+            <span  className='text-xl font-bold text-cinzaTexto pl-3 float-left'>
               {nome}
-            </span>
+            </span> 
           </div>
 
+          <div className='bg-red-500 flex items-center justify-start'>
           <button className='ml-20 float-right'>
             <Configuracoes className="" />
           </button>
@@ -41,6 +47,11 @@ function UsuarioLogado() {
           <button className='ml-3 float-right' onClick={BotaoLogout}>
             <Logout className="" />
           </button>
+          </div>
+
+         </div>
+
+          
         </div>
       </div>
   )
