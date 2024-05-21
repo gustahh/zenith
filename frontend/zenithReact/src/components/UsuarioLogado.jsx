@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import Configuracoes from '../icons/Configuracoes';
 import Logout from '../icons/Logout';
 import axios from 'axios';
@@ -57,7 +57,6 @@ function UsuarioLogado() {
           </div>
 
         </div>
-
 
       </div>
     </div>

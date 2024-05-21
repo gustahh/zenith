@@ -4,11 +4,21 @@ import Tela1 from "../img/tela-1.png"
 function IndexTela2() {
   return (
     <>
-      <div className='w-full h-[90%] flex pb-10'>
-        <div className='w-full flex flex-col justify-center items-stretch p-10'>
-          <span className='font-bold p-10 text-3xl self-start'>Registre seus momentos... </span>
-          <img className="w-5/12 h-5/12 pt-3 self-start" src={Tela1} alt="" />
-          <span className='float-left p-20 text-3xl font-bold self-end'>Acompanhe seu humor de forma semanal e mensal</span>
+      <div className='w-full h-[90%] flex justify-end items-center pl-5'>
+        <div className='w-full flex justify-start pt-8 pr-10'>
+
+          <div className='w-full flex items-center'>
+            <div className='w-full pt-10 flex items-center'>
+              <img className="w-30 h-30 pt-10" src={Tela1} alt="" />
+            </div>
+            <div className='p-5'>
+              <span className='pb-2 font-bold text-6xl text-justify'>Registre seus momentos</span>
+              <div className='w-4/4'>
+                <p className='text-xl'>Crie quantas quiser anotações diariamente. </p>
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
     </>
