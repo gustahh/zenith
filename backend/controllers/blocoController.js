@@ -120,7 +120,7 @@ exports.mudarTamanho = (req, res) => {
         function (err, results) {
             if (err) {
                 // Se ocorrer um erro durante a execução da consulta
-                console.error('Erro ao executar a consulta:', err);
+                
             } else {
                 return res.status(202).json({ msg: 'Tamanho alterado' })
             }
