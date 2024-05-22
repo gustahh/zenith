@@ -34,9 +34,9 @@ function UsuarioLogado() {
     <div className='h-auto sm:w-full h-16 p-3 flex items-start justify-center 
           font-bold container mx-auto'>
       <div className='justify-start items-start sm:w-full h-full flex items-center justify-between'>
-        <div className='w-full flex items-center justify-start'>
-          <div className='w-full h-full flex items-center'>
-            <div className='h-10 w-10 sm:w-8 h-8 rounded-full float-left overflow-hidden'>
+        <div className='w-full flex flex-col sm:flex-row items-center justify-start wrap'>
+          <div className='pb-2 sm:pb-0 w-full h-full flex items-center'>
+            <div className='w-8 h-8 rounded-full float-left overflow-hidden'>
               <Imagem foto={foto}/>
               
             </div>
@@ -46,12 +46,12 @@ function UsuarioLogado() {
             </span>
           </div>
 
-          <div className='flex items-center justify-start'>
+          <div className='flex items-center justify-start flex-col sm:flex-row pb-2 sm:pb-0 '>
             <button className='sm:ml-20 float-right'>
               <Configuracoes className="" />
             </button>
 
-            <button className='float-right flex items-center' onClick={BotaoLogout}>
+            <button className='float-right flex flex-col sm:flex-row pb-2 sm:pb-0 items-center' onClick={BotaoLogout}>
               <Logout className="pr-2" />
               <span className='hidden sm:block text-red-500'>Sair</span>
             </button>

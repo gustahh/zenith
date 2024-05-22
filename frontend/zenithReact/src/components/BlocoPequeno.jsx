@@ -15,7 +15,7 @@ const BlocoPequeno = (props) => {
   
   return (
     <>
-      <div className={`flex-none w-full h-12 bg-${props.cor} rounded-md 
+      <div className={`w-6 flex-none w-full sm:h-12 bg-${props.cor} rounded-md 
           flex flex-col items-center cursor-pointer overflow-hidden`}
         id={props.id} onMouseOver={mouseOverOpcoes} onMouseOut={mouseOutOpcoes}>
 

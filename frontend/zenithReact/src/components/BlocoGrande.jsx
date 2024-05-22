@@ -15,7 +15,7 @@ const Bloco = (props) => {
   
   return (
     <>
-      <div className={`flex-none w-full h-60 bg-${props.cor} rounded-md 
+      <div className={`flex-none w-30 h-30 sm:w-full sm:h-60 bg-${props.cor} rounded-md 
           flex flex-col items-center cursor-pointer overflow-hidden`}
         id={props.id} onMouseOver={mouseOverOpcoes} onMouseOut={mouseOutOpcoes}>
 
@@ -30,7 +30,7 @@ const Bloco = (props) => {
         </div>
 
         <div className='w-full h-full flex items-center pl-3' >
-          <span className='font-bold opacity-70 text-xl'>
+          <span className='font-bold opacity-70 text-sm sm:text-xl'>
             {props.titulo}
           </span>
         </div>

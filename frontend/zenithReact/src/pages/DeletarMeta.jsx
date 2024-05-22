@@ -37,7 +37,7 @@ function DeletarMeta() {
         <>
             <div className='w-full h-full absolute z-20 overflow-hidden'>
                 <div className='w-full h-full flex flex-col items-center justify-center'>
-                    <div className='w-1/4 h-1/4 bg-ice dark:bg-cinzaEscuro p-5 rounded-md'>
+                    <div className='w-3/4 sm:w-1/4 h-1/4 bg-ice dark:bg-cinzaEscuro p-5 rounded-md'>
                         <div className='flex justify-center'>
                             <span className='text-xl font-bold text-cinzaTexto'>Deletar meta</span>
                         </div>

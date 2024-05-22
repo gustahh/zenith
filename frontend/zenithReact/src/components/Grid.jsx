@@ -20,20 +20,43 @@ function Grid() {
     }, []);
 
     return (
-        <Masonry columnsCount={3} gutter="20px">
-            {blocos.map((bloco, index) => (
-                bloco.tamanho === 'grande' ?
-                    <Link to={`/anotacoes/${bloco.id_anotacao}`}>
-                        <BlocoGrande key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} id={bloco.id_anotacao} />
-                    </Link> : bloco.tamanho === 'medio' ?
-                        <Link to={`/anotacoes/${bloco.id_anotacao}`}>
-                            <BlocoMedio key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} id={bloco.id_anotacao}/>
-                        </Link> :
-                        <Link to={`/anotacoes/${bloco.id_anotacao}`}>
-                            <BlocoPequeno key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} id={bloco.id_anotacao}/>
-                        </Link>
-            ))}
-        </Masonry>
+        <>
+            <div className='hidden sm:block'>
+                <Masonry columnsCount={3} gutter="20px">
+                    {blocos.map((bloco, index) => (
+                        bloco.tamanho === 'grande' ?
+                            <Link to={`/anotacoes/${bloco.id_anotacao}`}>
+                                <BlocoGrande key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} id={bloco.id_anotacao} />
+                            </Link> : bloco.tamanho === 'medio' ?
+                                <Link to={`/anotacoes/${bloco.id_anotacao}`}>
+                                    <BlocoMedio key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} id={bloco.id_anotacao} />
+                                </Link> :
+                                <Link to={`/anotacoes/${bloco.id_anotacao}`}>
+                                    <BlocoPequeno key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} id={bloco.id_anotacao} />
+                                </Link>
+                    ))}
+                </Masonry>
+            </div>
+            <div className='block sm:hidden'>
+                <Masonry columnsCount={2} gutter="20px">
+                    {blocos.map((bloco, index) => (
+                        bloco.tamanho === 'grande' ?
+                            <Link to={`/anotacoes/${bloco.id_anotacao}`}>
+                                <BlocoGrande key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} id={bloco.id_anotacao} />
+                            </Link> : bloco.tamanho === 'medio' ?
+                                <Link to={`/anotacoes/${bloco.id_anotacao}`}>
+                                    <BlocoMedio key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} id={bloco.id_anotacao} />
+                                </Link> :
+                                <Link to={`/anotacoes/${bloco.id_anotacao}`}>
+                                    <BlocoPequeno key={index} bloco={bloco} titulo={bloco.titulo} cor={bloco.cor} id={bloco.id_anotacao} />
+                                </Link>
+                    ))}
+                </Masonry>
+            </div>
+        </>
+
+
+
     )
 }
 
