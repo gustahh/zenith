@@ -5,7 +5,7 @@ function Button(props) {
     <>
       <button type={props.type} className={`${props.className}`} onClick={props.click}>
         {props.child} 
-        <span className='hidden sm:block pl-1'>{props.text}</span>
+        <span className='pl-1'>{props.text}</span>
       </button>
     </>
   )
