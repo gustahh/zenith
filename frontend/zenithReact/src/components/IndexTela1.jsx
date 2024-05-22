@@ -8,7 +8,7 @@ function IndexTela1() {
         <div className='w-full h-[90%] bg-[#F6F4EB] flex'>
             <div className='w-full text-center pt-32'>
                 <h1 className='text-6xl font-bold'>Organize a sua vida.</h1>
-                <h3 className='text-xl font-bold pt-5'>Organize seus pensamentos, sentimentos, rotina e
+                <h3 className='text-xl font-bold pt-5'>Organize seus pensamentos, sentimentos e
                     estipule as suas metas.
                 </h3>
                 

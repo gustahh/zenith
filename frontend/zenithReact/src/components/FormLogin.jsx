@@ -48,7 +48,7 @@ function FormLogin() {
       <form action="" onSubmit={handleSubmit}>
         <Label nome="E-mail" />
         <br />
-        <Input type="email" name="email" handle={handleInput}></Input>
+        <Input type="email" name="email" handle={handleInput} placeholder="Digite seu e-mail"></Input>
         {
           errors.email &&
           <span className="text-red-500 float-left text-sm">{errors.email}</span> &&
@@ -56,7 +56,7 @@ function FormLogin() {
         }
         <br />
         <Label nome="Senha" />
-        <Input type="password" name="senha" handle={handleInput}></Input>
+        <Input type="password" name="senha" handle={handleInput} placeholder="Senha"></Input>
         {
           errors.senha &&
           <span className="text-red-500 float-left text-sm">{errors.senha}</span> &&

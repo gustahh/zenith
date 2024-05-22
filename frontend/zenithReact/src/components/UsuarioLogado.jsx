@@ -31,29 +31,29 @@ function UsuarioLogado() {
     );
   };
   return (
-    <div className='w-full h-16 p-3 flex items-center justify-center 
+    <div className='h-auto sm:w-full h-16 p-3 flex items-start justify-center 
           font-bold container mx-auto'>
-      <div className='w-full h-full flex items-center justify-between'>
-        <div className='w-full flex items-center justify-start'>
-          <div className='w-full h-full flex items-center'>
-            <div className='w-12 h-12 rounded-full float-left overflow-hidden'>
+      <div className='justify-start items-start sm:w-full h-full flex items-center justify-between'>
+        <div className='sm:w-full flex items-center justify-start'>
+          <div className='sm:w-full h-full flex items-center'>
+            <div className='h-10 w-10 sm:w-8 h-8 rounded-full float-left overflow-hidden'>
               <Imagem foto={foto}/>
               
             </div>
 
-            <span className='text-xl font-bold text-cinzaTexto pl-3 mr-3 float-left'>
+            <span className='hidden sm:block text-xl font-bold text-cinzaTexto pl-3 mr-3 float-left'>
               {nome}
             </span>
           </div>
 
-          <div className='flex items-center justify-start'>
-            <button className='ml-20 float-right'>
+          <div className='flex-row sm:flex items-center justify-start'>
+            <button className='sm:ml-20 float-right'>
               <Configuracoes className="" />
             </button>
 
-            <button className='ml-3 float-right flex items-center' onClick={BotaoLogout}>
+            <button className='flex-col sm:float-right flex items-center' onClick={BotaoLogout}>
               <Logout className="pr-2" />
-              <span className='text-red-500'>Sair</span>
+              <span className='hidden sm:block text-red-500'>Sair</span>
             </button>
           </div>
 

@@ -15,7 +15,8 @@ function IndexTela4() {
             <div className='p-5'>
               <span className='pb-2 font-bold text-6xl text-justify'>Estipule suas metas</span>
               <div className='w-3/4 pt-2'>
-                <p className='text-xl'>Crie metas distintas para área da vida de sua escolha. Nosso enfoque com base em objetivos entrega a você uma finalidade clara a ser alcançada.</p>
+                <p className='text-xl'>Crie metas distintas para área da vida de sua escolha. Foque no 
+                que realmente importa e trabalhe no seu objetivo!</p>
               </div>
             </div>
 

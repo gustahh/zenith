@@ -15,26 +15,26 @@ function BarraLateral() {
   const location = useLocation();
   
   return (
-    <div className='hidden sm:block w-1/4 h-screen bg-ice dark:bg-cinza shadow-lg float-left flex flex-col'>
+    <div className='block sm:hidden w-1/6 h-screen bg-ice dark:bg-cinza shadow-lg float-left flex flex-col justify-center'>
       <div className='flex-1'>
-        <ul className='pt-10 pl-4'>
+        <ul className='pt-10'>
           <Link to="/home">
-            <Li nome="Pagina Inicial" cor={location.pathname === "/home" ? "verde" : "cinzaTexto"}
+            <Li cor={location.pathname === "/home" ? "verde" : "cinzaTexto"}
               children={location.pathname === "/home" ? <HouseVerde /> : <HouseCinza />} />
           </Link>
           <br />
           <Link to="/anotacoes" >
-            <Li nome="Anotações" cor={location.pathname === "/anotacoes" ? "verde" : "cinzaTexto"}
+            <Li cor={location.pathname === "/anotacoes" ? "verde" : "cinzaTexto"}
               children={location.pathname === "/anotacoes" ? <BookVerde /> : <BookCinza />} />
           </Link>
           <br />
           <Link to="/relatorio" >
-            <Li nome="Relatório" cor={location.pathname === "/relatorio" ? "verde" : "cinzaTexto"}
+            <Li cor={location.pathname === "/relatorio" ? "verde" : "cinzaTexto"}
               children={location.pathname === "/relatorio" ? <FaceSmileVerde /> : <FaceSmileCinza />} />
           </Link>
           <br />
           <Link to="/metas" >
-            <Li nome="Metas" cor={location.pathname === "/metas" ? "verde" : "cinzaTexto"}
+            <Li cor={location.pathname === "/metas" ? "verde" : "cinzaTexto"}
               children={location.pathname === "/metas" ? <TargetVerde /> : <TargetCinza />} />
           </Link>
         </ul>

@@ -54,15 +54,15 @@ function FormRegistro() {
     <>
       <form onSubmit={handleSubmit}>
         <Label nome="Nome" id="nome" />
-        <Input type="text" name="nome" handle={handleInput} />
+        <Input type="text" name="nome" handle={handleInput} placeholder="Nome"/>
         {
         errors.nome && 
         <span className="text-red-500 float-left text-sm">{errors.nome}</span> && 
         document.querySelector('[name="nome"]').classList.add('border-2', 'border-solid', '!border-red-500')
         }
         <br />
-        <Label nome="Email" id="email"/>
-        <Input type="email" name="email" handle={handleInput} />
+        <Label nome="Email" id="email" />
+        <Input type="email" name="email" handle={handleInput} placeholder="Seu melhor e-mail" />
         {
         errors.email && 
         <span className="text-red-500 float-left text-sm">{errors.email}</span> && 
@@ -70,7 +70,7 @@ function FormRegistro() {
         }
         <br />
         <Label nome="Senha" id="senha" />
-        <Input type="password" name="senha" handle={handleInput} />
+        <Input type="password" name="senha" handle={handleInput} placeholder="Digite sua senha"/>
         {
         errors.senha && 
         <span className="text-red-500 float-left text-sm">{errors.senha}</span> && 

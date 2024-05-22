@@ -28,7 +28,7 @@ const CriarAnotacao = () => {
 
     return (
         <div>
-            <Button className='w-auto h-auto p-2 bg-verde rounded-md text-white
+            <Button className='rounded-full sm:w-auto h-auto p-2 bg-verde rounded-md text-white
       font-bold text-sm flex items-center justify-content-start' text='Adicionar' child={<Adicionar />} click={criarNota} />
         </div>
     );

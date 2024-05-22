@@ -49,7 +49,7 @@ function DeletarMeta() {
                         </div>
                         <div className='w-full flex justify-between items-center'>
                             <Link to='/metas'>
-                                <Button className='w-1/2 h-12 bg-transparent p-5 text-white font-bold rounded-md flex items-center hover:bg-white/20'
+                                <Button className='w-1/2 h-12 bg-transparent p-5 text-cinzaTexto dark:text-white font-bold rounded-md flex items-center hover:bg-white/20'
                                 type="submit" text="Cancelar" />
                             </Link>
                            

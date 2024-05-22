@@ -4,15 +4,16 @@ import Relatorio from "../img/relatorio.png"
 function IndexTela3() {
   return (
     <>
-      <div className='w-full h-[90%] flex justify-end items-center'>
-        <div className='w-full flex justify-start pt-8'>
+      <div className='w-full h-[90%] bg-[#F6F4EB] flex justify-end items-center'>
+        <div className='w-full flex justify-start pt-8 pb-8'>
 
           <div className='w-full flex items-center'>
             <div className='p-5'>
               <span className='pb-2 font-bold text-6xl text-justify'>Monitoramento de humor </span>
               <div className='w-3/4'>
-                <p className='text-xl'>Com o Zenith você pode registrar seus sentimentos diariamente de maneira simples e com a nossa tecnologia será analisada suas anotações e criado gráficos semanais e mensais que fornecerão insights valiosos sobre suas tendências emocionais. Os gráficos te ajudarão a identificar os humores tidos durante esse período, permitindo uma compreensão mais profunda de seu
-                  bem-estar emocional</p>
+                <p className='text-xl'>Acompanhe seu humor com os relatórios. Eles são gerados de 
+                maneira semanal e mensal e exibem informações valiosas sobre como você anda se 
+                sentindo.</p>
               </div>
 
             </div>
