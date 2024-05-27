@@ -5,6 +5,7 @@ import Registrar from '../pages/Registro';
 import Home from '../pages/Home';
 import Anotacoes from '../pages/Anotacoes';
 import SeusRelatorios from '../pages/SeusRelatorios';
+import Relatorio from '../pages/Relatorio';
 import Metas from '../pages/Metas';
 import NovaAnotacao from '../pages/NovaAnotacao';
 import DeletarAnotacao from '../pages/DeletarAnotacao';
@@ -33,6 +34,7 @@ function AppRoutes() {
       <Route path='/anotacoes/:id' element={token ? <> <NovaAnotacao /> <View> {prevLocation.pathname === "/anotacoes" ? <Anotacoes /> : <Home />}</View></> : <Navigate to="/login" />} />
       <Route path='/anotacoes/deletar/:id' element={token ? <> <DeletarAnotacao /> <View> {prevLocation.pathname === "/anotacoes" ? <Anotacoes /> : <Home />}</View></> : <Navigate to="/login" />} />
       <Route path='/relatorio' element={token ? <View><SeusRelatorios /></View> : <Navigate to="/login" />} />
+      <Route path='/relatorio/:id' element={token ? <View><Relatorio /></View> : <Navigate to="/login" />} />
       <Route path='/metas' element={token ? <View><Metas /></View> : <Navigate to="/login" />} />
       <Route path='/metas/criar' element={token ? <><NovaMeta /><View><Metas /></View></> : <Navigate to="/login" />} />
       <Route path='/metas/editar/:id' element={token ? <><EditarMeta /><View><Metas /></View></> : <Navigate to="/login" />} />

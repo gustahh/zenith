@@ -164,3 +164,39 @@ exports.retornaRelatorioSemanalUsuario = async (req, res) => {
         }
     });
 }
+
+exports.retornaRelatorioSemanal = async (req, res) => {
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(" ")[1]
+    const secret = process.env.SECRET
+    // Decodificando o token
+    jwt.verify(token, secret, (err, decoded) => {
+        if (err) {
+            // Ocorreu um erro ao decodificar o token
+            console.error('Erro ao decodificar o token:', err);
+        } else {
+            // Token decodificado com sucesso
+            const idLogado = decoded.id;
+            id = req.params.id;
+
+            // verificar se usuario existe
+            connection.execute(
+                'SELECT * FROM relatorio_semanal WHERE id = ? AND id_usuario = ?',
+                [id, idLogado],
+                function (err, results) {
+                    if (err) {
+                        // Se ocorrer um erro durante a execução da consulta
+                        console.error('Erro ao executar a consulta:', err);
+                    } else {
+                        if (results.length < 1) {
+                            // Se a consulta retornou resultados
+                            return res.status(404).json({ msg: 'Este usuário ainda não possui relatórios' })
+                        } else {
+                            return res.status(202).json({ results })
+                        }
+                    }
+                }
+            );
+        }
+    });
+}

@@ -33,7 +33,7 @@ function SeusRelatorios() {
   let semanas = {
     1: "Primeira semana de ",
     2: "Segunda semana de ",
-    3: "Terceira semana de",
+    3: "Terceira semana de ",
     4: "Quarta semana de "
   }
   return (
@@ -48,7 +48,7 @@ function SeusRelatorios() {
       <div>
       {relatorios.length > 0 ? (
         relatorios.map((relatorio, index) => (
-          <Link to={``} key={index}>
+          <Link to={`/relatorio/${relatorio.id}`} key={index}>
             <div className='w-full h-auto bg-laranja flex justify-between rounded-md p-5'>
               <div className='w-40'>
                 <span className='font-bold text-3xl opacity-70'>{semanas[relatorio.semanaMes]}</span>
