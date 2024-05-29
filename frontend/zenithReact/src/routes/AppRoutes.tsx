@@ -12,8 +12,11 @@ import DeletarAnotacao from '../pages/DeletarAnotacao';
 import NovaMeta from '../pages/NovaMeta';
 import EditarMeta from '../pages/EditarMeta';
 import DeletarMeta from '../pages/DeletarMeta';
+import Configuracoes from '../pages/Configuracoes';
+import SuaConta from '../pages/SuaConta';
 import PaginaNaoEncontrada from '../pages/PaginaNaoEncontrada';
 import View from '../components/View';
+import ViewConfiguracao from '../components/ViewConfiguracao'
 import usePreviousLocation from './hook';
 
 function AppRoutes() {
@@ -39,6 +42,9 @@ function AppRoutes() {
       <Route path='/metas/criar' element={token ? <><NovaMeta /><View><Metas /></View></> : <Navigate to="/login" />} />
       <Route path='/metas/editar/:id' element={token ? <><EditarMeta /><View><Metas /></View></> : <Navigate to="/login" />} />
       <Route path='/metas/deletar/:id' element={token ? <><DeletarMeta /><View><Metas /></View></> : <Navigate to="/login" />} />
+      <Route path='/config' element={token ? <View><Configuracoes /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
+      <Route path='/config/suaconta' element={token ? <View><Configuracoes /><SuaConta /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
+
       <Route path='*' element={<PaginaNaoEncontrada />} />
     </Routes>
   )
