@@ -49,7 +49,7 @@ function SeusRelatorios() {
       {relatorios.length > 0 ? (
         relatorios.map((relatorio, index) => (
           <Link to={`/relatorio/${relatorio.id}`} key={index}>
-            <div className='w-full h-auto bg-laranja flex justify-between rounded-md p-5'>
+            <div className='w-full h-auto bg-laranja flex justify-between rounded-md p-5 mb-5'>
               <div className='w-40'>
                 <span className='font-bold text-3xl opacity-70'>{semanas[relatorio.semanaMes]}</span>
                 <span className='font-bold text-3xl opacity-70'>{meses[relatorio.mes]}</span>
