@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Configuracoes from '../icons/Configuracoes';
+import { Link, useLocation } from 'react-router-dom'
 import Logout from '../icons/Logout';
 import axios from 'axios';
 import User from '../img/user.png';
@@ -37,8 +38,8 @@ function UsuarioLogado() {
         <div className='w-full flex flex-col sm:flex-row items-center justify-start wrap'>
           <div className='pb-2 sm:pb-0 w-full h-full flex items-center'>
             <div className='w-8 h-8 rounded-full float-left overflow-hidden'>
-              <Imagem foto={foto}/>
-              
+              <Imagem foto={foto} />
+
             </div>
 
             <span className='hidden sm:block text-xl font-bold text-cinzaTexto pl-3 mr-3 float-left'>
@@ -47,9 +48,11 @@ function UsuarioLogado() {
           </div>
 
           <div className='flex items-center justify-start flex-col sm:flex-row pb-2 sm:pb-0 '>
-            <button className='sm:ml-20 float-right'>
-              <Configuracoes className="" />
-            </button>
+            <Link to='/config'>
+              <button className='sm:ml-20 float-right'>
+                <Configuracoes className="" />
+              </button>
+            </Link>
 
             <button className='float-right flex flex-col sm:flex-row pb-2 sm:pb-0 items-center' onClick={BotaoLogout}>
               <Logout className="pr-2" />
