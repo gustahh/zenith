@@ -2,6 +2,7 @@ const connection = require('../database/db');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cron = require('node-cron');
+const { setJwtToken } = require('../modules/token'); // Importa a função para definir o token
 
 exports.registrarUsuario = async (req, res) => {
     const { nome, email, dataNasc, genero, senha } = req.body
@@ -110,7 +111,9 @@ exports.loginUsuario = async (req, res) => {
                             const token = jwt.sign({
                                 id: result.id
                             }, secret)
+
                             res.status(200).json({ msg: 'Autenticação realizada com sucesso', token })
+                            setJwtToken(token);
 
                             // Executa o código todos os domingos
                             cron.schedule('* * * * 0', () => {
