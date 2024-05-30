@@ -180,6 +180,44 @@ exports.nota = async (req, res) => {
     });
 };
 
+//obtem notas de uma semana especifica de um mês
+exports.notaSemana = async (req, res) => {
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(" ")[1]
+    const secret = process.env.SECRET
+    // Decodificando o token
+    jwt.verify(token, secret, (err, decoded) => {
+        if (err) {
+            // Ocorreu um erro ao decodificar o token
+            console.error('Erro ao decodificar o token:', err);
+        } else {
+            // Token decodificado com sucesso
+            const idLogado = decoded.id;
+            const mes = req.params.mes;
+            const semanaMes = req.params.semanaMes;
+
+            // verificar se usuario existe
+            connection.execute(
+                'SELECT * FROM anotacoes WHERE id_usuario = ? AND mes = ? AND semana_do_mes = ?',
+                [idLogado, mes, semanaMes],
+                function (err, results) {
+                    if (err) {
+                        // Se ocorrer um erro durante a execução da consulta
+                        console.error('Erro ao executar a consulta:', err);
+                    } else {
+                        if (results.length < 1) {
+                            // Se a consulta retornou resultados
+                            return res.status(404).json({ msg: 'não existem notas para determinada semana e mês' })
+                        } else {
+                            return res.status(202).json({ results })
+                        }
+                    }
+                }
+            );
+        }
+    });
+};
+
 //obtem ultima anotacao especifica
 exports.ultimaNota = async (req, res) => {
     const authHeader = req.headers['authorization']
@@ -377,3 +415,4 @@ exports.editarHumor = async (req, res) => {
         }
     })
 };
+

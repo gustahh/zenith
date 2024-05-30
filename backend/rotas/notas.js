@@ -4,6 +4,7 @@ const notasController = require('../controllers/notasController');
 const checkToken = require('../middleware/checkToken')
 
 router.get('/:id', checkToken, notasController.nota); //Obtem nota especifica
+router.get('/:mes/:semanaMes', checkToken, notasController.notaSemana); //Obtem nota especifica
 router.get('/bloco/:id', checkToken, notasController.retornaBlocoAnotacao); //Obtem bloco nota especifica
 router.get('/', checkToken, notasController.obterNotas); //Obtem notas de usuario logado
 router.get('/nota/ultima/', checkToken, notasController.ultimaNota); //Obtem ulima nota de usuario logado
