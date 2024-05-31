@@ -8,11 +8,16 @@ function SeusRelatorios() {
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
   const [relatorios, setRelatorios] = useState([]);
+  const [cores, setCores] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:3000/relatorios/relatorioSemanal/ver')
       .then((res) => {
         setRelatorios(res.data.results);
+      });
+    axios.get('http://localhost:3000/cores/cor/aleatorio')
+      .then((res) => {
+        setCor(res.data.results[0]);
       });
   }, []);
 
@@ -39,32 +44,32 @@ function SeusRelatorios() {
   return (
     <>
       <div className='text-xl font-bold text-cinzaTexto pb-3'>Seus relatórios</div>
-      {relatorios.length > 1 ? ( 
+      {relatorios.length > 1 ? (
         <div className='text-xl text-cinzaTexto pb-3'>Seu relatórios semanais</div>
-      ) : 
+      ) :
         <div className='text-xl text-cinzaTexto pb-3'>Seu relatório semanal</div>
       }
-      
+
       <div>
-      {relatorios.length > 0 ? (
-        relatorios.map((relatorio, index) => (
-          <Link to={`/relatorio/${relatorio.id}`} key={index}>
-            <div className='w-full h-auto bg-laranja flex justify-between rounded-md p-5 mb-5'>
-              <div className='w-40'>
-                <span className='font-bold text-3xl opacity-70'>{semanas[relatorio.semanaMes]}</span>
-                <span className='font-bold text-3xl opacity-70'>{meses[relatorio.mes]}</span>
-              </div>
-              <div className='flex flex-col items-center justify-center'>
-                <FaceGrande className="opacity-70" />
-                <span className='font-bold text-xl opacity-70'>Clique aqui para ver</span>
-              </div>
-            </div>
-          </Link>
+        {relatorios.length > 0 ? (
+          relatorios.map((relatorio, index) => (
+              <Link to={`/relatorio/${relatorio.id}`} key={index}>
+                <div className={`w-full h-auto bg-laranja flex justify-between rounded-md p-5 mb-5`}>
+                  <div className='w-40'>
+                    <span className='font-bold text-3xl opacity-70'>{semanas[relatorio.semanaMes]}</span>
+                    <span className='font-bold text-3xl opacity-70'>{meses[relatorio.mes]}</span>
+                  </div>
+                  <div className='flex flex-col items-center justify-center'>
+                    <FaceGrande className="opacity-70" />
+                    <span className='font-bold text-xl opacity-70'>Clique aqui para ver</span>
+                  </div>
+                </div>
+              </Link>
         ))
-      ) : (
+        ) : (
         <p>Você ainda não possui relatórios, um relatório fresquinho sairá do forno logo logo!</p>
       )}
-    </div>
+      </div>
     </>
 
   )

@@ -69,7 +69,7 @@ function Relatorio() {
                 {anotacoes.length > 0 ? (
                     <table>
                         {anotacoes.map((anotacao) => (
-                            <tr key={anotacao.id}>
+                            <tr key={anotacao.id} className='border-y-2 border-cinzaTexto/20'>
                                 <td className='text-md text-cinzaTexto py-1 pr-3 justify-self-start'>{diaDaSemana[anotacao.dia_da_semana]}</td>
                                 <td className='text-md text-cinzaTexto py-1 px-3 justify-self-start'>{anotacao.emocao}</td>
                             </tr>

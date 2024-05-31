@@ -60,3 +60,18 @@ exports.retornaCor = (req, res) => {
         }
     );
 }
+
+exports.retornaCorAleatoria = (req, res) => {
+    //adiciona frase
+    connection.execute(
+        'select id, nome from cores ORDER BY RAND()',
+        function (err, results) {
+            if (err) {
+                // Se ocorrer um erro durante a execução da consulta
+                console.error('Erro ao executar a consulta:', err);
+            } else {
+                return res.status(202).json({ results })
+            }
+        }
+    );
+}
