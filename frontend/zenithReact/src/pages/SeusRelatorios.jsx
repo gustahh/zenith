@@ -17,7 +17,7 @@ function SeusRelatorios() {
       });
     axios.get('http://localhost:3000/cores/cor/aleatorio')
       .then((res) => {
-        setCor(res.data.results[0]);
+        setCores(res.data.results);
       });
   }, []);
 
@@ -54,7 +54,7 @@ function SeusRelatorios() {
         {relatorios.length > 0 ? (
           relatorios.map((relatorio, index) => (
               <Link to={`/relatorio/${relatorio.id}`} key={index}>
-                <div className={`w-full h-auto bg-laranja flex justify-between rounded-md p-5 mb-5`}>
+                <div className={`w-full h-auto bg-${cores[index].nome} flex justify-between rounded-md p-5 mb-5`}>
                   <div className='w-40'>
                     <span className='font-bold text-3xl opacity-70'>{semanas[relatorio.semanaMes]}</span>
                     <span className='font-bold text-3xl opacity-70'>{meses[relatorio.mes]}</span>
