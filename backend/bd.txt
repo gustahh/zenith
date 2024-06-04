@@ -96,3 +96,9 @@ CREATE TABLE frases (
     texto varchar(255),
     autor varchar(255)
 )
+
+//CRIA TABELA REFLEXAO
+CREATE TABLE reflexao (
+	id int PRIMARY KEY AUTO_INCREMENT,
+    frase varchar(200)
+)

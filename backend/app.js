@@ -22,6 +22,7 @@ const notasRouter = require('./rotas/notas');
 const metasRouter = require('./rotas/metas');
 const relatorioRouter = require('./rotas/relatorio');
 const blocoRouter = require('./rotas/bloco');
+const reflexaoRouter = require('./rotas/reflexao');
 
 //acessa as rotas
 app.use('/', publicaRouter);
@@ -33,6 +34,7 @@ app.use('/notas', notasRouter);
 app.use('/metas', metasRouter);
 app.use('/relatorios', relatorioRouter);
 app.use('/blocos', blocoRouter);
+app.use('/reflexao', reflexaoRouter);
 
 //Gera a frase do dia
 recuperarFraseDoDia();
