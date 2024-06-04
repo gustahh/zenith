@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Voltar from '../icons/Voltar';
+import GraficoHumorSemanal from '../pages/GraficoHumorSemanal';
 
 function Relatorio() {
     const { id } = useParams();
@@ -54,6 +55,10 @@ function Relatorio() {
         6: "Sexta-feira",
         7: "Sábado",
     }
+    const dadosHumor = anotacoes.map(anotacao => ({
+        dia: diaDaSemana[anotacao.dia_da_semana],
+        humor: anotacao.emocao,
+    }));
     return (
         <>
             <div className='w-full h-auto flex items-center justify-start pb-2'>
@@ -79,9 +84,13 @@ function Relatorio() {
                     <p className='text-md text-cinzaTexto py-1 px-3 justify-self-start'>Este relatório não possui dados.</p>
                 )}
             </div>
-            <div>
+            <div className='mb-2 mt-2'>
                 <span className='text-xl font-bold text-cinzaTexto py-1 justify-self-start'>Nesta semana, você se sentiu {relatorios.emocao_pred} mais vezes.</span>
             </div>
+            <div className='w-full h-auto bg-azulGelo rounded-md p-2 flex items-center'>
+                <GraficoHumorSemanal dados={dadosHumor} />
+            </div>
+
         </>
     )
 }
