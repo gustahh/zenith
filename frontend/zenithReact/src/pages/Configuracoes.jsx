@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 function Configuracoes() {
     return (
         <>
-            <div className='w-[50%] sm:w-[50%] h-screen bg-red-500 dark:bg-cinzaEscuro p-5 float-left'>
+            <div className='w-[50%] sm:w-[50%] h-screen bg-branco-500 dark:bg-cinzaEscuro p-5 float-left'>
                 <input type="text"  className='w-full h-8 rounded-md border-2 border-cinzaTexto/20 bg-transparent
                 p-2 placeholder:text-cinzaTexto/20' 
                 placeholder='Pesquisar'/>
