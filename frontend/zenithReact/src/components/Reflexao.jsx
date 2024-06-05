@@ -18,9 +18,12 @@ function FraseDoDia() {
             });
     }, []);
     return (
-        <div className={`w-full h-auto bg-${cor} rounded-md p-5 flex flex-wrap`}>
+        <div className={`w-full h-auto bg-${cor} rounded-md p-5 mb-2 flex flex-wrap`}>
             <div className='flex flex-col'>
-                <span className='font-bold text-2xl opacity-70'>
+            <span className='font-bold text-xl opacity-70'>
+                    Reflexão:
+                </span>
+                <span className='font-bold text-4xl opacity-70'>
                     {frase}
                 </span>
             </div>
