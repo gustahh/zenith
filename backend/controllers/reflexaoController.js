@@ -26,7 +26,7 @@ exports.criarReflexao = (req, res) => {
 
 exports.reflexao = (req, res) => {
     connection.execute(
-        'select frase ORDER BY RANDOM() LIMIT 1',
+        'SELECT frase FROM reflexao ORDER BY RAND() LIMIT 1',
         function (err, results) {
             if (err) {
                 // Se ocorrer um erro durante a execução da consulta
