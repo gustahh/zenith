@@ -11,6 +11,8 @@ const CriarAnotacao = () => {
         try {
             console.log("Tentando criar nota...");
             // Cria a nota
+            const token = localStorage.getItem('token');
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
             await axios.post('http://localhost:3000/notas/criar');
 
             // Pega o último ID (nota criada)

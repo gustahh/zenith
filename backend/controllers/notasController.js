@@ -136,6 +136,7 @@ exports.retornaBlocoAnotacao = (req, res) => {
             if (err) {
                 // Se ocorrer um erro durante a execução da consulta
                 console.error('Erro ao executar a consulta:', err);
+                return res.status(404).json({ msg: "Erro ao execultar consulta." });
             } else {
                 return res.status(202).json({ results })
             }
