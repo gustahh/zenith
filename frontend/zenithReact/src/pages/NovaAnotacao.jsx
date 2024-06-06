@@ -39,7 +39,7 @@ function NovaAnotacao() {
       });
 
     // Pega informações do bloco da nota
-    axios.get(`http://localhost:3000/notas/bloco/${id}`)
+    axios.get(`http://localhost:3000/blocos/bloco/${id}`)
       .then((res) => {
         setCor(res.data.results[0].id_cor);
         setTamanho(res.data.results[0].tamanho);

@@ -127,3 +127,23 @@ exports.mudarTamanho = (req, res) => {
         }
     );
 }
+
+//retorna o bloco de uma nota
+exports.retornaBlocoAnotacao = (req, res) => {
+
+    const id = req.params.id;
+
+    //adiciona frase
+    connection.execute(
+        'SELECT id_anotacao, tamanho, id_cor FROM bloco_anotacao WHERE id_anotacao = ?',
+        [id],
+        function (err, results) {
+            if (err) {
+                // Se ocorrer um erro durante a execução da consulta
+                console.error('Erro ao executar a consulta:', err);
+            } else {
+                return res.status(202).json({ results })
+            }
+        }
+    );
+}
