@@ -18,6 +18,7 @@ import PaginaNaoEncontrada from '../pages/PaginaNaoEncontrada';
 import View from '../components/View';
 import ViewConfiguracao from '../components/ViewConfiguracao'
 import usePreviousLocation from './hook';
+import Tema from '../pages/Tema';
 
 function AppRoutes() {
   const prevLocation = usePreviousLocation();
@@ -44,6 +45,7 @@ function AppRoutes() {
       <Route path='/metas/deletar/:id' element={token ? <><DeletarMeta /><View><Metas /></View></> : <Navigate to="/login" />} />
       <Route path='/config' element={token ? <View><Configuracoes /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
       <Route path='/config/suaconta' element={token ? <View><Configuracoes /><SuaConta /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
+      <Route path='/config/tema' element={token ? <View><Configuracoes /><Tema /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
 
       <Route path='*' element={<PaginaNaoEncontrada />} />
     </Routes>

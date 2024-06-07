@@ -22,9 +22,9 @@ function Configuracoes() {
                         </li>
                         
                     </Link>
-                    <Link to='/config/suaconta'>
+                    <Link to='/config/Tema'>
                         <li className='border-y-2 border-cinzaTexto/10 p-4'>
-                            <span className='text-xl font-bold text-cinzaTexto pb-3'>Acessibilidade</span>
+                            <span className='text-xl font-bold text-cinzaTexto pb-3'>Tema</span>
                         </li>
                         
                     </Link>
@@ -34,6 +34,7 @@ function Configuracoes() {
                         </li>
                         
                     </Link>
+                    
                 </ul>
             </div>
         </>
