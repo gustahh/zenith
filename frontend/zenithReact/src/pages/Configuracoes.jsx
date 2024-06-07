@@ -16,7 +16,7 @@ function Configuracoes() {
                         </li>
 
                     </Link>
-                    <Link to='/config/PrivacidadeConta'>
+                    <Link to='/config/privacidadeconta'>
                         <li className='border-y-2 border-cinzaTexto/10 p-4'>
                             <span className='text-xl font-bold text-cinzaTexto pb-3'>Privacidade e Segurança</span>
                         </li>
