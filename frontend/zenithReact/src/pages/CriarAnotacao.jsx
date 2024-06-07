@@ -16,7 +16,7 @@ const CriarAnotacao = () => {
             await axios.post('http://localhost:3000/notas/criar');
 
             // Pega o último ID (nota criada)
-            const res = await axios.get('http://localhost:3000/notas/nota/ultima');
+            const res = await axios.get('http://localhost:3000/notas/nota/ultima/ultimaNota');
 
             const ultimoId = res.data.results[0].ultimaAnotacao;
             console.log("Último ID da anotação:", ultimoId);
