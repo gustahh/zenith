@@ -11,9 +11,28 @@ function Configuracoes() {
                 placeholder='Pesquisar'/>
                 <ul>
                     <Link to='/config/suaconta'>
-                        <li className='border-y-2 border-cinzaTexto/10 p-2'>
+                        <li className='border-y-2 border-cinzaTexto/10 p-4'>
                             <span className='text-xl font-bold text-cinzaTexto pb-3'>Sua conta</span>
                         </li>
+
+                    </Link>
+                    <Link to='/config/PrivacidadeConta'>
+                        <li className='border-y-2 border-cinzaTexto/10 p-4'>
+                            <span className='text-xl font-bold text-cinzaTexto pb-3'>Privacidade e Segurança</span>
+                        </li>
+                        
+                    </Link>
+                    <Link to='/config/suaconta'>
+                        <li className='border-y-2 border-cinzaTexto/10 p-4'>
+                            <span className='text-xl font-bold text-cinzaTexto pb-3'>Acessibilidade</span>
+                        </li>
+                        
+                    </Link>
+                    <Link to='/config/suaconta'>
+                        <li className='border-y-2 border-cinzaTexto/10 p-4'>
+                            <span className='text-xl font-bold text-cinzaTexto pb-3'>Notificações</span>
+                        </li>
+                        
                     </Link>
                 </ul>
             </div>
