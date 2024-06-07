@@ -12,13 +12,17 @@ function Relatorio() {
 
     const [relatorios, setRelatorios] = useState([]);
     const [anotacoes, setAnotacoes] = useState([]);
+    const [cores, setCores] = useState([]);
 
     useEffect(() => {
         axios.get(`http://localhost:3000/relatorios/relatorioSemanal/${id}`)
             .then((res) => {
                 setRelatorios(res.data.results[0]);
             });
-
+        axios.get('http://localhost:3000/cores/cor/aleatorio')
+            .then((res) => {
+                setCores(res.data.results[0].nome);
+            });
     }, []);
     axios.get(`http://localhost:3000/notas/${relatorios.mes}/${relatorios.semanaMes}`)
         .then((res) => {
@@ -87,7 +91,7 @@ function Relatorio() {
             <div className='mb-2 mt-2'>
                 <span className='text-xl font-bold text-cinzaTexto py-1 justify-self-start'>Nesta semana, você se sentiu {relatorios.emocao_pred} mais vezes.</span>
             </div>
-            <div className='w-full h-auto bg-azulGelo rounded-md p-2 flex items-center'>
+            <div className={`w-full h-auto bg-${cores} rounded-md p-2 flex items-center`}>
                 <GraficoHumorSemanal dados={dadosHumor} />
             </div>
 
