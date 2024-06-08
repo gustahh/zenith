@@ -22,9 +22,9 @@ function Configuracoes() {
                         </li>
                         
                     </Link>
-                    <Link to='/config/Tema'>
+                    <Link to='/config/aparencia'>
                         <li className='border-y-2 border-cinzaTexto/10 p-4'>
-                            <span className='text-xl font-bold text-cinzaTexto pb-3'>Tema</span>
+                            <span className='text-xl font-bold text-cinzaTexto pb-3'>Aparência</span>
                         </li>
                         
                     </Link>
