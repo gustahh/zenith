@@ -3,7 +3,7 @@ const cron = require('node-cron');
 
 function recuperarFraseDoDia() {
     //recupera frase a cada 24h
-    cron.schedule('02 09 * * *', () => {
+    cron.schedule('00 21 * * *', () => {
         connection.execute(
             "SELECT F.texto, F.autor, C.nome AS 'cor' FROM frases F, cores C ORDER BY RAND() LIMIT 1;",
             function (err, results) {

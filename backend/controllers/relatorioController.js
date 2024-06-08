@@ -82,7 +82,7 @@ exports.criarRelatorioSemanal = async (req, res) => {
     Promise.all([retornarAnotacoes(), emocaoPred()])
         .then(() => {
             Object.keys(resultados).forEach(propriedade => {
-                console.log(`${propriedade}:`, resultados[propriedade]);
+                //console.log(`${propriedade}:`, resultados[propriedade]);
             });
 
             const authHeader = req.headers['authorization']
@@ -96,7 +96,6 @@ exports.criarRelatorioSemanal = async (req, res) => {
                 } else {
                     // Token decodificado com sucesso
                     const idLogado = decoded.id;
-
 
                     //cria novo relatorio
                     connection.execute(

@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser');
 const express = require('express');
 const cors = require('cors');
 const recuperarFraseDoDia = require('./modules/fraseDoDia');
+const RecuperarToken = require('./modules/recuperarToken');
 const CriarRelatorio = require('./modules/relatorioSemanal');
 
 const app = express();
@@ -38,7 +39,6 @@ app.use('/reflexao', reflexaoRouter);
 
 //Gera a frase do dia
 recuperarFraseDoDia();
-CriarRelatorio();
 
 app.listen(3000)
 

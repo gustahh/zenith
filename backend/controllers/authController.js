@@ -2,7 +2,7 @@ const connection = require('../database/db');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cron = require('node-cron');
-const { setJwtToken } = require('../modules/token'); // Importa a função para definir o token
+const axios = require('axios');
 
 exports.registrarUsuario = async (req, res) => {
     const { nome, email, dataNasc, genero, senha } = req.body
@@ -113,7 +113,15 @@ exports.loginUsuario = async (req, res) => {
                             }, secret)
 
                             res.status(200).json({ msg: 'Autenticação realizada com sucesso', token })
-                            setJwtToken(token);
+
+                            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+                            axios.get(`http://localhost:3000/relatorios/criar`)
+                                .then((res) => {
+                                    console.log('Relatório criado!');
+                                })
+                                .catch((error) => {
+                                    console.error('Erro ao criar relatório:', error);
+                                });
 
                             // Executa o código todos os domingos
                             cron.schedule('* * * * 0', () => {
