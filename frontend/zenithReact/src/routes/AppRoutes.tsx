@@ -20,6 +20,8 @@ import ViewConfiguracao from '../components/ViewConfiguracao'
 import usePreviousLocation from './hook';
 import Aparencia from '../pages/Aparencia';
 import PrivacidadeConta from '../pages/PrivacidadeConta';
+import ConfirmarSenha from '../pages/ConfirmarSenha';
+import Notificacoes from '../pages/Notificacoes';
 
 
 function AppRoutes() {
@@ -49,6 +51,8 @@ function AppRoutes() {
       <Route path='/config/suaconta' element={token ? <View><Configuracoes /><SuaConta /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
       <Route path='/config/aparencia' element={token ? <View><Configuracoes /><Aparencia /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
       <Route path='/config/PrivacidadeConta' element={token ? <View><Configuracoes /><PrivacidadeConta /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
+      <Route path='/config/ConfirmarSenha' element={token ? <View><Configuracoes /><ConfirmarSenha /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
+      <Route path='/config/Notificacoes' element={token ? <View><Configuracoes /><Notificacoes /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
 
 
       <Route path='*' element={<PaginaNaoEncontrada />} />
