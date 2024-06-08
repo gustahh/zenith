@@ -15,7 +15,7 @@ function SuaConta() {
 
            
                 <li className='border-y-2 border-cinzaTexto/10 p-4'>
-                    <span className='text-xl font-bold text-cinzaTexto pb-3'>Altere sua senha</span>
+                    <span className='text-xl font-bold text-cinzaTexto pb-3'>Altere seu email e sua senha</span>
                     <p>Redefina sua senha a qualquer momento </p>
                 </li>
 

@@ -16,6 +16,7 @@ function NovaAnotacao() {
   const [texto, setTexto] = useState('');
   const [emocao, setEmocao] = useState('');
   const [data, setData] = useState('');
+  const [nomeCor, setNomeCor] = useState('');
   const [i, setI] = useState(0);
   const [salvando, setSalvando] = useState('opacity-0');
   const { id } = useParams();
@@ -92,6 +93,30 @@ function NovaAnotacao() {
       });
   };
 
+  const handleClickCores = () => {
+    const tabIndex = event.target.getAttribute("tabindex");
+    const name = event.target.getAttribute("name");
+    console.log(tabIndex);
+     
+    setCorDePagina(name);
+
+    // Salva no banco de dados a nova cor após 2s
+    setTimeout(() => {
+      axios.put(`http://localhost:3000/blocos/editar/cor/${id}`, {
+        id_cor: tabIndex
+      })
+        .then((res) => {
+          setSalvando(prevSalvando => 'opacity-100');
+          setTimeout(() => {
+            setSalvando(prevSalvando => 'opacity-0');
+          }, 3000) //3 segundos
+        })
+        .catch((error) => {
+          console.error('Erro ao buscar cores:', error);
+        });
+    }, 1000)
+  }
+
   const handleTituloChange = (event) => {
     const novoTitulo = event.target.value;
     setTitulo(novoTitulo);
@@ -136,9 +161,8 @@ function NovaAnotacao() {
         <div className='w-full h-full flex flex-col items-center justify-center'>
           <div className={`w-4/5 h-4/5 bg-${corDePagina} rounded-md flex flex-col`}>
             <HeaderNovaAnotacao salvando={`${salvando}`}
-              onClickPincel={handleClickPincel} color={`bg-${corDePagina}`}
+              onClickPincel={handleClickPincel} onClickCores={handleClickCores} color={`bg-${corDePagina}`}
               emocao={`${emocao}`} tamanho={`${tamanho}`} />
-
             <div className="flex-1 prose">
               <input className='w-auto h-auto text-4xl font-bold pl-4 pt-4 opacity-70 
           bg-transparent border-none focus:outline-none'
@@ -161,7 +185,7 @@ function NovaAnotacao() {
         </div>
 
       </div>
-      <Sobreposicao />  
+      <Sobreposicao />
     </>
   )
 }

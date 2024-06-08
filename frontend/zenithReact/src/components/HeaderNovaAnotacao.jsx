@@ -15,6 +15,9 @@ function HeaderNovaAnotacao(props) {
     const handleClickPincel = () => {
         props.onClickPincel(); // 
     };
+    const handleClickCores = () => {
+        props.onClickCores(); // 
+    };
     const navigate = useNavigate();
 
     const prevLocation = usePreviousLocation();
@@ -30,6 +33,7 @@ function HeaderNovaAnotacao(props) {
 
     let [valorScale, setValorScale] = useState(0);
     let [valorScaleTamanho, setValorScaleTamanho] = useState(0);
+    let [valorScaleCores, setValorScaleCores] = useState(0);
 
     const scale = () => {
         if (valorScale === 1) {
@@ -47,16 +51,29 @@ function HeaderNovaAnotacao(props) {
         }
     }
 
+    const scaleCores = () => {
+        if (valorScaleCores === 1) {
+            setValorScaleCores(0);
+        } else {
+            setValorScaleCores(1);
+        }
+    }
+
     const { id } = useParams();
     let emocao = props.emocao;
     let tamanho = props.tamanho;
     const [tabIndexClicado, setTabIndexClicado] = useState(emocao);
     const [tabIndexTamanho, setTabIndexTamanho] = useState(tamanho);
+    const [cores, setCores] = useState([]);
 
     const [n, setN] = useState(0);
     const [salvando, setSalvando] = useState('opacity-0');
 
     useEffect(() => {
+        axios.get(`http://localhost:3000/cores/`)
+            .then((res) => {
+                setCores(res.data.results);
+            });
         // Atualiza o estado tabIndexClicado sempre que props.emocao mudar
         setTabIndexClicado(props.emocao);
         if (props.emocao === 'Muito feliz') {
@@ -151,22 +168,33 @@ function HeaderNovaAnotacao(props) {
                     <Nuvem className={`mr-1 opacity-70`} stroke='#000000' />
                     <span className='font-bold text-sm opacity-70'>Salvando...</span>
                 </div>
-                <button className='ml-3 p-1 rounded-md hover:bg-white/20' onClick={handleClickPincel}>
+                <button className='ml-3 p-1 rounded-md hover:bg-white/20' onClick={scaleCores}>
                     <Pincel className='opacity-70' stroke='#000000' />
+                    <div className={`w-32 h-auto p-1 absolute isolate aspect-video rounded-md 
+                    bg-white/30 backdrop-blur-sm ring-1 ring-black/5 z-10 cursor-pointer transition ease-in-out duration-400 mt-2`} style={{ transformOrigin: 'top center', transform: `translateX(-50px) scale(${valorScaleCores})` }} >
+                        <div className='grid grid-cols-4'>
+                            {cores.map((cor, index) => (
+                                <>
+                                   <div className={`w-6 h-6 rounded-full bg-${cor.nome} m-1`} tabIndex={cor.id} name={cor.nome} key={index} onClick={handleClickCores}></div>  
+                                </>
+                                
+                            ))}
+                        </div>
+                    </div>
                 </button>
-                
+
                 <button className='ml-2 flex items-center cursor-pointer p-1 rounded-md hover:bg-white/20' onClick={scaleTamanho}>
                     <Bloco className='opacity-70 float-left' stroke='#000000' />
                     <div className='w-26 h-5 ml-2 font-bold opacity-70 cursor-pointer flex items-center'>
-                        
+
                         {tabIndexTamanho === 'grande' ? (
                             <span className='float-left mr-1'>Grande</span>
-                          ) : tabIndexTamanho === 'medio' ? (
+                        ) : tabIndexTamanho === 'medio' ? (
                             <span className='float-left mr-1'>Médio</span>
-                          ) : (
+                        ) : (
                             <span className='float-left mr-1'>Pequeno</span>
-                          )}
-                         
+                        )}
+
                         <Descer className='opacity-70 float-left' stroke='#000000' />
                     </div>
 
@@ -184,7 +212,7 @@ function HeaderNovaAnotacao(props) {
                         <div className='w-full font-bold opacity-70 hover:bg-blue-500 
                             hover:bg-white/20' tabIndex={'pequeno'} onClick={handleClickTamanho}>
                             Pequeno
-                        </div>          
+                        </div>
                     </div>
                 </button>
 
@@ -219,7 +247,6 @@ function HeaderNovaAnotacao(props) {
                         </div>
                     </div>
                 </button>
-
             </div>
         </header>
     )
