@@ -27,6 +27,9 @@ function MostrarMetas() {
         return new Date(data).toLocaleDateString('pt-BR', options);
     };
 
+    let dataAtual = new Date();
+    console.log(dataAtual);
+
     const marcarMeta = (event) => {
         axios.get(`http://localhost:3000/metas/editar/status/${event.target.name}`)
             .then((res) => {
@@ -41,7 +44,36 @@ function MostrarMetas() {
                     <div>
                         {metas.map((meta) => (
                             <div key={meta.id}>
-                                {meta.statusMeta === 'não realizado' ? (
+                                {meta.statusMeta === 'realizado' ? (
+                                    <div className='flex items-center'>
+                                        <input type="checkbox" name={meta.id} defaultChecked className='form-checkbox bg-red-500 h-5 w-5 rounded-full accent-verde opacity-30 checked:form-checkbox checked:h-5 checked:w-5 checked:rounded-full checked:accent-verde checked:opacity-100' onChange={marcarMeta} />
+                                        <label htmlFor={meta.id}>
+                                            <span className="text-md ml-2 text-cinzaTexto line-through">{meta.meta}</span>
+                                            <span className="text-md ml-2 text-verde pr-3">Meta cumprida</span>
+                                        </label>
+                                        <div className='flex items-center'>
+                                            <Link to={`/metas/deletar/${meta.id}`}>
+                                                <button className='rounded-sm hover:dark:bg-white/20 hover:bg-black/20 '>
+                                                    <Lixeira className="" stroke="#999999" />
+                                                </button>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                ) : meta.statusMeta === 'não realizado' && dataAtual.getTime() > new Date(meta.data_expec).getTime() ? (
+                                    <div className='flex items-center'>
+                                        <label htmlFor={meta.id}>
+                                            <span className="text-md ml-2 text-red-500/80 line-through">{meta.meta}</span>
+                                            <span className="text-md ml-2 text-red-500/80 pr-3">Expirado</span>
+                                        </label>
+                                        <div className='flex items-center'>
+                                            <Link to={`/metas/deletar/${meta.id}`}>
+                                                <button className='rounded-sm hover:dark:bg-white/20 hover:bg-black/20 '>
+                                                    <Lixeira className="" stroke="#999999" />
+                                                </button>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                ) : (
                                     <div className='flex items-center'>
                                         <input type="checkbox" name={meta.id} className='form-checkbox bg-red-500 h-5 w-5 rounded-full accent-verde opacity-30 checked:opacity-100' onChange={marcarMeta} />
                                         <label htmlFor={meta.id}>
@@ -56,21 +88,6 @@ function MostrarMetas() {
                                             </Link>
                                             <Link to={`/metas/deletar/${meta.id}`}>
                                                 <button className='rounded-sm ml-2 hover:dark:bg-white/20 hover:bg-black/20'>
-                                                    <Lixeira className="" stroke="#999999" />
-                                                </button>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                ) : (
-                                    <div className='flex items-center'>
-                                        <input type="checkbox" name={meta.id} defaultChecked className='form-checkbox bg-red-500 h-5 w-5 rounded-full accent-verde opacity-30 checked:form-checkbox checked:h-5 checked:w-5 checked:rounded-full checked:accent-verde checked:opacity-100' onChange={marcarMeta} />
-                                        <label htmlFor={meta.id}>
-                                            <span className="text-md ml-2 text-cinzaTexto line-through">{meta.meta}</span>
-                                            <span className="text-md ml-2 text-verde pr-3">Meta cumprida</span>
-                                        </label>
-                                        <div className='flex items-center'>
-                                            <Link to={`/metas/deletar/${meta.id}`}>
-                                                <button className='rounded-sm hover:dark:bg-white/20 hover:bg-black/20 '>
                                                     <Lixeira className="" stroke="#999999" />
                                                 </button>
                                             </Link>
