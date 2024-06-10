@@ -114,18 +114,16 @@ exports.loginUsuario = async (req, res) => {
 
                             res.status(200).json({ msg: 'Autenticação realizada com sucesso', token })
 
-                            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                            axios.get(`http://localhost:3000/relatorios/criar`)
-                                .then((res) => {
-                                    console.log('Relatório criado!');
-                                })
-                                .catch((error) => {
-                                    console.error('Erro ao criar relatório:', error);
-                                });
-
-                            // Executa o código todos os domingos
+                            // Executa o código todos os domingos, cria relatório
                             cron.schedule('* * * * 0', () => {
-                                relatorio();
+                                axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+                                axios.get(`http://localhost:3000/relatorios/criar`)
+                                    .then((res) => {
+                                        console.log('Relatório criado!');
+                                    })
+                                    .catch((error) => {
+                                        console.error('Erro ao criar relatório:', error);
+                                    });
                             }, {
                                 timezone: 'America/Sao_Paulo'
                             });
@@ -139,37 +137,5 @@ exports.loginUsuario = async (req, res) => {
     } catch (err) {
         console.error('Erro:', err);
         return res.status(500).json({ msg: 'Erro interno do servidor' });
-    }
-
-    function relatorio() {
-        const axiosInstancia = axios.create({
-            baseURL: 'http://localhost:3000' // Altere conforme necessário
-        });
-
-        axiosInstancia.interceptors.request.use(
-            function (config) {
-                // Adicione o token JWT ao cabeçalho de autorização
-                config.headers.Authorization = `Bearer ${token}`;
-                return config;
-            },
-            function (error) {
-                // Faça algo com erros de solicitação
-                return Promise.reject(error);
-            }
-        );
-
-        const dadosRelatorio = {
-            emocao_pred: resultados.emocao_pred[0],
-            mes: resultados.mes[0],
-            semanaMes: resultados.semanaMes[0]
-        };
-
-        axiosInstancia.post('/create/relatorio', dadosRelatorio)
-            .then(response => {
-                console.log('Novo relatório inserido:');
-            })
-            .catch(error => {
-                console.error('Erro ao inserir relatório:', error);
-            });
     }
 };
