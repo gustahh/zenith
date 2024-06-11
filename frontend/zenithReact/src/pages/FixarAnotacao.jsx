@@ -7,17 +7,16 @@ import Button from '../components/Button';
 
 
 
-function DeletarAnotacao() {
+function FixarAnotacao() {
 
     const navigate = useNavigate();
     const { id } = useParams();
     
-    function deletar () {
-        console.log('teste');
-        axios.delete(`http://localhost:3000/notas/delete/${id}`)
+    function fixar () {
+        axios.post(`http://localhost:3000/notas/fixar/${id}`)
             .then(res => {
-                toast.success("Anotação deletada.");
-                navigate('/anotacoes');
+                toast.success("Anotação fixar.");
+                navigate('/anotacoes/arquivadas');
             })
             .catch(err => {
                 if (err.response) {
@@ -40,12 +39,12 @@ function DeletarAnotacao() {
                 <div className='w-full h-full flex flex-col items-center justify-center'>
                     <div className='w-3/4 sm:w-1/4 sm:h-1/4 bg-ice dark:bg-cinzaEscuro p-5 rounded-md'>
                         <div className='flex justify-center'>
-                            <span className='text-xl font-bold text-cinzaTexto'>Deletar anotação</span>
+                            <span className='text-xl font-bold text-cinzaTexto'>Fixar anotação</span>
                         </div>
                         <div className='flex justify-center items-center pb-2'>
                             <span className='text-md text-cinzaTexto'>
-                                Tem certeza, que deseja deletar essa anotação?
-                                <strong> Esta ação é irreversível.</strong>
+                                Fixar uma anotação faz ela aparecer 
+                                <strong>em destaque.</strong>
                             </span>
                         </div>
                         <div className='w-full flex justify-between items-center'>
@@ -55,8 +54,8 @@ function DeletarAnotacao() {
                             </Link>
                            
                             <button  className='w-1/2 h-12 bg-red-500 text-white p-5 font-bold rounded-md
-                            flex items-center' onClick={deletar}>
-                                <span className='pl-1'>Sim, prosseguir</span>
+                            flex items-center' onClick={fixar}>
+                                <span className='pl-1'>Isso, fixa ela!</span>
                             </button>
                         </div>
 
@@ -71,4 +70,4 @@ function DeletarAnotacao() {
     )
 }
 
-export default DeletarAnotacao
+export default FixarAnotacao

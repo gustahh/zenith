@@ -4,11 +4,13 @@ import Login from '../pages/Login';
 import Registrar from '../pages/Registro';
 import Home from '../pages/Home';
 import Anotacoes from '../pages/Anotacoes';
+import Arquivadas from '../pages/Arquivadas';
 import SeusRelatorios from '../pages/SeusRelatorios';
 import Relatorio from '../pages/Relatorio';
 import Metas from '../pages/Metas';
 import NovaAnotacao from '../pages/NovaAnotacao';
-import DeletarAnotacao from '../pages/DeletarAnotacao';
+import ArquivarAnotacao from '../pages/ArquivarAnotacao';
+import FixarAnotacao from '../pages/FixarAnotacao';
 import NovaMeta from '../pages/NovaMeta';
 import EditarMeta from '../pages/EditarMeta';
 import DeletarMeta from '../pages/DeletarMeta';
@@ -39,8 +41,10 @@ function AppRoutes() {
       // Caso exista o token, mantém na página, caso contrário redireciona para login
       <Route path='/home' element={token ? <Home /> : <Navigate to="/login" />} />
       <Route path='/anotacoes' element={token ? <View><Anotacoes /></View> : <Navigate to="/login" />} />
+      <Route path='/anotacoes/arquivadas' element={token ? <View><Arquivadas /></View> : <Navigate to="/login" />} />
       <Route path='/anotacoes/:id' element={token ? <> <NovaAnotacao /> <View> {prevLocation.pathname === "/anotacoes" ? <Anotacoes /> : <Home />}</View></> : <Navigate to="/login" />} />
-      <Route path='/anotacoes/deletar/:id' element={token ? <> <DeletarAnotacao /> <View> {prevLocation.pathname === "/anotacoes" ? <Anotacoes /> : <Home />}</View></> : <Navigate to="/login" />} />
+      <Route path='/anotacoes/arquivar/:id' element={token ? <> <ArquivarAnotacao /> <View> {prevLocation.pathname === "/anotacoes" ? <Anotacoes /> : <Home />}</View></> : <Navigate to="/login" />} />
+      <Route path='/anotacoes/fixar/:id' element={token ? <> <FixarAnotacao /> <View> {prevLocation.pathname === "/anotacoes" ? <Anotacoes /> : <Home />}</View></> : <Navigate to="/login" />} />
       <Route path='/relatorio' element={token ? <View><SeusRelatorios /></View> : <Navigate to="/login" />} />
       <Route path='/relatorio/:id' element={token ? <View><Relatorio /></View> : <Navigate to="/login" />} />
       <Route path='/metas' element={token ? <View><Metas /></View> : <Navigate to="/login" />} />

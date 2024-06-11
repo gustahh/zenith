@@ -254,7 +254,7 @@ exports.ultimaNota = async (req, res) => {
     });
 };
 
-exports.deletarNota = async (req, res) => {
+exports.arquivarNota = async (req, res) => {
     const id = req.params.id
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(" ")[1]
@@ -266,30 +266,49 @@ exports.deletarNota = async (req, res) => {
             console.error('Erro ao decodificar o token:', err);
         } else {
             // Token decodificado com sucesso
-            const idLogado = decoded.id;
 
-            //deleta anotação
+            //arquiva anotação
             connection.execute(
-                'DELETE FROM bloco_anotacao WHERE id_anotacao = ? AND id_usuario = ?',
-                [id, idLogado],
+                'INSERT INTO arquivadas (id_anotacao) VALUES (?)',
+                [id],
                 function (err, results) {
                     if (err) {
                         // Se ocorrer um erro durante a execução da consulta
                         console.error('Erro ao executar a consulta:', err);
                     } else {
-                        //deleta anotação
-                        connection.execute(
-                            'DELETE FROM anotacoes WHERE id = ? AND id_usuario = ?',
-                            [id, idLogado],
-                            function (err, results) {
-                                if (err) {
-                                    // Se ocorrer um erro durante a execução da consulta
-                                    console.error('Erro ao executar a consulta:', err);
-                                } else {
-                                    return res.status(202).json({ msg: 'Anotação deletada.' })
-                                }
-                            }
-                        );
+                        return res.status(202).json({ msg: 'Nota arquivada.' })
+                    }
+                }
+            );
+
+
+        }
+    })
+};
+
+exports.fixarNota = async (req, res) => {
+    const id = req.params.id
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(" ")[1]
+    const secret = process.env.SECRET
+    // Decodificando o token
+    jwt.verify(token, secret, (err, decoded) => {
+        if (err) {
+            // Ocorreu um erro ao decodificar o token
+            console.error('Erro ao decodificar o token:', err);
+        } else {
+            // Token decodificado com sucesso
+
+            //arquiva anotação
+            connection.execute(
+                'INSERT INTO fixadas (id_anotacao) VALUES (?)',
+                [id],
+                function (err, results) {
+                    if (err) {
+                        // Se ocorrer um erro durante a execução da consulta
+                        console.error('Erro ao executar a consulta:', err);
+                    } else {
+                        return res.status(202).json({ msg: 'Nota fixada.' })
                     }
                 }
             );

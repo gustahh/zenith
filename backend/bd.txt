@@ -102,3 +102,10 @@ CREATE TABLE reflexao (
 	id int PRIMARY KEY AUTO_INCREMENT,
     frase varchar(200)
 )
+
+//CRIA TABELA ARQUIVADAS
+CREATE TABLE arquivadas (
+	id int PRIMARY KEY AUTO_INCREMENT,
+    id_anotacao int,
+    FOREIGN KEY (id_anotacao) REFERENCES anotacoes (id)
+);

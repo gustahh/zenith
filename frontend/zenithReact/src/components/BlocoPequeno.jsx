@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Lixeira from '../icons/Lixeira';
+import Pin from '../icons/Pin';
+import Arquivar from '../icons/Arquivar';
 
 const BlocoPequeno = (props) => {
   const [visao, setVisao] = useState('opacity-0');
@@ -12,7 +13,7 @@ const BlocoPequeno = (props) => {
   }
 
   const id = props.id;
-  
+
   return (
     <>
       <div className={`w-6 flex-none w-full sm:h-12 bg-${props.cor} rounded-md 
@@ -21,9 +22,14 @@ const BlocoPequeno = (props) => {
 
         <div className={`w-full h-6 self-start ${visao}`}>
           <div className='flex justify-end pr-2 pt-2'>
-            <Link to={`/anotacoes/deletar/${id}`}>
+            <Link to={`/anotacoes/fixar/${id}`}>
+              <button className='mx-2'>
+                <Pin className='opacity-70 rounded-md hover:bg-white/20' stroke='#000000' />
+              </button>
+            </Link>
+            <Link to={`/anotacoes/arquivar/${id}`}>
               <button>
-                <Lixeira className='opacity-70 rounded-md hover:bg-white/20' stroke='#000000' />
+                <Arquivar className='opacity-70 rounded-md hover:bg-white/20' stroke='#000000' />
               </button>
             </Link>
           </div>
