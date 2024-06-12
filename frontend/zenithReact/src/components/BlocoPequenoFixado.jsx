@@ -20,11 +20,13 @@ const BlocoPequeno = (props) => {
           flex flex-col items-center cursor-pointer overflow-hidden`}
                 id={props.id} onMouseOver={mouseOverOpcoes} onMouseOut={mouseOutOpcoes}>
 
-                <div className={`w-full h-6 self-start ${visao}`}>
+                <div className={`w-full h-6 self-start`}>
                     <div className='flex justify-end pr-2 pt-2'>
-                        <div className='flex justify-end pr-2 pt-2'>
-                            <PinCheio />
-                        </div>
+                        <Link to={`/anotacoes/desafixar/${id}`}>
+                            <button className=''>
+                                <PinCheio className='opacity-70 rounded-md hover:bg-white/20' stroke='#000000' />
+                            </button>
+                        </Link>
                     </div>
                 </div>
 

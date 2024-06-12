@@ -12,10 +12,10 @@ function FixarAnotacao() {
     const navigate = useNavigate();
     const { id } = useParams();
     
-    function fixar () {
-        axios.post(`http://localhost:3000/notas/fixar/${id}`)
+    function desafixar () {
+        axios.post(`http://localhost:3000/notas/desafixar/${id}`)
             .then(res => {
-                toast.success("Anotação fixada.");
+                toast.success("Anotação desafixada.");
                 navigate('/anotacoes');
             })
             .catch(err => {
@@ -39,12 +39,11 @@ function FixarAnotacao() {
                 <div className='w-full h-full flex flex-col items-center justify-center'>
                     <div className='w-3/4 sm:w-1/4 sm:h-1/4 bg-ice dark:bg-cinzaEscuro p-5 rounded-md'>
                         <div className='flex justify-center'>
-                            <span className='text-xl font-bold text-cinzaTexto'>Fixar anotação</span>
+                            <span className='text-xl font-bold text-cinzaTexto'>Desafixar anotação</span>
                         </div>
                         <div className='flex justify-center items-center pb-2'>
                             <span className='text-md text-cinzaTexto'>
-                                Fixar uma anotação faz ela aparecer 
-                                <strong>em destaque.</strong>
+                                A anotação perderá o seu destaque.
                             </span>
                         </div>
                         <div className='w-full flex justify-between items-center'>
@@ -54,8 +53,8 @@ function FixarAnotacao() {
                             </Link>
                            
                             <button  className='w-1/2 h-12 bg-red-500 text-white p-5 font-bold rounded-md
-                            flex items-center' onClick={fixar}>
-                                <span className='pl-1'>Isso, fixa ela!</span>
+                            flex items-center' onClick={desafixar}>
+                                <span className='pl-1'>Desafixar anotação</span>
                             </button>
                         </div>
 

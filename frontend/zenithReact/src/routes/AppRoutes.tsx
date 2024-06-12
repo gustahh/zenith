@@ -11,6 +11,7 @@ import Metas from '../pages/Metas';
 import NovaAnotacao from '../pages/NovaAnotacao';
 import ArquivarAnotacao from '../pages/ArquivarAnotacao';
 import FixarAnotacao from '../pages/FixarAnotacao';
+import DesafixarAnotacao from '../pages/DesafixarAnotacao';
 import NovaMeta from '../pages/NovaMeta';
 import EditarMeta from '../pages/EditarMeta';
 import DeletarMeta from '../pages/DeletarMeta';
@@ -45,6 +46,7 @@ function AppRoutes() {
       <Route path='/anotacoes/:id' element={token ? <> <NovaAnotacao /> <View> {prevLocation.pathname === "/anotacoes" ? <Anotacoes /> : <Home />}</View></> : <Navigate to="/login" />} />
       <Route path='/anotacoes/arquivar/:id' element={token ? <> <ArquivarAnotacao /> <View> {prevLocation.pathname === "/anotacoes" ? <Anotacoes /> : <Home />}</View></> : <Navigate to="/login" />} />
       <Route path='/anotacoes/fixar/:id' element={token ? <> <FixarAnotacao /> <View> {prevLocation.pathname === "/anotacoes" ? <Anotacoes /> : <Home />}</View></> : <Navigate to="/login" />} />
+      <Route path='/anotacoes/desafixar/:id' element={token ? <> <DesafixarAnotacao /> <View> {prevLocation.pathname === "/anotacoes" ? <Anotacoes /> : <Home />}</View></> : <Navigate to="/login" />} />
       <Route path='/relatorio' element={token ? <View><SeusRelatorios /></View> : <Navigate to="/login" />} />
       <Route path='/relatorio/:id' element={token ? <View><Relatorio /></View> : <Navigate to="/login" />} />
       <Route path='/metas' element={token ? <View><Metas /></View> : <Navigate to="/login" />} />

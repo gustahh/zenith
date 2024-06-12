@@ -22,7 +22,7 @@ const BlocoMedio = (props) => {
 
         <div className={`w-full h-6 self-start ${visao}`}>
           <div className='flex justify-end pr-2 pt-2'>
-          <Link to={`/anotacoes/fixar/${id}`}>
+            <Link to={`/anotacoes/fixar/${id}`}>
               <button className='mx-2'>
                 <Pin className='opacity-70 rounded-md hover:bg-white/20' stroke='#000000' />
               </button>

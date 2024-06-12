@@ -318,6 +318,38 @@ exports.fixarNota = async (req, res) => {
     })
 };
 
+exports.desafixarNota = async (req, res) => {
+    const id = req.params.id
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(" ")[1]
+    const secret = process.env.SECRET
+    // Decodificando o token
+    jwt.verify(token, secret, (err, decoded) => {
+        if (err) {
+            // Ocorreu um erro ao decodificar o token
+            console.error('Erro ao decodificar o token:', err);
+        } else {
+            // Token decodificado com sucesso
+
+            //arquiva anotação
+            connection.execute(
+                'DELETE FROM fixadas WHERE id_anotacao = ?',
+                [id],
+                function (err, results) {
+                    if (err) {
+                        // Se ocorrer um erro durante a execução da consulta
+                        console.error('Erro ao executar a consulta:', err);
+                    } else {
+                        return res.status(202).json({ msg: 'Nota desafixada.' })
+                    }
+                }
+            );
+
+
+        }
+    })
+};
+
 exports.editarTitulo = async (req, res) => {
     const id = req.params.id
     const authHeader = req.headers['authorization']

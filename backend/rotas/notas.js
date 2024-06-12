@@ -10,6 +10,7 @@ router.get('/nota/ultima/ultimaNota', checkToken, notasController.ultimaNota); /
 router.post('/criar', checkToken, notasController.criarNota); //Cria nota
 router.post('/arquivar/:id', checkToken, notasController.arquivarNota); //Arquiva nota
 router.post('/fixar/:id', checkToken, notasController.fixarNota); //Fixar nota
+router.delete('/desafixar/:id', checkToken, notasController.desafixarNota); //Fixar nota
 router.put('/edit/titulo/:id', checkToken, notasController.editarTitulo); //Editar titulo de nota
 router.put('/edit/texto/:id', checkToken, notasController.editarTexto); //Editar titulo de nota
 router.put('/edit/humor/:id', checkToken, notasController.editarHumor); //Editar humor de nota
