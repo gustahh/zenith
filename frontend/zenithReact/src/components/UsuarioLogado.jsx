@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Configuracoes from '../icons/Configuracoes';
+import ConfiguracoesVerde from '../icons/ConfiguracoesVerde';
 import { Link, useLocation } from 'react-router-dom'
 import Logout from '../icons/Logout';
 import axios from 'axios';
@@ -18,11 +19,6 @@ function UsuarioLogado() {
         setFoto(res.data.results[0].foto_perfil);
       });
   }, []);
-
-  function BotaoLogout() {
-    localStorage.removeItem('token');
-    location.reload();
-  }
 
   const Imagem = ({ foto }) => {
     const caminho = `/src/img/${foto}`;
@@ -50,14 +46,9 @@ function UsuarioLogado() {
           <div className='flex items-center justify-start flex-col sm:flex-row pb-2 sm:pb-0 '>
             <Link to='/config'>
               <button className='sm:ml-20 float-right'>
-                <Configuracoes className="" />
+                {location.pathname === "/config" ? <ConfiguracoesVerde /> : <Configuracoes />}
               </button>
             </Link>
-
-            <button className='float-right flex flex-col sm:flex-row pb-2 sm:pb-0 items-center' onClick={BotaoLogout}>
-              <Logout className="pr-2" />
-              <span className='hidden sm:block text-red-500'>Sair</span>
-            </button>
           </div>
 
         </div>
