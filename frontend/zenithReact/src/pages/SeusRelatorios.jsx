@@ -53,22 +53,27 @@ function SeusRelatorios() {
       <div>
         {relatorios.length > 0 ? (
           relatorios.map((relatorio, index) => (
-              <Link to={`/relatorio/${relatorio.id}`} key={index}>
-                <div className={`w-full h-auto bg-${cores[index].nome} flex justify-between rounded-md p-5 mb-5`}>
-                  <div className='w-40'>
-                    <span className='font-bold text-3xl opacity-70'>{semanas[relatorio.semanaMes]}</span>
-                    <span className='font-bold text-3xl opacity-70'>{meses[relatorio.mes]}</span>
-                  </div>
-                  <div className='flex flex-col items-center justify-center'>
-                    <FaceGrande className="opacity-70" />
-                    <span className='font-bold text-xl opacity-70'>Clique aqui para ver</span>
-                  </div>
+            <Link to={`/relatorio/${relatorio.id}`} key={index}>
+              <div className={`w-full h-auto bg-${cores[index].nome} flex justify-between rounded-md p-5 mb-5`}>
+                <div className='w-40'>
+                  <span className='font-bold text-3xl opacity-70'>{semanas[relatorio.semanaMes]}</span>
+                  <span className='font-bold text-3xl opacity-70'>{meses[relatorio.mes]}</span>
                 </div>
-              </Link>
-        ))
+                <div className='flex flex-col items-center justify-center'>
+                  <FaceGrande className="opacity-70" />
+                  <span className='font-bold text-xl opacity-70'>Clique aqui para ver</span>
+                </div>
+              </div>
+            </Link>
+          ))
         ) : (
-        <p>Você ainda não possui relatórios, um relatório fresquinho sairá do forno logo logo!</p>
-      )}
+          <>
+            <div className='flex items-center justify-center'>
+              <p className='text-xl font-bold text-cinzaTexto py-2 justify-self-start'>Você ainda não possui relatórios, um relatório fresquinho sairá do forno logo logo!</p>
+            </div>
+          </>
+
+        )}
       </div>
     </>
 

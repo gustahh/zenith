@@ -98,7 +98,13 @@ function MostrarMetas() {
                         ))}
                     </div>
                 ) : (
-                    <p>Você ainda não possui metas</p>
+                    <>
+                        <div className='w-full h-full flex items-center justify-center'>
+                            <p className='text-xl font-bold text-cinzaTexto py-2 justify-self-start'>Você ainda não possui metas</p>
+                        </div>
+
+                    </>
+
                 )}
             </div>
         </>
