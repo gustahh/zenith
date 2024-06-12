@@ -1,27 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 function TrocaTema() {
 
-  function App() {
-    const [isDarkMode, setIsDarkMode] = useState(false);
-    const toggleDarkMode = () => {
-    setIsDarkMode(lisDarkMode);
-    };
-    return
-    <div classname={isDarkMode ? "dark" : ''}>
-      <button onclick={toggleDarkmode}>
-      {isDarkMode ? "Switch to light Mode" : 'Switch to Dark Mode'}
-      </button>
-    </div>
-    
+  function BuscaTema() {
+    const buscarTema = localStorage.getItem('tema');
+
+    if (buscarTema === 'dark') {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+  }
+  
 
 
-  return (isDarkMode 
-    <select name="trocatema" className='p-0 flex w-28 h-8 bg-preto/10 rounded mb-3 placeholder:text-cinzaTexto text-cinzaTexto'>
-      <option value="">Modo Claro</option>
-      <option value="M">Modo Escuro</option>
+  useEffect(() => {
+    BuscaTema();
+  }, []);
+
+  return (
+    <select name="trocatema" className='p-0 flex w-28 h-8 bg-preto/10 rounded mb-3 placeholder:text-cinzaTexto text-cinzaTexto' onClick={}>
+      <option value="light">Modo Claro</option>
+      <option value="dark" >Modo Escuro</option>
     </select>
   )
 }
+
 
 export default TrocaTema
