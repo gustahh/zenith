@@ -12,9 +12,6 @@ function Configuracoes() {
     return (
         <>
             <div className='w-[50%] sm:w-[50%] h-screen bg-branco dark:bg-cinzaEscuro p-5 float-left'>
-                <input type="text" className='w-full h-8 rounded-md border-2 border-cinzaTexto/50 bg-transparent
-                p-2 placeholder:text-cinzaTexto/80'
-                    placeholder='Pesquisar' />
                 <ul>
                     <Link to='/config/suaconta'>
                         <li className='border-y-2 border-cinzaTexto/10 p-4'>

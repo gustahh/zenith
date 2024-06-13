@@ -54,7 +54,7 @@ function AppRoutes() {
       <Route path='/metas/editar/:id' element={token ? <><EditarMeta /><View><Metas /></View></> : <Navigate to="/login" />} />
       <Route path='/metas/deletar/:id' element={token ? <><DeletarMeta /><View><Metas /></View></> : <Navigate to="/login" />} />
       <Route path='/config' element={token ? <View><Configuracoes /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
-      <Route path='/config/suaconta' element={token ? <View><Configuracoes /><SuaConta /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
+      <Route path='/config/suaconta' element={token ? <View><Configuracoes /><ViewConfiguracao><SuaConta /></ViewConfiguracao></View> : <Navigate to="/login" />} />
       <Route path='/config/aparencia' element={token ? <View><Configuracoes /><Aparencia /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
       <Route path='/config/PrivacidadeConta' element={token ? <View><Configuracoes /><PrivacidadeConta /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
       <Route path='/config/ConfirmarSenha' element={token ? <View><Configuracoes /><ConfirmarSenha /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
