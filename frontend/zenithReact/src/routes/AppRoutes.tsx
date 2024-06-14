@@ -15,16 +15,19 @@ import DesafixarAnotacao from '../pages/DesafixarAnotacao';
 import NovaMeta from '../pages/NovaMeta';
 import EditarMeta from '../pages/EditarMeta';
 import DeletarMeta from '../pages/DeletarMeta';
-import Configuracoes from '../pages/Configuracoes';
-import SuaConta from '../pages/SuaConta';
+import Configuracoes from '../pages/Configuracoes/Configuracoes';
+import SuaConta from '../pages/Configuracoes/SuaConta';
 import PaginaNaoEncontrada from '../pages/PaginaNaoEncontrada';
 import View from '../components/View';
 import ViewConfiguracao from '../components/ViewConfiguracao'
 import usePreviousLocation from './hook';
 import Aparencia from '../pages/Aparencia';
-import PrivacidadeConta from '../pages/PrivacidadeConta';
+import PrivacidadeConta from '../pages/Configuracoes/PrivacidadeConta';
 import ConfirmarSenha from '../pages/ConfirmarSenha';
 import Notificacoes from '../pages/Notificacoes';
+import AlterarEmail from '../pages/Configuracoes/AlterarEmail';
+import AlterarSenha from '../pages/Configuracoes/AlterarSenha';
+import EditarPerfil from '../pages/Configuracoes/EditarPerfil';
 
 
 function AppRoutes() {
@@ -41,20 +44,31 @@ function AppRoutes() {
 
       // Caso exista o token, mantém na página, caso contrário redireciona para login
       <Route path='/home' element={token ? <Home /> : <Navigate to="/login" />} />
+
+      //anotacoes
       <Route path='/anotacoes' element={token ? <View><Anotacoes /></View> : <Navigate to="/login" />} />
       <Route path='/anotacoes/arquivadas' element={token ? <View><Arquivadas /></View> : <Navigate to="/login" />} />
       <Route path='/anotacoes/:id' element={token ? <> <NovaAnotacao /> <View> {prevLocation.pathname === "/anotacoes" ? <Anotacoes /> : <Home />}</View></> : <Navigate to="/login" />} />
       <Route path='/anotacoes/arquivar/:id' element={token ? <> <ArquivarAnotacao /> <View> {prevLocation.pathname === "/anotacoes" ? <Anotacoes /> : <Home />}</View></> : <Navigate to="/login" />} />
       <Route path='/anotacoes/fixar/:id' element={token ? <> <FixarAnotacao /> <View> {prevLocation.pathname === "/anotacoes" ? <Anotacoes /> : <Home />}</View></> : <Navigate to="/login" />} />
       <Route path='/anotacoes/desafixar/:id' element={token ? <> <DesafixarAnotacao /> <View> {prevLocation.pathname === "/anotacoes" ? <Anotacoes /> : <Home />}</View></> : <Navigate to="/login" />} />
+
+      //relatorio
       <Route path='/relatorio' element={token ? <View><SeusRelatorios /></View> : <Navigate to="/login" />} />
       <Route path='/relatorio/:id' element={token ? <View><Relatorio /></View> : <Navigate to="/login" />} />
+
+      //metas
       <Route path='/metas' element={token ? <View><Metas /></View> : <Navigate to="/login" />} />
       <Route path='/metas/criar' element={token ? <><NovaMeta /><View><Metas /></View></> : <Navigate to="/login" />} />
       <Route path='/metas/editar/:id' element={token ? <><EditarMeta /><View><Metas /></View></> : <Navigate to="/login" />} />
       <Route path='/metas/deletar/:id' element={token ? <><DeletarMeta /><View><Metas /></View></> : <Navigate to="/login" />} />
+
+      //config
       <Route path='/config' element={token ? <View><Configuracoes /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
       <Route path='/config/suaconta' element={token ? <View><Configuracoes /><ViewConfiguracao><SuaConta /></ViewConfiguracao></View> : <Navigate to="/login" />} />
+      <Route path='/config/suaconta/alterarEmail' element={token ? <View><Configuracoes /><ViewConfiguracao><AlterarEmail /></ViewConfiguracao></View> : <Navigate to="/login" />} />
+      <Route path='/config/suaconta/alterarSenha' element={token ? <View><Configuracoes /><ViewConfiguracao><AlterarSenha /></ViewConfiguracao></View> : <Navigate to="/login" />} />
+      <Route path='/config/suaconta/editarPerfil' element={token ? <View><Configuracoes /><ViewConfiguracao><EditarPerfil /></ViewConfiguracao></View> : <Navigate to="/login" />} />
       <Route path='/config/aparencia' element={token ? <View><Configuracoes /><Aparencia /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
       <Route path='/config/PrivacidadeConta' element={token ? <View><Configuracoes /><PrivacidadeConta /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
       <Route path='/config/ConfirmarSenha' element={token ? <View><Configuracoes /><ConfirmarSenha /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
