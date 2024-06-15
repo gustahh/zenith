@@ -37,7 +37,7 @@ function FormRegistro() {
       })
       .catch(err => {
         if (err.response) {
-          // Se houver uma resposta do servidor, exiba a mensagem de erro
+          // Se houver uma resposta do servidor, exibe a mensagem de erro
           toast.error(err.response.data.msg);
         } else if (err.request) {
           // Se a requisição foi feita, mas não houve resposta do servidor
