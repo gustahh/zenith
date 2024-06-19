@@ -32,11 +32,7 @@ function Configuracoes() {
                         </li>
 
                     </Link>
-                    <Link to='/config/Notificacoes'>
-                        <li className='border-y-2 border-cinzaTexto/10 p-4'>
-                            <span className='text-xl font-bold text-cinzaTexto pb-3'>Notificações</span>
-                        </li>
-                    </Link>
+
                     <button onClick={BotaoLogout}>
                         <li className='border-y-2 border-cinzaTexto/10 p-4 cursor-pointer'>
                             <span className='text-xl font-bold text-red-500 pb-3'>Sair</span>
