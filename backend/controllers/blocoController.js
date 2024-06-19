@@ -86,7 +86,7 @@ exports.retornaBlocoFixadas = (req, res) => {
 
             // verificar se usuario existe
             connection.execute(
-                'SELECT B.id_anotacao, B.tamanho, B.id_cor, A.titulo, C.nome AS cor FROM bloco_anotacao B INNER JOIN anotacoes A ON B.id_anotacao = A.id INNER JOIN cores C ON B.id_cor = C.id INNER JOIN fixadas F ON B.id_anotacao = F.id_anotacao WHERE B.id_usuario = 1 ORDER BY B.id_anotacao DESC',
+                'SELECT B.id_anotacao, B.tamanho, B.id_cor, A.titulo, C.nome AS cor FROM bloco_anotacao B INNER JOIN anotacoes A ON B.id_anotacao = A.id INNER JOIN cores C ON B.id_cor = C.id INNER JOIN fixadas F ON B.id_anotacao = F.id_anotacao WHERE B.id_usuario = ? ORDER BY B.id_anotacao DESC',
                 [idLogado],
                 function (err, results) {
                     if (err) {

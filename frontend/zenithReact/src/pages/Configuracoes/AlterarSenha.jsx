@@ -21,7 +21,7 @@ function AlterarSenha() {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(values);
-        axios.post('http://localhost:3000/perfil/editar/senha', { senha: values.senhaAtual, novaSenha: values.novaSenha })
+        axios.post('http://localhost:3000/perfil/editar/senha', { senhaAtual: values.senhaAtual, novaSenha: values.novaSenha })
             .then(res => {
                 navigate('/config/suaconta');
                 toast.success("Você alterou sua senha");
