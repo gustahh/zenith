@@ -3,7 +3,7 @@ import React from 'react'
 function PrivacidadeConta() {
   return (
     <>
-    <div>Privacidade da Conta</div>
+    <div>Privacidade conta</div>
     </>
   )
 }
