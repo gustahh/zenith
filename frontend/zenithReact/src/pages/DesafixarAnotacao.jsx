@@ -13,7 +13,7 @@ function FixarAnotacao() {
     const { id } = useParams();
     
     function desafixar () {
-        axios.post(`http://localhost:3000/notas/desafixar/${id}`)
+        axios.delete(`http://localhost:3000/notas/desafixar/${id}`)
             .then(res => {
                 toast.success("Anotação desafixada.");
                 navigate('/anotacoes');
@@ -48,11 +48,11 @@ function FixarAnotacao() {
                         </div>
                         <div className='w-full flex justify-between items-center'>
                             <Link to='/anotacoes'>
-                                <Button className='w-1/2 h-12 bg-transparent p-5 text-white font-bold rounded-md flex items-center hover:bg-white/20'
+                            <Button className='w-auto h-12 bg-transparent p-5 text-cinzaTexto dark:text-white font-bold rounded-md flex items-center hover:bg-white/20'
                                 type="submit" text="Cancelar" />
                             </Link>
                            
-                            <button  className='w-1/2 h-12 bg-red-500 text-white p-5 font-bold rounded-md
+                            <button  className='w-1/2 h-12 bg-red-500 text-white p-5 font-bold text-sm rounded-md
                             flex items-center' onClick={desafixar}>
                                 <span className='pl-1'>Desafixar anotação</span>
                             </button>

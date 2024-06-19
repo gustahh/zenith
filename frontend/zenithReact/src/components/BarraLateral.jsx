@@ -15,7 +15,7 @@ function BarraLateral() {
   const location = useLocation();
   
   return (
-    <div className='w-1/6 sm:w-1/4 h-screen bg-ice dark:bg-cinza shadow-lg float-left flex flex-col'>
+    <div className='hidden sm:block sm:w-1/4 h-screen bg-ice dark:bg-cinza shadow-lg float-left flex flex-col'>
       <div className='flex-1'>
         <ul className='pl-0 pt-10 sm:pt-10 pl-4'>
           <Link to="/home">

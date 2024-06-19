@@ -34,7 +34,7 @@ function SuaConta() {
       <div className=''>
         <span className='text-xl font-bold text-cinzaTexto pb-3'>Sua conta</span>
 
-        <div className='w-full h-auto bg-black/10 rounded-md p-5'>
+        <div className='w-full h-auto bg-black/5 rounded-md p-5'>
           <div className='flex items-center justify-between'>
 
             <div className='flex items-center'>

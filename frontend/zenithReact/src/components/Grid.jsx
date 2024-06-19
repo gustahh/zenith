@@ -38,7 +38,7 @@ function Grid() {
                 </Masonry>
             </div>
             <div className='block sm:hidden'>
-                <Masonry columnsCount={2} gutter="20px">
+                <Masonry columnsCount={1} gutter="20px">
                     {blocos.map((bloco, index) => (
                         bloco.tamanho === 'grande' ?
                             <Link to={`/anotacoes/${bloco.id_anotacao}`}>

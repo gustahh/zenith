@@ -44,17 +44,17 @@ function FixarAnotacao() {
                         <div className='flex justify-center items-center pb-2'>
                             <span className='text-md text-cinzaTexto'>
                                 Fixar uma anotação faz ela aparecer 
-                                <strong>em destaque.</strong>
+                                <strong> em destaque.</strong>
                             </span>
                         </div>
                         <div className='w-full flex justify-between items-center'>
                             <Link to='/anotacoes'>
-                                <Button className='w-1/2 h-12 bg-transparent p-5 text-white font-bold rounded-md flex items-center hover:bg-white/20'
+                                <Button className='w-auto h-12 bg-transparent p-5 text-cinzaTexto dark:text-white font-bold rounded-md flex items-center hover:bg-white/20'
                                 type="submit" text="Cancelar" />
                             </Link>
                            
                             <button  className='w-1/2 h-12 bg-red-500 text-white p-5 font-bold rounded-md
-                            flex items-center' onClick={fixar}>
+                            flex items-center justify-center' onClick={fixar}>
                                 <span className='pl-1'>Isso, fixa ela!</span>
                             </button>
                         </div>
