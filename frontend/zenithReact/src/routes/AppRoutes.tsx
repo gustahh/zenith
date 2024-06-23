@@ -68,8 +68,8 @@ function AppRoutes() {
       <Route path='/config/suaconta/alterarEmail' element={token ? <View><Configuracoes /><ViewConfiguracao><AlterarEmail /></ViewConfiguracao></View> : <Navigate to="/login" />} />
       <Route path='/config/suaconta/alterarSenha' element={token ? <View><Configuracoes /><ViewConfiguracao><AlterarSenha /></ViewConfiguracao></View> : <Navigate to="/login" />} />
       <Route path='/config/suaconta/editarPerfil' element={token ? <View><Configuracoes /><ViewConfiguracao><EditarPerfil /></ViewConfiguracao></View> : <Navigate to="/login" />} />
-      <Route path='/config/aparencia' element={token ? <View><Configuracoes /><Aparencia /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
-      <Route path='/config/PrivacidadeConta' element={token ? <View><Configuracoes /><PrivacidadeConta /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
+      <Route path='/config/aparencia' element={token ? <View><Configuracoes /><ViewConfiguracao><Aparencia /></ViewConfiguracao></View> : <Navigate to="/login" />} />
+      <Route path='/config/PrivacidadeConta' element={token ? <View><Configuracoes /><ViewConfiguracao><PrivacidadeConta /></ViewConfiguracao></View> : <Navigate to="/login" />} />
       <Route path='/config/ConfirmarSenha' element={token ? <View><Configuracoes /><ConfirmarSenha /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
      
 

@@ -42,7 +42,7 @@ function retornarAnotacoes() {
                         resultados.mes.push(mes);
                         resultados.semanaMes.push(semanaMes);
 
-                        //console.log( {titulo, emocao, data, diaSemana, mes, semanaMes} );
+                        console.log( {titulo, emocao, data, diaSemana, mes, semanaMes} );
                     });
                     resolve();
                 }
@@ -100,7 +100,7 @@ exports.criarRelatorioSemanal = async (req, res) => {
                     //cria novo relatorio
                     connection.execute(
                         'INSERT INTO relatorio_semanal (id_usuario, emocao_pred, mes, semanaMes) VALUES (?, ?, ?, ?)',
-                        [idLogado, resultados.emocao_pred[0], resultados.mes[0], resultados.semanaMes[0]],
+                        [idLogado, resultados.emocao_pred[0], resultados.mes[0], resultados.semanaMes[1]],
                         function (err, results) {
                             if (err) {
                                 // Se ocorrer um erro durante a execução da consulta
@@ -144,7 +144,7 @@ exports.retornaRelatorioSemanalUsuario = async (req, res) => {
 
             // verificar se usuario existe
             connection.execute(
-                'SELECT * FROM relatorio_semanal WHERE id_usuario = ?',
+                'SELECT * FROM relatorio_semanal WHERE id_usuario = ? ORDER BY id DESC LIMIT 2',
                 [idLogado],
                 function (err, results) {
                     if (err) {
