@@ -1,5 +1,5 @@
 import React from 'react'
-import TrocaTema from '../components/TrocaTema'
+import TrocaTema from '../../components/TrocaTema'
 
 
 function Tema() {

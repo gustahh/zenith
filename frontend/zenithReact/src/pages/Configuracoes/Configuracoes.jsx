@@ -8,10 +8,11 @@ function Configuracoes() {
         localStorage.removeItem('token');
         location.reload();
     }
-
+    let index = '';
+    {location.pathname === "/config" ? index = 'z-20' : index = 'z-0'}
     return (
         <>
-            <div className='w-[50%] sm:w-[50%] h-screen bg-branco dark:bg-cinzaEscuro p-5 float-left'>
+            <div className={`${index} w-screen h-screen absolute sm:relative sm:w-[50%] sm:w-[50%] h-screen bg-branco dark:bg-cinzaEscuro sm:p-5 float-left`}>
             <span className='text-xl font-bold text-cinzaTexto pb-3'>Configurações</span>
                 <ul>
                     <Link to='/config/suaconta'>

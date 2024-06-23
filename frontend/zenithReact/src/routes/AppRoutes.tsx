@@ -21,7 +21,7 @@ import PaginaNaoEncontrada from '../pages/PaginaNaoEncontrada';
 import View from '../components/View';
 import ViewConfiguracao from '../components/ViewConfiguracao'
 import usePreviousLocation from './hook';
-import Aparencia from '../pages/Aparencia';
+import Aparencia from '../pages/Configuracoes/Aparencia';
 import PrivacidadeConta from '../pages/Configuracoes/PrivacidadeConta';
 import ConfirmarSenha from '../pages/ConfirmarSenha'
 import AlterarEmail from '../pages/Configuracoes/AlterarEmail';

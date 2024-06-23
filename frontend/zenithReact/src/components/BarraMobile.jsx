@@ -32,14 +32,14 @@ function BarraMobile() {
     const caminho = `/src/img/${foto}`;
 
     return (
-      <div className='w-8 h-8 rounded-full float-left overflow-hidden'>
+      <div className='w-6 h-6 rounded-full float-left overflow-hidden'>
         <img src={caminho} alt={foto} />
       </div>
     );
   };
 
   return (
-    <div className='fixed bottom-0 sm:hidden w-screen h-[10%] bg-ice dark:bg-cinza shadow-lg float-left flex items-center justify-center'>
+    <div className='z-20 fixed bottom-0 sm:hidden w-screen h-[10%] bg-ice dark:bg-cinza shadow-lg float-left flex items-center justify-center'>
       <div className='flex-1'>
         <ul className='w-full h-full p-2 flex items-center justify-between'>
           <Link to="/home">

@@ -159,7 +159,7 @@ function NovaAnotacao() {
 
       <div className='w-full h-full absolute z-20 overflow-hidden'>
         <div className='w-full h-full flex flex-col items-center justify-center'>
-          <div className={`w-4/5 h-4/5 bg-${corDePagina} rounded-md flex flex-col`}>
+          <div className={`w-screen h-screen sm:w-4/5 sm:h-4/5 bg-${corDePagina} rounded-md flex flex-col`}>
             <HeaderNovaAnotacao salvando={`${salvando}`}
               onClickPincel={handleClickPincel} onClickCores={handleClickCores} color={`bg-${corDePagina}`}
               emocao={`${emocao}`} tamanho={`${tamanho}`} />
