@@ -25,8 +25,6 @@ function Tema() {
           </div>
         </div>
       </div>
-
-
     </>
   )
 }

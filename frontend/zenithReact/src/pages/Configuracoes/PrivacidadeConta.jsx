@@ -1,22 +1,32 @@
 import React from 'react'
+import Habilitar2FA from '../../components/Habilitar2FA'
 
 function PrivacidadeConta() {
   return (
     <>
-    <span className='text-xl font-bold text-cinzaTexto pb-3'>Privacidade da Conta</span>
+      <>
+        <div>
+          <div className='flex'>
+            <span className='flex w-full h-text-xl font-bold text-cinzaTexto p-0 m-0 pb-3'>
+              Privacidade e Segurança
+            </span>
+          </div>
 
-    <ul>
-      
-    <li className='border-y-2 border-cinzaTexto/10 p-4'>
-                    <span className='text-xl font-bold text-cinzaTexto pb-3'>Autentificação de dois fatores</span>
-                    <p>Proteja sua conta em razão de um acesso não autorizado, por meio de um novo modo de autentificação. </p>
-                 </li>
+          <div className='border-y-2 border-cinzaTexto/10 p-4'>
+            <div className='flex items-center justify-between'>
+              <div className='w-full flex items-center justify-between'>
+                <span className='text-md font-bold text-cinzaTexto p-0 m-0 pb-3'>Autentificação de dois fatores</span>
+                <Habilitar2FA />
+              </div>
+            </div>
 
-
-
-
-
-    </ul>
+            <div>
+              <p className='pb-3 w-full text-xs leading-3 text-cinzaTexto'>Proteja a sua conta com mais
+                uma barreira de Segurança.</p>
+            </div>
+          </div>
+        </div>
+      </>
     </>
   )
 }
