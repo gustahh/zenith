@@ -27,7 +27,7 @@ import ConfirmarSenha from '../pages/ConfirmarSenha'
 import AlterarEmail from '../pages/Configuracoes/AlterarEmail';
 import AlterarSenha from '../pages/Configuracoes/AlterarSenha';
 import EditarPerfil from '../pages/Configuracoes/EditarPerfil';
-
+import EscolherPergunta from '../pages/Configuracoes/EscolherPergunta';
 
 function AppRoutes() {
   const prevLocation = usePreviousLocation();
@@ -71,6 +71,7 @@ function AppRoutes() {
       <Route path='/config/aparencia' element={token ? <View><Configuracoes /><ViewConfiguracao><Aparencia /></ViewConfiguracao></View> : <Navigate to="/login" />} />
       <Route path='/config/PrivacidadeConta' element={token ? <View><Configuracoes /><ViewConfiguracao><PrivacidadeConta /></ViewConfiguracao></View> : <Navigate to="/login" />} />
       <Route path='/config/ConfirmarSenha' element={token ? <View><Configuracoes /><ConfirmarSenha /><ViewConfiguracao></ViewConfiguracao></View> : <Navigate to="/login" />} />
+      <Route path='/config/privacidadeconta/2FA/pergunta' element={token ? <><EscolherPergunta /><View><Configuracoes /></View></> : <Navigate to="/login" />} />
      
 
 
