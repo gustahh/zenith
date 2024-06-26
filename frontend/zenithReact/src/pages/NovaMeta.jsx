@@ -16,7 +16,6 @@ function NovaMeta() {
     meta: '',
     dataExpec: '',
   });
-  console.log(values);
   const navigate = useNavigate();
 
   const handleInput = (event) => {
@@ -66,7 +65,7 @@ function NovaMeta() {
               <Input type="text" name="meta" placeholder="Digite sua meta" handle={handleInput}/>
               <Label nome="Concluir até:" />
               <Input type="date" name="dataExpec" handle={handleInput}/>
-              <Button className='w-80 h-12 bg-verde text-white font-bold rounded-md'
+              <Button className='w-full h-12 bg-verde text-white font-bold rounded-md'
                 type="submit" text="Nova meta" />
             </form>
 
