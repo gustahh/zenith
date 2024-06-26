@@ -109,3 +109,30 @@ CREATE TABLE arquivadas (
     id_anotacao int,
     FOREIGN KEY (id_anotacao) REFERENCES anotacoes (id)
 );
+
+//CRIA TABELA PERGUNTAS
+CREATE TABLE perguntas (
+	id int PRIMARY KEY auto_increment,
+    pergunta varchar(255)
+);
+
+//CRIA TABELA DE PERGUNTA DO USUARIO
+CREATE TABLE pergunta_usuario (
+	id int PRIMARY KEY auto_increment,
+    id_pergunta int,
+    id_usuario int
+);
+
+//CRIA TABELA DE DOIS FATORES
+CREATE TABLE dois_fatores (
+	id int PRIMARY KEY auto_increment,
+    id_usuario int UNIQUE
+);
+
+//CRIA TABELA DE RESPOSTAS
+CREATE TABLE respostas (
+	id int PRIMARY KEY auto_increment,
+    resposta varchar(255),
+    id_pergunta int,
+    id_usuario int
+);
