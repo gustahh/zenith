@@ -80,25 +80,38 @@ exports.criarMeta = async (req, res) => {
             // Ocorreu um erro ao decodificar o token
             console.error('Erro ao decodificar o token:', err);
         } else {
-            // Token decodificado com sucesso
             const idLogado = decoded.id;
 
-            const { meta, dataExpec } = req.body
-            var ano = new Date(dataExpec);
-            let anoAtual = new Date();
+            const { meta, dataExpec } = req.body;
 
+            // Conversão das datas
+            const dataExpecDate = new Date(dataExpec);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); // Ajusta a data atual para o início do dia
 
-            // validação
+            // Ajusta a data de expectativa para o início do dia
+            dataExpecDate.setHours(0, 0, 0, 0);
 
+            // Debug: Verificar as datas
+            console.log('Meta:', meta);
+            console.log('Data Expec:', dataExpec);
+            console.log('Data Expec Date:', dataExpecDate);
+            console.log('Today:', today);
+
+            // Validação
             if (!meta) {
-                return res.status(422).json({ msg: 'Defina sua meta!' })
+                return res.status(422).json({ msg: 'Defina sua meta!' });
             }
             if (!dataExpec) {
-                return res.status(422).json({ msg: 'Insira a data desejada!' })
-            } else if (ano < anoAtual) {
-                return res.status(422).json({ msg: 'Data inválida!' })
-            }            
-            
+                return res.status(422).json({ msg: 'Insira a data desejada!' });
+            }
+            if (isNaN(dataExpecDate.getTime())) {
+                return res.status(422).json({ msg: 'Data inválida!' });
+            }
+            if (dataExpecDate < today) {
+                return res.status(422).json({ msg: 'Data inválida! A data de expectativa não pode estar no passado.' });
+            }
+
             //cria anotação
             connection.execute(
                 'INSERT INTO metas (meta, data_expec, id_usuario) VALUES (?, ?, ?)',

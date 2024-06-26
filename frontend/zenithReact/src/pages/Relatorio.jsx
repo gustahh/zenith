@@ -63,6 +63,8 @@ function Relatorio() {
         dia: diaDaSemana[anotacao.dia_da_semana],
         humor: anotacao.emocao,
     }));
+
+
     return (
         <>
             <div className='w-full h-auto flex items-center justify-start pb-2'>

@@ -54,6 +54,40 @@ exports.desabilitar = async (req, res) => {
             const idLogado = decoded.id;
 
             connection.execute(
+                'DELETE FROM pergunta_usuario WHERE id_usuario = ?',
+                [idLogado],
+                function (err, results) {
+                    if (err) {
+                        // Se ocorrer um erro durante a execução da consulta
+                        console.error('Erro ao executar a consulta:', err);
+                    } else {
+                        if (results.length < 1) {
+                            
+                        } else {
+                            
+                        }
+                    }
+                }
+            );
+
+            connection.execute(
+                'DELETE FROM respostas WHERE id_usuario = ?',
+                [idLogado],
+                function (err, results) {
+                    if (err) {
+                        // Se ocorrer um erro durante a execução da consulta
+                        console.error('Erro ao executar a consulta:', err);
+                    } else {
+                        if (results.length < 1) {
+                            
+                        } else {
+                            
+                        }
+                    }
+                }
+            );
+
+            connection.execute(
                 'DELETE FROM dois_fatores WHERE id_usuario = ?',
                 [idLogado],
                 function (err, results) {
@@ -382,7 +416,6 @@ exports.retornaRespostaUsuario = async (req, res) => {
 
 exports.logaUsuario = async (req, res) => {
             const id = req.params.id;
-            console.log(id);
             const { resposta } = req.body;
             
             connection.execute(
@@ -398,7 +431,7 @@ exports.logaUsuario = async (req, res) => {
                             return res.status(404).json({ msg: 'Ocorreu um erro.' })
                         } else {
                             const respostaUsuario = results[0].resposta;
-                            
+
                             if (resposta === respostaUsuario) {
                                 const secret = process.env.SECRET
 
