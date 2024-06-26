@@ -28,43 +28,46 @@ function FormLogin() {
     const token = localStorage.getItem('token');
 
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    
-    const res = await axios.get('http://localhost:3000/2FA/checarUsuario', {
+
+    const resposta = await axios.get('http://localhost:3000/2FA/checarUsuario', {
       params: { email: values.email }
     });
 
-    if (res.data.msg === 'true') {
-      setVisibilidade('block');
-      setVisibilidadeLogin('hidden');
-    } else {
-      axios.post('http://localhost:3000/auth/login', values)
-        .then(res => {
+    axios.post('http://localhost:3000/auth/login', values)
+      .then(res => {
+        if (resposta.data.msg === 'true') {
+          setVisibilidade('block');
+          setVisibilidadeLogin('hidden');
+        } else {
           // Extrai o token JWT da resposta
           const token = res.data.token;
           // Armazena o token no localStorage
           localStorage.setItem('token', token);
           window.location.reload();
-        })
-        .catch(err => {
-          if (err.response) {
-            // Se houver uma resposta do servidor, exiba a mensagem de erro
-            toast.error(err.response.data.msg);
-          } else if (err.request) {
-            // Se a requisição foi feita, mas não houve resposta do servidor
-            console.log('Erro: Sem resposta do servidor');
-            toast.error('Sem resposta do servidor');
-          } else {
-            // Se ocorreu um erro antes da requisição ser feita
-            toast.error(err.message);
-          }
-        });
-    }
+        }
+
+      })
+      .catch(err => {
+        if (err.response) {
+          // Se houver uma resposta do servidor, exiba a mensagem de erro
+          toast.error(err.response.data.msg);
+        } else if (err.request) {
+          // Se a requisição foi feita, mas não houve resposta do servidor
+          console.log('Erro: Sem resposta do servidor');
+          toast.error('Sem resposta do servidor');
+        } else {
+          // Se ocorreu um erro antes da requisição ser feita
+          toast.error(err.message);
+        }
+      });
+
+
 
 
   }
   return (
     <>
-      <Autentificacao visibilidade={visibilidade} email={values.email}/>
+      <Autentificacao visibilidade={visibilidade} email={values.email} />
       <div className={`${visibilidadeLogin}`}>
         <form action="" onSubmit={handleSubmit}>
           <Label nome="E-mail" />
