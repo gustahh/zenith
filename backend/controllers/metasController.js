@@ -92,12 +92,6 @@ exports.criarMeta = async (req, res) => {
             // Ajusta a data de expectativa para o início do dia
             dataExpecDate.setHours(0, 0, 0, 0);
 
-            // Debug: Verificar as datas
-            console.log('Meta:', meta);
-            console.log('Data Expec:', dataExpec);
-            console.log('Data Expec Date:', dataExpecDate);
-            console.log('Today:', today);
-
             // Validação
             if (!meta) {
                 return res.status(422).json({ msg: 'Defina sua meta!' });
