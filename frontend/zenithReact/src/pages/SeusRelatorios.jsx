@@ -45,7 +45,17 @@ function SeusRelatorios() {
     <>
       <div className='text-xl font-bold text-cinzaTexto pb-3'>Seus relatórios</div>
       {relatorios.length > 1 ? (
-        <div className='text-xl text-cinzaTexto pb-3'>Seu relatórios semanais</div>
+        <>
+          <div className='flex items-center justify-between'>
+            <div className='text-xl text-cinzaTexto pb-3'>Seu relatórios semanais</div>
+            <Link to='/relatorio/todos'>
+              <span className='font-bold text-cinzaTexto py-2 justify-self-start 
+            hover:text-verde hover:underline'>Ver tudo</span>
+            </Link>
+          </div>
+
+        </>
+
       ) :
         <div className='text-xl text-cinzaTexto pb-3'>Seu relatório semanal</div>
       }

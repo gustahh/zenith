@@ -6,6 +6,7 @@ import Home from '../pages/Home';
 import Anotacoes from '../pages/Anotacoes';
 import Arquivadas from '../pages/Arquivadas';
 import SeusRelatorios from '../pages/SeusRelatorios';
+import TodosRelatorios from '../pages/TodosRelatorios';
 import Relatorio from '../pages/Relatorio';
 import Metas from '../pages/Metas';
 import NovaAnotacao from '../pages/NovaAnotacao';
@@ -54,6 +55,7 @@ function AppRoutes() {
 
       //relatorio
       <Route path='/relatorio' element={token ? <View><SeusRelatorios /></View> : <Navigate to="/login" />} />
+      <Route path='/relatorio/todos' element={token ? <View><TodosRelatorios /></View> : <Navigate to="/login" />} />
       <Route path='/relatorio/:id' element={token ? <View><Relatorio /></View> : <Navigate to="/login" />} />
 
       //metas

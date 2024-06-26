@@ -398,9 +398,7 @@ exports.logaUsuario = async (req, res) => {
                             return res.status(404).json({ msg: 'Ocorreu um erro.' })
                         } else {
                             const respostaUsuario = results[0].resposta;
-
-                            console.log(respostaUsuario);
-                            console.log(resposta);
+                            
                             if (resposta === respostaUsuario) {
                                 const secret = process.env.SECRET
 
