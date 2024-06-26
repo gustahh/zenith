@@ -113,20 +113,6 @@ exports.loginUsuario = async (req, res) => {
                             }, secret)
 
                             res.status(200).json({ msg: 'Autenticação realizada com sucesso', token })
-
-                            // Executa o código todos os domingos, cria relatório
-                            cron.schedule('* * * * 0', () => {
-                                axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                                axios.get(`http://localhost:3000/relatorios/criar`)
-                                    .then((res) => {
-                                        console.log('Relatório criado!');
-                                    })
-                                    .catch((error) => {
-                                        console.error('Erro ao criar relatório:', error);
-                                    });
-                            }, {
-                                timezone: 'America/Sao_Paulo'
-                            });
                         }
                     }
                 } else {
@@ -138,4 +124,24 @@ exports.loginUsuario = async (req, res) => {
         console.error('Erro:', err);
         return res.status(500).json({ msg: 'Erro interno do servidor' });
     }
+};
+
+exports.dadosUsuario = async (req, res) => {
+    const { email } = req.query
+
+    connection.execute(
+        'SELECT id, nome, email, foto_perfil FROM usuarios WHERE email = ?',
+        [email],
+        async function (err, results, fields) {
+            if (err) {
+                console.error('Erro ao executar a consulta:', err);
+                return res.status(500).json({ msg: 'Erro interno do servidor' });
+            }
+            if (results.length > 0) {
+                return res.status(202).json({ results })
+            } else {
+                return res.status(404).json({ msg: 'Usuário não cadastrado' })
+            }
+        }
+    );
 };

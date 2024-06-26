@@ -109,6 +109,47 @@ exports.checaUsuario = async (req, res) => {
     })
 }
 
+exports.checaDeterminadoUsuario = async (req, res) => {
+    const { email } = req.query;
+
+    if (!email) {
+        return res.status(404).json({ msg: 'Email é necessário' });
+    }
+
+    connection.execute(
+        'SELECT id FROM usuarios WHERE email = ?',
+        [email],
+        async function (err, results, fields) {
+            if (err) {
+                console.error('Erro ao executar a consulta:', err);
+                return res.status(500).json({ msg: 'Erro interno do servidor' });
+            }
+            if (results.length > 0) {
+                const id = results[0].id;  // Fix: Access the first element of the results array
+
+                connection.execute(
+                    'SELECT * FROM dois_fatores WHERE id_usuario = ?',
+                    [id],
+                    function (err, results) {
+                        if (err) {
+                            console.error('Erro ao executar a consulta:', err);
+                            return res.status(500).json({ msg: 'Erro interno do servidor' });  // Fix: Return a response in case of error
+                        } else {
+                            if (results.length < 1) {
+                                return res.status(202).json({ msg: 'false' });
+                            } else {
+                                return res.status(202).json({ msg: 'true' });
+                            }
+                        }
+                    }
+                );
+            } else {
+                return res.status(404).json({ msg: 'Usuário não cadastrado' });
+            }
+        }
+    );
+};
+
 exports.retornaPerguntas = async (req, res) => {
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(" ")[1]
@@ -191,7 +232,7 @@ exports.adicionaRespostaUsuario = async (req, res) => {
         } else {
             // Token decodificado com sucesso
             const idLogado = decoded.id;
-            const {  resposta, pergunta } = req.body;
+            const { resposta, pergunta } = req.body;
             connection.execute(
                 'INSERT INTO respostas (resposta, id_pergunta, id_usuario) VALUES (?, ?, ?)',
                 [resposta, pergunta, idLogado],
@@ -213,7 +254,7 @@ exports.adicionaRespostaUsuario = async (req, res) => {
     })
 }
 
-exports.retornaPerguntaUsuario = async (req, res) => {
+exports.retornaPerguntaUsuarioLogado = async (req, res) => {
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(" ")[1]
     const secret = process.env.SECRET
@@ -226,7 +267,7 @@ exports.retornaPerguntaUsuario = async (req, res) => {
         } else {
             // Token decodificado com sucesso
             const idLogado = decoded.id;
-            const {  resposta, pergunta } = req.body;
+            const { resposta, pergunta } = req.body;
             connection.execute(
                 'SELECT pergunta FROM pergunta_usuario u INNER JOIN perguntas p ON u.id_pergunta = p.id WHERE id_usuario = ?',
                 [idLogado],
@@ -246,4 +287,133 @@ exports.retornaPerguntaUsuario = async (req, res) => {
             );
         }
     })
+}
+
+exports.retornaRespostaUsuarioLogado = async (req, res) => {
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(" ")[1]
+    const secret = process.env.SECRET
+    // Decodificando o token
+    jwt.verify(token, secret, (err, decoded) => {
+        if (err) {
+            // Ocorreu um erro ao decodificar o token
+            console.error('Erro ao decodificar o token:', err);
+            return res.status(500).json({ error: 'Erro ao decodificar o token' });
+        } else {
+            // Token decodificado com sucesso
+            const idLogado = decoded.id;
+            const { resposta, pergunta } = req.body;
+            connection.execute(
+                'SELECT resposta FROM respostas WHERE id_usuario = ?',
+                [idLogado],
+                function (err, results) {
+                    if (err) {
+                        // Se ocorrer um erro durante a execução da consulta
+                        console.error('Erro ao executar a consulta:', err);
+                    } else {
+                        if (results.length < 1) {
+                            // Se a consulta retornou resultados
+                            return res.status(404).json({ msg: 'Ocorreu um erro.' })
+                        } else {
+                            return res.status(202).json({ results })
+                        }
+                    }
+                }
+            );
+        }
+    })
+}
+
+exports.retornaPerguntaUsuario = async (req, res) => {
+    const id = req.params.id;
+            connection.execute(
+                'SELECT pergunta FROM pergunta_usuario u INNER JOIN perguntas p ON u.id_pergunta = p.id WHERE id_usuario = ?',
+                [id],
+                function (err, results) {
+                    if (err) {
+                        // Se ocorrer um erro durante a execução da consulta
+                        console.error('Erro ao executar a consulta:', err);
+                    } else {
+                        if (results.length < 1) {
+                            // Se a consulta retornou resultados
+                            return res.status(404).json({ msg: 'Ocorreu um erro.' })
+                        } else {
+                            return res.status(202).json({ results })
+                        }
+                    }
+                }
+            );
+}
+
+exports.retornaRespostaUsuario = async (req, res) => {
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(" ")[1]
+    const secret = process.env.SECRET
+    // Decodificando o token
+    jwt.verify(token, secret, (err, decoded) => {
+        if (err) {
+            // Ocorreu um erro ao decodificar o token
+            console.error('Erro ao decodificar o token:', err);
+            return res.status(500).json({ error: 'Erro ao decodificar o token' });
+        } else {
+            // Token decodificado com sucesso
+            const id = req.params.id;
+            const { resposta, pergunta } = req.body;
+            connection.execute(
+                'SELECT resposta FROM respostas WHERE id_usuario = ?',
+                [id],
+                function (err, results) {
+                    if (err) {
+                        // Se ocorrer um erro durante a execução da consulta
+                        console.error('Erro ao executar a consulta:', err);
+                    } else {
+                        if (results.length < 1) {
+                            // Se a consulta retornou resultados
+                            return res.status(404).json({ msg: 'Ocorreu um erro.' })
+                        } else {
+                            return res.status(202).json({ results })
+                        }
+                    }
+                }
+            );
+        }
+    })
+}
+
+exports.logaUsuario = async (req, res) => {
+            const id = req.params.id;
+            console.log(id);
+            const { resposta } = req.body;
+            
+            connection.execute(
+                'SELECT resposta FROM respostas WHERE id_usuario = ?',
+                [id],
+                function (err, results) {
+                    if (err) {
+                        // Se ocorrer um erro durante a execução da consulta
+                        console.error('Erro ao executar a consulta:', err);
+                    } else {
+                        if (results.length < 1) {
+                            // Se a consulta retornou resultados
+                            return res.status(404).json({ msg: 'Ocorreu um erro.' })
+                        } else {
+                            const respostaUsuario = results[0].resposta;
+
+                            console.log(respostaUsuario);
+                            console.log(resposta);
+                            if (resposta === respostaUsuario) {
+                                const secret = process.env.SECRET
+
+                                const token = jwt.sign({
+                                    id: id
+                                }, secret)
+
+                                return res.status(200).json({ msg: 'Autenticação realizada com sucesso', token })
+                            } else {
+                                return res.status(404).json({ msg: 'Não foi possível fazer login' })
+                            }
+                        }
+                    }
+                }
+            );
 }
