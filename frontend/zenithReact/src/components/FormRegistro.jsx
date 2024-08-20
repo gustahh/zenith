@@ -13,10 +13,11 @@ function FormRegistro() {
   const [values, setValues] = useState({
     nome: '',
     email: '',
-    dataNasc: '',
+    data_nasc: '',
     genero: '',
     senha: ''
   });
+  console.log(values)
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
 
@@ -77,12 +78,12 @@ function FormRegistro() {
         document.querySelector('[name="senha"]').classList.add('border-2', 'border-solid', '!border-red-500')
         }
         <br />
-        <Label nome="Data de nascimento" id="dataNasc" />
-        <Input type="date" name="dataNasc" handle={handleInput} />
+        <Label nome="Data de nascimento" id="data_nasc" />
+        <Input type="date" name="data_nasc" handle={handleInput} />
         {
         errors.dataNasc && 
-        <span className="text-red-500 float-left text-sm">{errors.dataNasc}</span> && 
-        document.querySelector('[name="dataNasc"]').classList.add('border-2', 'border-solid', '!border-red-500')
+        <span className="text-red-500 float-left text-sm">{errors.data_nasc}</span> && 
+        document.querySelector('[name="data_nasc"]').classList.add('border-2', 'border-solid', '!border-red-500')
         }
         <br />
         <Label nome="Gênero" />

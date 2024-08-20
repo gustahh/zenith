@@ -11,7 +11,11 @@ function FraseDoDia() {
             .then((res) => {
                 setFrase(res.data.frase_do_dia);
                 setAutor(res.data.autor);
-                setCor(res.data.cor);
+            });
+
+        axios.get('http://localhost:3000/cores/cor/aleatorio')
+            .then((res) => {
+                setCor(res.data.cor.cor);
             });
     }, []);
     return (
@@ -23,7 +27,7 @@ function FraseDoDia() {
                 <span className='font-bold text-md opacity-70'> {autor}</span>
             </div>
 
-            
+
         </div>
     )
 }

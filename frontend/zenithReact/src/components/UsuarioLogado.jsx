@@ -15,8 +15,8 @@ function UsuarioLogado() {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     axios.get('http://localhost:3000/perfil')
       .then((res) => {
-        setNome(res.data.results[0].nome);
-        setFoto(res.data.results[0].foto_perfil);
+        setNome(res.data.usuario.nome);
+        setFoto(res.data.usuario.avatar);
       });
   }, []);
 
@@ -27,6 +27,15 @@ function UsuarioLogado() {
       <img src={caminho} alt={foto} />
     );
   };
+
+  function abreviarNome(nome, maxLength) {
+    if (nome.length > maxLength) {
+      return nome.substring(0, maxLength - 3) + '...';
+    }
+    return nome;
+  }
+
+  const nomeAbreviado = abreviarNome(nome, 10);
   return (
     <>
       <div className='fixed bottom-0'>
@@ -40,8 +49,9 @@ function UsuarioLogado() {
 
                 </div>
 
-                <span className='hidden sm:block text-xl font-bold text-cinzaTexto pl-3 mr-3 float-left'>
-                  {nome}
+                <span className='hidden sm:block text-md font-bold text-cinzaTexto pl-3 mr-3 float-left' 
+                title={nome}>
+                  {nomeAbreviado}
                 </span>
               </div>
 

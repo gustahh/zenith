@@ -8,12 +8,12 @@ function FraseDoDia() {
     useEffect(() => {
         axios.get('http://localhost:3000/reflexao/ver')
             .then((res) => {
-                setFrase(res.data.results[0].frase);
+                setFrase(res.data.frase);
                 
             });
             axios.get('http://localhost:3000/cores/cor/aleatorio')
             .then((res) => {
-                setCor(res.data.results[0].nome);
+                setCor(res.data.cor.cor);
                 
             });
     }, []);
