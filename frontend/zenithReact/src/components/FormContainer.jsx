@@ -1,6 +1,6 @@
 import React from 'react'
-import FormLogin from './FormLogin'
-import FormRegistro from './FormRegistro'
+import FormLogin from './Login/FormLogin'
+import FormRegistro from './Registro/FormRegistro'
 
 function FormContainer(props) {
   return (
