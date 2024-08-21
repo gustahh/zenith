@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import PinCheio from '../icons/PinCheio';
-import Arquivar from '../icons/Arquivar';
+import PinCheio from '../../icons/PinCheio';
+import Arquivar from '../../icons/Arquivar';
 
 const BlocoPequeno = (props) => {
     const [visao, setVisao] = useState('opacity-0');

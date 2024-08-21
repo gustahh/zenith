@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CriarAnotacao from './CriarAnotacao';
-import Grid from '../components/Grid';
-import GridFixadas from '../components/GridFixadas';
-import Reflexao from '../components/Reflexao';
+import Grid from '../components/Anotacoes/Grid';
+import GridFixadas from '../components/Anotacoes/GridFixadas';
+import Reflexao from '../components/Anotacoes/Reflexao';
 import Arquivar from '../icons/Arquivar';
 
 function Anotacoes() {

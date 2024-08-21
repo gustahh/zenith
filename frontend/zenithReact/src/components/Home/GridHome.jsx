@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React , { useState, useEffect } from 'react';
-import Bloco from '../components/BlocoMedio';
+import Bloco from '../../components/Anotacoes/BlocoMedio';
 import { Link, useNavigate } from 'react-router-dom';
 
 import Masonry from "react-responsive-masonry";

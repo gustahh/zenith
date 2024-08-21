@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CriarAnotacao from './CriarAnotacao';
-import GridArquivadas from '../components/GridArquivadas';
-import Reflexao from '../components/Reflexao';
+import GridArquivadas from '../components/Anotacoes/GridArquivadas';
+import Reflexao from '../components/Anotacoes/Reflexao';
 import ArquivarCheio from '../icons/ArquivarCheio';
 
 function Arquivadas() {

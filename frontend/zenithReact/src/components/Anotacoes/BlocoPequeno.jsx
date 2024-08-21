@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Pin from '../icons/Pin';
-import Arquivar from '../icons/Arquivar';
+import Pin from '../../icons/Pin';
+import Arquivar from '../../icons/Arquivar';
 
-const Bloco = (props) => {
+const BlocoPequeno = (props) => {
   const [visao, setVisao] = useState('opacity-0');
   const mouseOverOpcoes = () => {
     setVisao('opacity-100');
@@ -16,7 +16,7 @@ const Bloco = (props) => {
 
   return (
     <>
-      <div className={`flex-none w-30 h-30 sm:w-full sm:h-60 bg-${props.cor} rounded-md 
+      <div className={`w-6 flex-none w-full sm:h-12 bg-${props.cor} rounded-md 
           flex flex-col items-center cursor-pointer overflow-hidden`}
         id={props.id} onMouseOver={mouseOverOpcoes} onMouseOut={mouseOutOpcoes}>
 
@@ -35,8 +35,8 @@ const Bloco = (props) => {
           </div>
         </div>
 
-        <div className='w-full h-full flex items-center pl-3' >
-          <span className='font-bold opacity-70 text-sm sm:text-xl'>
+        <div className='w-full h-full flex items-center pl-3 pb-5' >
+          <span className='font-bold opacity-70 text-xl pb-3'>
             {props.titulo}
           </span>
         </div>
@@ -46,4 +46,4 @@ const Bloco = (props) => {
   );
 };
 
-export default Bloco;
+export default BlocoPequeno;
