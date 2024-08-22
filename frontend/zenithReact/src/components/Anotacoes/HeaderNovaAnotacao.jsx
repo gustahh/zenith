@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Voltar from '../icons/Voltar';
-import Pincel from '../icons/Pincel';
-import Nuvem from '../icons/Nuvem';
-import Atualizando from '../icons/Atualizando';
-import Face from '../icons/Face';
+import Voltar from '../../icons/Voltar';
+import Pincel from '../../icons/Pincel';
+import Nuvem from '../../icons/Nuvem';
+import Atualizando from '../../icons/Atualizando';
+import Face from '../../icons/Face';
 import { useParams, useNavigate } from 'react-router-dom';
-import Descer from '../icons/Descer';
-import usePreviousLocation from '../routes/hook';
-import Bloco from '../icons/Bloco';
+import Descer from '../../icons/Descer';
+import usePreviousLocation from '../../routes/hook';
+import Bloco from '../../icons/Bloco';
 
 function HeaderNovaAnotacao(props) {
 

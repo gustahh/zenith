@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import HeaderNovaAnotacao from '../../components/HeaderNovaAnotacao';
+import HeaderNovaAnotacao from '../../components/Anotacoes/HeaderNovaAnotacao';
 import Tiptap from '../../components/Tiptap';
 import Sobreposicao from '../../components/Sobreposicao';
 
