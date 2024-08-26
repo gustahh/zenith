@@ -3,11 +3,10 @@ const colors = require('tailwindcss/colors')
 
 export default {
   darkMode: 'selector',
-  content: [ "./index.html", "./src/**/*.{js,ts,jsx,tsx,vue}", ],
-  purge: {
-    enabled: true,
-    content: ['./src/**/*.jsx'], // Caminho para os arquivos de código-fonte
-  },
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   safelist: [
     'bg-verdeLimao', 
     'bg-verde', 
@@ -55,4 +54,3 @@ export default {
   },
   plugins: [],
 }
-
